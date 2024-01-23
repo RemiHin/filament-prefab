@@ -1,0 +1,33 @@
+[x-cloak] {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+html p {
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+main {
+    @apply flex-grow;
+}
+
+body {
+    font-family: var(--font-family) !important;
+    @apply text-default-color;
+    @apply bg-default-background;
+    @apply flex;
+    @apply flex-col;
+    @apply min-h-screen;
+    @apply m-0;
+}
+
+#app {
+    @apply flex flex-grow flex-col;
+}

@@ -1,0 +1,9 @@
+@import "tailwindcss/components";
+
+@import "components/wcag.css";
+@import "components/btn.css";
+@import "components/link.css";
+@import "components/menu/submenu.css";
+@import "components/menu/mobile-menu.css";
+@import "components/blocks/video.css";
+@import "components/swiper.css";

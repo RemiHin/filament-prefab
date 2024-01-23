@@ -1,0 +1,15 @@
+.js-toggle-submenu .svg-icon {
+    @apply transition-transform duration-150 ease-in-out;
+}
+
+.js-toggle-submenu.is-active .svg-icon {
+    @apply transform rotate-180;
+}
+
+.js-submenu {
+    @apply hidden;
+}
+
+.js-submenu.is-active {
+    @apply flex;
+}

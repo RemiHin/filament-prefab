@@ -1,0 +1,123 @@
+input[type = 'text'],
+input[type = 'email'],
+input[type = 'number'],
+textarea[type = 'textarea'],
+.file-upload-field,
+select + div {
+    @apply block w-full border bg-white py-3 px-4 rounded-lg border-slate-200;
+}
+
+input[type = 'text'].compact,
+input[type = 'date'].compact,
+input[type = 'email'].compact,
+input[type = 'phone'].compact,
+input[type = 'number'].compact,
+textarea[type = 'textarea'].compact,
+select.compact + div {
+    @apply py-2;
+}
+
+input[type = 'text']:focus,
+input[type = 'email']:focus,
+input[type = 'number']:focus,
+textarea[type = 'textarea']:focus,
+.file-upload-field:focus,
+select:focus {
+    @apply border border-slate-300 ring ring-violet-500 ring-opacity-20;
+}
+
+input.form-has-error, textarea.form-has-error, select.form-has-error {
+    @apply border border-red-600;
+}
+
+form input[type = 'checkbox'] {
+    @apply rounded mr-2.5 border border-slate-200 text-primary;
+}
+
+form .form-error-message {
+    @apply text-sm text-danger mt-2;
+}
+
+form h1 {
+    @apply text-4xl font-extrabold;
+}
+
+form .form-input-group {
+    @apply block mt-6 text-default-color font-bold;
+}
+
+form .form-input-group input {
+    @apply font-normal;
+}
+
+form .form-input-group textarea {
+    @apply font-normal;
+}
+
+form .form-input-group-search input[type = 'text'] {
+    @apply border-primary;
+}
+
+form input[type = 'number'].form-input-number-prefix {
+    @apply pl-6;
+}
+
+form button.form-btn-submit {
+    @apply relative;
+    @apply inline-flex content-center items-center;
+    @apply px-6 py-4 rounded;
+    @apply font-semibold text-center;
+    @apply no-underline select-none cursor-pointer;
+    @apply transition duration-150 ease-in-out;
+    @apply bg-primary text-white;
+    @apply border-2 border-primary;
+    @apply mt-5;
+}
+
+form button.form-btn-submit:hover,
+form button.form-btn-submit:focus {
+    @apply bg-primary-dark border-primary-dark;
+}
+
+.form-success-page .form-name-title {
+    @apply hidden;
+}
+
+p.hint {
+    @apply text-center mt-0 text-sm italic xs:text-left text-neutral-200;
+}
+
+/*Filter checkbox vacancy*/
+[type='checkbox'].full-checkbox-focus,
+[type='checkbox'].full-checkbox-focus:focus,
+[type='checkbox'].full-checkbox-focus:hover,
+[type='checkbox'].full-checkbox-focus:checked,
+[type='checkbox'].full-checkbox-focus:checked:focus,
+[type='checkbox'].full-checkbox-focus:checked:hover {
+    @apply bg-none bg-transparent ring-0 ring-transparent ring-offset-0 ring-offset-transparent border-none outline-none !important;
+}
+
+[type='checkbox'].full-checkbox-focus:checked:focus-visible {
+    @apply bg-none bg-transparent ring-0 ring-transparent ring-offset-0 ring-offset-transparent border-none !important;
+    @apply outline-dashed outline-offset-[3px] outline-2 outline-black  !important;
+}
+
+form .multiple-choice-group ul {
+    @apply pl-0 list-none w-full;
+}
+
+form .screen-reader {
+    @apply sr-only;
+}
+
+form .hidden {
+    display: none;
+}
+
+form .form-group-additional {
+    @apply mt-0.5 mb-2;
+}
+
+form .form-field-info {
+    @apply font-normal text-gray-700 text-sm mt-0.5 mb-0.5;
+}

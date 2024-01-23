@@ -1,0 +1,14 @@
+:root {
+    --cc-title-color: var(--primary);
+    --cc-text-color: var(--primary);
+    --cc-primary-color: var(--tertiary);
+    --cc-secondary-color: #fff;
+    --cc-primary-background: #ffffffb2;
+    --cc-secondary-background: transparent;
+    --cc-slider-inactive: var(--secondary);
+    --cc-slider-active: var(--tertiary);
+    --cc-card-active-background: var(--secondary);
+    --cc-card-inactive-background: var(--primary);
+
+    --font-family: 'Arial', sans-serif;
+}

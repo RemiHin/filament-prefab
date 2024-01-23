@@ -1,0 +1,19 @@
+.js-mobile-menu {
+    @apply opacity-0 pointer-events-none;
+    @apply transition-opacity duration-150 ease-out;
+}
+
+.js-mobile-menu.is-active {
+    @apply opacity-100 pointer-events-auto;
+}
+
+.mobile-menu-sidebar {
+    @apply invisible;
+    @apply transform translate-x-full;
+    @apply transition-transform duration-150 ease-in-out;
+}
+
+.js-mobile-menu.is-active .mobile-menu-sidebar {
+    @apply visible;
+    @apply translate-x-0;
+}

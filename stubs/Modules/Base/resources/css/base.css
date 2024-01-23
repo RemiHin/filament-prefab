@@ -1,0 +1,111 @@
+@import "tailwindcss/base";
+
+.container {
+    @apply px-5;
+}
+
+h1, .heading-1 {
+    @apply text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl;
+    @apply font-extrabold leading-tight;
+}
+
+h2, .heading-2, .editor h1 {
+    @apply text-2xl sm:text-4xl lg:text-5xl 2xl:text-6xl;
+    @apply font-extrabold leading-tight;
+}
+
+h3, .heading-3, .editor h2 {
+    @apply text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl;
+    @apply font-extrabold leading-tight;
+}
+
+h4, .heading-4, .editor h3 {
+    @apply text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl;
+    @apply font-semibold leading-tight;
+}
+
+h5, .heading-5, .editor h4 {
+    @apply text-xl sm:text-xl lg:text-2xl 2xl:text-3xl;
+    @apply font-semibold leading-tight;
+}
+
+h6, .heading-6, .editor h5 {
+    @apply text-lg sm:text-lg lg:text-xl 2xl:text-2xl;
+    @apply font-semibold leading-tight;
+}
+
+.full-click::after {
+    content: "";
+
+    @apply absolute;
+    @apply h-full w-full top-0 left-0;
+    @apply z-10;
+}
+
+a.skip-link {
+    @apply absolute z-20 px-4 py-2.5 bg-primary text-white rounded;
+    @apply no-underline;
+    @apply opacity-0 pointer-events-none;
+}
+
+a.skip-link:focus-visible {
+    @apply opacity-100 pointer-events-auto;
+}
+
+.editor h1 + p, .editor h1 + ol, .editor h1 + ul,
+.editor h2 + p, .editor h2 + ol, .editor h2 + ul,
+.editor h3 + p, .editor h3 + ol, .editor h3 + ul,
+.editor h4 + p, .editor h4 + ol, .editor h4 + ul,
+.editor h5 + p, .editor h5 + ol, .editor h5 + ul,
+.editor h6 + p  .editor h6 + ol, .editor h6 + ul {
+    @apply mt-5;
+}
+
+.editor p, .editor ol, .editor ul {
+    @apply mb-4;
+}
+
+.editor a:not(.btn) {
+    @apply underline;
+    @apply focus:outline-none;
+    @apply text-secondary transition duration-150 ease-in-out hover:text-secondary-dark;
+}
+
+.editor table {
+    @apply my-5;
+    @apply border border-slate-200;
+}
+
+.editor table td {
+    @apply border border-slate-200 px-2 py-1;
+}
+
+ol, .editor ol {
+    @apply pl-8;
+    @apply list-decimal;
+}
+
+ul, .editor ul {
+    @apply pl-8;
+    @apply list-disc;
+}
+
+*, :after, :before {
+    border-color: inherit;
+}
+
+a {
+    @apply text-primary;
+}
+
+a:focus-visible,
+[tabindex]:focus-visible,
+button:focus-visible {
+    @apply outline-dashed outline-black outline-offset-2 outline-2;
+}
+
+.label {
+    @apply text-sm font-semibold;
+    @apply p-2;
+    @apply bg-secondary-light text-secondary-dark;
+}

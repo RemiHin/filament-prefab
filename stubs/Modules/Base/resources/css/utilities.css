@@ -1,0 +1,6 @@
+@import "tailwindcss/utilities";
+
+.fontsize-l .wcag-fontsize-options,
+.fontsize-xl .wcag-fontsize-options {
+    @apply lg:grid-cols-2;
+}

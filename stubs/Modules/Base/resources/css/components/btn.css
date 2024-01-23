@@ -1,0 +1,54 @@
+.btn {
+    @apply relative;
+    @apply inline-flex content-center items-center;
+    @apply px-6 py-4 rounded;
+    @apply font-semibold text-center;
+    @apply no-underline select-none cursor-pointer;
+    @apply transition duration-150 ease-in-out;
+}
+
+.btn-primary {
+    @apply bg-primary text-white;
+    @apply border-2 border-primary;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    @apply bg-primary-dark border-primary-dark;
+}
+
+.btn-secondary {
+    @apply bg-transparent text-primary;
+    @apply border-2 border-primary border-solid;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    @apply text-primary-dark border-primary-dark;
+}
+
+.btn-donate {
+    @apply items-center bg-secondary text-white py-3;
+    @apply border-2 border-secondary;
+}
+
+.btn-donate:hover,
+.btn-donate:focus {
+    @apply bg-secondary-dark border-secondary-dark;
+}
+
+.btn.btn-small {
+    @apply px-5 py-2.5;
+}
+
+.btn-reverse {
+    @apply flex-row-reverse;
+}
+
+.btn-reverse .svg-icon {
+    @apply ml-0 mr-2;
+}
+
+.btn.btn-clean {
+    @apply px-0 border-0;
+}

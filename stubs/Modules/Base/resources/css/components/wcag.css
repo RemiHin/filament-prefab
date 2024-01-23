@@ -1,0 +1,103 @@
+[data-theme="high"] img {
+    filter: contrast(1.2);
+}
+
+.btn-wcag {
+    @apply flex flex-nowrap py-2 px-3;
+    @apply border-2 border-slate-300 rounded;
+    @apply bg-white text-primary;
+    @apply transition duration-150 ease-out;
+    @apply text-ellipsis overflow-hidden cursor-pointer;
+}
+
+.btn-wcag:hover {
+    @apply border-primary;
+}
+
+.btn-wcag.is-active {
+    @apply border-primary;
+    @apply bg-white text-primary;
+}
+
+.js-wcag-modal {
+    @apply invisible;
+    @apply pointer-events-none;
+    @apply opacity-0;
+    @apply transition-opacity duration-150 ease-in-out;
+}
+
+.js-wcag-modal.is-active {
+    @apply visible;
+    @apply pointer-events-auto;
+    @apply opacity-100;
+}
+
+.wcag-modal-content {
+    @apply transform translate-x-full;
+    @apply transition-transform duration-150 ease-in-out;
+}
+
+.js-wcag-modal.is-active .wcag-modal-content {
+    @apply transform translate-x-0;
+}
+
+html.fontsize-m,
+html.fontsize-m p {
+    font-size: 18px;
+    line-height: 1.65em;
+    letter-spacing: 0.01em;
+    word-spacing: 0.1em;
+}
+
+html.fontsize-l,
+html.fontsize-l p {
+    font-size: 21px;
+    line-height: 1.8em;
+    letter-spacing: 0.013em;
+    word-spacing: 0.13em;
+}
+
+html.fontsize-xl,
+html.fontsize-xl p {
+    font-size: 24px;
+    line-height: 1.95em;
+    letter-spacing: 0.016em;
+    word-spacing: 0.16em;
+}
+
+.fontsize-default .donation-template {
+    @apply lg:min-h-[calc(100vh-124px)];
+}
+
+.fontsize-m .donation-template {
+    @apply lg:min-h-[calc(100vh-139px)];
+}
+
+.fontsize-l .donation-template {
+    @apply lg:min-h-[calc(100vh-161px)];
+}
+
+.fontsize-xl .donation-template {
+    @apply lg:min-h-[calc(100vh-184px)];
+}
+
+.donation-template-figure {
+    @apply relative lg:sticky;
+    @apply pt-[40%] lg:pt-0;
+}
+
+.fontsize-default .donation-template-figure {
+    @apply lg:max-h-[calc(100vh-124px)] lg:top-[124px];
+}
+
+.fontsize-m .donation-template-figure {
+    @apply lg:max-h-[calc(100vh-139px)] lg:top-[139px];
+}
+
+.fontsize-l .donation-template-figure {
+    @apply lg:max-h-[calc(100vh-161px)] lg:top-[161px];
+}
+
+.fontsize-xl .donation-template-figure {
+    @apply lg:max-h-[calc(100vh-184px)] lg:top-[184px];
+}

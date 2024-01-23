@@ -1,0 +1,13 @@
+a.link {
+    @apply inline-flex items-center content-center;
+    @apply text-secondary;
+    @apply no-underline;
+    @apply underline underline-offset-4 decoration-2 decoration-transparent;
+    @apply transition duration-150 ease-in-out;
+}
+
+a.link:hover,
+a.link:focus {
+    @apply text-secondary-dark;
+    @apply decoration-current;
+}

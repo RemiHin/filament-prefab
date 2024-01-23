@@ -1,0 +1,27 @@
+.swiper.swiper-gallery-block {
+    @apply flex flex-col-reverse gap-5;
+}
+
+.swiper-gallery-block .swiper-button-next,
+.swiper-gallery-block .swiper-button-prev {
+    @apply relative;
+    @apply mt-0 bottom-0 top-auto;
+    @apply h-[40px] w-[40px] rounded-full border-2 border-solid border-secondary;
+}
+
+.swiper-gallery-block .swiper-button-next {
+    @apply right-0;
+}
+
+.swiper-gallery-block .swiper-button-prev {
+    @apply left-0;
+}
+
+.swiper-gallery-block .swiper-button-next::after,
+.swiper-gallery-block .swiper-button-prev::after {
+    content: "";
+}
+
+.swiper .swiper-slide {
+    @apply h-40 md:h-80;
+}
