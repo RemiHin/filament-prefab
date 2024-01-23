@@ -19,7 +19,7 @@ Use this template to scaffold a new website
 4. Change minimum stability to dev: `"minimum-stability": "dev",`
 5. `composer require remihin/filament-prefab`
 6. Install Base, Blog and Hero-Image modules:
-7. `php artisan prefab:filament --module=base` (be patient with the shell script)
+7. `php artisan prefab:filament --module=base --force` (be patient with the shell script, force is required to overwrite the user model)
 8. `php artisan prefab:filament --module=blog`
 9. `php artisan prefab:filament --module=hero-image`
 10. `php artisan migrate`

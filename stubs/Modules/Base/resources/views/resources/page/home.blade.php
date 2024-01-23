@@ -15,5 +15,5 @@
         </div>
     </section>
 
-    <x-blocks :blocks="$model->blocks"></x-blocks>
+{{-- todo:   <x-blocks :blocks="$model->blocks"></x-blocks>--}}
 </x-layouts.app>

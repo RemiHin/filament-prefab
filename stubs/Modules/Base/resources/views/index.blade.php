@@ -34,6 +34,6 @@
     </section>
 
     <section class="mt-10 lg:mt-16">
-        <x-blocks :blocks="$model->blocks"></x-blocks>
+{{--   todo:     <x-blocks :blocks="$model->blocks"></x-blocks>--}}
     </section>
 </x-layouts.app>
