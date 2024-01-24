@@ -31,13 +31,17 @@ Use this template to scaffold a new website
 1. add the `use Heroable` trait to the model
 2. add `static::$model::heroableFields(),` to the form fields in the resource
 
+### How to use Labels
+1. add the `use Labelable` trait to the model
+2. add `static::$model::labelableFields(),` to the form fields in the resource
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
 ### Biggest Todos:
 - [ ] Cookie consent `Base module`
-- [ ] Something formbuilder-like (alternative methods?) `Contact module`
+- [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [ ] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
 - [ ] Search functionalities `Search Module`
