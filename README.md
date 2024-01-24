@@ -54,3 +54,9 @@ Use this template to scaffold a new website
 - [ ] Service
 - [ ] Story
 - [ ] Vacancy
+
+
+## Used packages:
+- `filamentphp/filament`
+- `awcodes/filament-curator` (media manager)
+- `solution-forest/filament-tree` (menu builder)
