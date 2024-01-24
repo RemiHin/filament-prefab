@@ -44,7 +44,7 @@ Use this template to scaffold a new website
 - [ ] Donation module
 
 ### "Copypaste" Todos:
-- [ ] Empoyee
+- [ ] Employee
 - [ ] Location
 - [ ] News
 - [ ] Service
