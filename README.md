@@ -36,8 +36,17 @@ Use this template to scaffold a new website
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
 ### Biggest Todos:
-1. cookie consent
-2. something formbuilder like (for the contact form module) (alternative methods?)
-3. Blocks module (WIP)
-4. Email sending (?)
-5. Search functionalities
+- [ ] Cookie consent `Base module`
+- [ ] Something formbuilder-like (alternative methods?) `Contact module`
+- [ ] Blocks module (WIP) `Blocks module`
+- [ ] Email sending (?) `Job Alert`
+- [ ] Search functionalities `Search Module`
+- [ ] Donation module
+
+### "Copypaste" Todos:
+- [ ] Empoyee
+- [ ] Location
+- [ ] News
+- [ ] Service
+- [ ] Story
+- [ ] Vacancy
