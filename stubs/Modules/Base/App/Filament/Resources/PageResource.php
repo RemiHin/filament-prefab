@@ -42,7 +42,9 @@ class PageResource extends Resource
 
                 Forms\Components\Toggle::make('visible')
                     ->required(),
-            ])
+
+                static::$model::labelableFields(),
+                ])
             ->columns(1);
     }
 

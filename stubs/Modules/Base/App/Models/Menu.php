@@ -5,15 +5,17 @@ namespace App\Models;
 use App\Traits\Labelable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Page extends Model
+class Menu extends Model
 {
     use HasFactory;
     use Labelable;
+
     protected $guarded = [];
 
-    public function getUrlAttribute(): string
+    public function children(): HasMany
     {
-        return route('page.show', ['page' => $this]);
+        return $this->hasMany(MenuItem::class);
     }
 }

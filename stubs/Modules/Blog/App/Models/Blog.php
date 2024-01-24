@@ -35,4 +35,9 @@ class Blog extends Model
     {
         $query->where('visible', true);
     }
+
+    public function getUrlAttribute(): string
+    {
+        return route('blog.show', ['blog' => $this]);
+    }
 }

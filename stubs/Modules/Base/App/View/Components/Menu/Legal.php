@@ -5,13 +5,21 @@ declare(strict_types=1);
 namespace App\View\Components\Menu;
 
 use App\Enums\MenuEnum;
+use App\Models\Label;
+use App\Models\Menu;
+use Illuminate\View\Component;
 
-class Legal extends MenuComponent
+class Legal extends Component
 {
-    public string $menuEnum = MenuEnum::LEGAL_TERMS;
+    public ?Menu $menu;
+
+    public function __construct()
+    {
+        $this->menu = Label::getModel(MenuEnum::LEGAL_TERMS);
+    }
 
     public function render()
     {
-        return view('components.menu.legal');
+        return view('components.menu.tree');
     }
 }
