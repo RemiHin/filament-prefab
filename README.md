@@ -56,7 +56,7 @@ Use this template to scaffold a new website
 - [ ] Vacancy
 
 
-## Used packages:
+## dependencies:
 - `filamentphp/filament`
 - `awcodes/filament-curator` (media manager)
 - `solution-forest/filament-tree` (menu builder)
