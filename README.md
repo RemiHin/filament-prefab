@@ -34,3 +34,10 @@ Use this template to scaffold a new website
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
+
+### Biggest Todos:
+1. cookie consent
+2. something formbuilder like (for the contact form module) (alternative methods?)
+3. Blocks module (WIP)
+4. Email sending (?)
+5. Search functionalities
