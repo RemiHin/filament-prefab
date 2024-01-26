@@ -46,6 +46,7 @@ Use this template to scaffold a new website
 - [ ] Email sending (?) `Job Alert`
 - [ ] Search functionalities `Search Module`
 - [ ] Donation module
+- [ ] Redirects en dead-link tracker
 
 ### "Copypaste" Todos:
 - [ ] Employee
@@ -54,6 +55,7 @@ Use this template to scaffold a new website
 - [ ] Service
 - [ ] Story
 - [ ] Vacancy
+- [ ] Settings
 
 
 ## dependencies:
