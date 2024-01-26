@@ -9,13 +9,13 @@
 
     @if($model->heroImage)
         <x-hero.hero
-            :title="$model->heroImage->title"
-            :text="$model->heroImage->content"
-            :img="$model->heroImage->image"
-            :alt="$model->heroImage->image_alt"
-            :primaryBtnText="$model->heroImage->cta_text"
-            :primaryBtnLink="$model->heroImage->cta_link"
-            class="mt-5"
+                :title="$model->heroImage->title"
+                :text="$model->heroImage->content"
+                :img="$model->heroImage->image"
+                :alt="$model->heroImage->image_alt"
+                :primaryBtnText="$model->heroImage->cta_text"
+                :primaryBtnLink="$model->heroImage->cta_link"
+                class="mt-5"
         />
     @endif
 
@@ -28,12 +28,12 @@
             @endif
 
             <div class="editor mt-3">
-                {!! $model->content !!}
+                {!! $model->intro !!}
             </div>
         </div>
     </section>
 
     <section class="mt-10 lg:mt-16">
-{{--   todo:     <x-blocks :blocks="$model->blocks"></x-blocks>--}}
+        <x-blocks :blocks="$model->content"></x-blocks>
     </section>
 </x-layouts.app>

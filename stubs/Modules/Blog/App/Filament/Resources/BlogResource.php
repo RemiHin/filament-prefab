@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Blocks\BlockModule;
 use App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -50,11 +52,10 @@ class BlogResource extends Resource
                     ->string()
                     ->columnSpanFull(),
 
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
+                CuratorPicker::make('image'),
 
-                Forms\Components\FileUpload::make('image_alt')
-                    ->image(),
+                BlockModule::make('content'),
+
                 Forms\Components\DatePicker::make('publish_from')
                     ->required()
                     ->live(onBlur: true),

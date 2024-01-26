@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Blocks\BlockModule;
 use App\Models\Page;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
@@ -43,7 +44,13 @@ class PageResource extends Resource
                 Forms\Components\Toggle::make('visible')
                     ->required(),
 
+                BlockModule::make('content'),
+
                 static::$model::labelableFields(),
+
+                static::$model::seoableFields(),
+
+                static::$model::ogableFields(),
                 ])
             ->columns(1);
     }

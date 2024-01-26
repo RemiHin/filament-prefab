@@ -18,6 +18,7 @@ class Blog extends Model
     protected $casts = [
         'publish_from' => 'date',
         'publish_until' => 'date',
+        'content' => 'array',
     ];
 
     public function scopePublished(Builder $query): void

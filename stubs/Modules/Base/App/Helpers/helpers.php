@@ -23,3 +23,10 @@ if (! function_exists('inlineSVG')) {
         return new HtmlString(file_get_contents($filePath));
     }
 }
+
+if (! function_exists('get_video_id')) {
+    function get_video_id(string $url): string
+    {
+        return (new \App\Rules\VideoUrl())->getVideoIdFromUrl($url);
+    }
+}
