@@ -23,6 +23,6 @@
     </section>
 
     <section class="mt-10 lg:mt-16">
-        <x-blocks :blocks="$model->blocks"></x-blocks>
+        <x-blocks :blocks="$model->content"></x-blocks>
     </section>
 </x-layouts.app>

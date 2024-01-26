@@ -9,11 +9,13 @@
                 </h1>
             @endif
 
-            <div class="editor mt-3">
-                {!! $model->content !!}
-            </div>
+                <div class="editor mt-3">
+                    {!! $model->intro !!}
+                </div>
         </div>
     </section>
 
-{{-- todo:   <x-blocks :blocks="$model->blocks"></x-blocks>--}}
+    <section class="mt-10 lg:mt-16">
+        <x-blocks :blocks="$model->content"></x-blocks>
+    </section>
 </x-layouts.app>
