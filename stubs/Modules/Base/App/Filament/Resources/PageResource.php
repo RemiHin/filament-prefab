@@ -25,32 +25,41 @@ class PageResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->string()
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    })
-                    ->maxLength(255),
+                Forms\Components\Tabs::make('Tabs')
+                    ->tabs([
+                        Forms\Components\Tabs\Tab::make('General')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->string()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
+                                        $set('slug', Str::slug($state));
+                                    })
+                                    ->maxLength(255),
 
-                Forms\Components\TextInput::make('slug')
-                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
-                    ->required()
-                    ->maxLength(255)
-                    ->rules(['alpha_dash'])
-                    ->unique(ignoreRecord: true),
+                                Forms\Components\TextInput::make('slug')
+                                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->rules(['alpha_dash'])
+                                    ->unique(ignoreRecord: true),
 
-                Forms\Components\Toggle::make('visible')
-                    ->required(),
+                                Forms\Components\Toggle::make('visible')
+                                    ->required(),
 
-                BlockModule::make('content'),
+                                static::$model::labelableFields(),
 
-                static::$model::labelableFields(),
+                                BlockModule::make('content'),
 
-                static::$model::seoableFields(),
+                            ]),
+                        Forms\Components\Tabs\Tab::make('SEO')
+                            ->schema([
+                                static::$model::seoableFields(),
 
-                static::$model::ogableFields(),
+                                static::$model::ogableFields(),
+                            ]),
+                    ])
                 ])
             ->columns(1);
     }

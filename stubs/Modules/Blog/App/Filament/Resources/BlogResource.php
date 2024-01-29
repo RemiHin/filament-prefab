@@ -26,44 +26,57 @@ class BlogResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->string()
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    })
-                    ->maxLength(255),
+                Forms\Components\Tabs::make('Tabs')
+                    ->tabs([
+                        Forms\Components\Tabs\Tab::make('General')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->string()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
+                                        $set('slug', Str::slug($state));
+                                    })
+                                    ->maxLength(255),
 
-                Forms\Components\TextInput::make('slug')
-                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
-                    ->required()
-                    ->maxLength(255)
-                    ->rules(['alpha_dash'])
-                    ->unique(ignoreRecord: true),
+                                Forms\Components\TextInput::make('slug')
+                                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->rules(['alpha_dash'])
+                                    ->unique(ignoreRecord: true),
 
-                Forms\Components\Toggle::make('visible')
-                    ->default(true)
-                    ->required(),
+                                Forms\Components\Toggle::make('visible')
+                                    ->default(true)
+                                    ->required(),
 
-                Forms\Components\Textarea::make('intro')
-                    ->maxLength(65535)
-                    ->nullable()
-                    ->string()
-                    ->columnSpanFull(),
+                                Forms\Components\Textarea::make('intro')
+                                    ->maxLength(65535)
+                                    ->nullable()
+                                    ->string()
+                                    ->columnSpanFull(),
 
-                CuratorPicker::make('image'),
+                                CuratorPicker::make('image'),
 
-                BlockModule::make('content'),
+                                BlockModule::make('content'),
 
-                Forms\Components\DatePicker::make('publish_from')
-                    ->required()
-                    ->live(onBlur: true),
+                                Forms\Components\DatePicker::make('publish_from')
+                                    ->required()
+                                    ->live(onBlur: true),
 
-                Forms\Components\DatePicker::make('publish_until')
-                    ->nullable()
-                    ->live(onBlur: true)
-                    ->after('publish_from'),
+                                Forms\Components\DatePicker::make('publish_until')
+                                    ->nullable()
+                                    ->live(onBlur: true)
+                                    ->after('publish_from'),
+
+                            ]),
+                        Forms\Components\Tabs\Tab::make('SEO')
+                            ->schema([
+                                static::$model::seoableFields(),
+
+                                static::$model::ogableFields(),
+                            ]),
+                    ])
             ])
             ->columns(1);
     }
