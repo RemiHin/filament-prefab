@@ -16,7 +16,7 @@
 
                 @if ($model->content)
                     <div class="editor pt-5">
-                        {!! $model->content !!}
+                        {!! $model->intro !!}
                     </div>
                 @endif
             </div>
@@ -24,4 +24,8 @@
     </section>
 
     <livewire:story-overview />
+
+    <section class="mt-10 lg:mt-16">
+        <x-blocks :blocks="$model->content"></x-blocks>
+    </section>
 </x-layouts.app>

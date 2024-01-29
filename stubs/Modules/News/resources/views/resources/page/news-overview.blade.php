@@ -16,7 +16,7 @@
 
                 @if ($model->content)
                     <div class="editor pt-5">
-                        {!! $model->content !!}
+                        {!! $model->intro !!}
                     </div>
                 @endif
             </div>

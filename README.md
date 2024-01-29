@@ -18,18 +18,29 @@ Use this template to scaffold a new website
 ```
 4. Change minimum stability to dev: `"minimum-stability": "dev",`
 5. `composer require remihin/filament-prefab`
-6. Install Base, Blog and Hero-Image modules:
-7. `php artisan prefab:filament --module=base --force` (be patient with the shell script, force is required to overwrite the user model)
-8. `php artisan prefab:filament --module=blog`
-9. `php artisan prefab:filament --module=hero-image`
-10. `php artisan migrate`
-11. `npm install && npm run dev`
-12. Create a user `php artisan make:filament-user` and follow the prompts
-13. `php artisan db:seed`
+6. Install all modules:
+- `php artisan prefab:filament --module=base --force` (be patient with the shell script, force is required to overwrite the user model)
+- `php artisan prefab:filament --module=blog`
+- `php artisan prefab:filament --module=hero-image`
+- `php artisan prefab:filament --module=news`
+- `php artisan prefab:filament --module=story`
+- `php artisan prefab:filament --module=employee`
+7. `php artisan migrate`
+8. Create a user `php artisan make:filament-user` and follow the prompts
+9. `php artisan db:seed`
+10. `npm install && npm run dev`
 
 ### How to use Hero Images
 1. add the `use Heroable` trait to the model
 2. add `static::$model::heroableFields(),` to the form fields in the resource
+
+### How to use Employees
+1. add the `use Employeeable` trait to the model
+2. add `static::$model::employeeableFields(),` to the form fields in the resource
+
+### How to use Seoable en Ogable
+1. add the `use Seoable` and `use Ogable` trait to the model
+2. add `static::$model::seoableFields(),` and `static::$model::ogableFields(),` to the form fields in the resource
 
 ### How to use Labels
 1. add the `use Labelable` trait to the model
@@ -49,7 +60,7 @@ Use this template to scaffold a new website
 - [ ] Redirects en dead-link tracker
 
 ### "Copypaste" Todos:
-- [ ] Employee
+- [x] Employee
 - [ ] Location
 - [x] News
 - [ ] Service

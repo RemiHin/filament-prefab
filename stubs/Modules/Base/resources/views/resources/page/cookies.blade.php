@@ -13,7 +13,7 @@
                 {{ $model->name }}
             </h1>
             <div class="editor mt-3">
-                {!! $model->content !!}
+                {!! $model->intro !!}
             </div>
         </div>
 

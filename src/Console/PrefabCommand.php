@@ -32,7 +32,7 @@ class PrefabCommand extends Command
         'blog',
         'news',
         'story',
-//        'employee',
+        'employee',
 //        'location',
 //        'contact',
 //        'service',

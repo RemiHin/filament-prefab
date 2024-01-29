@@ -23,5 +23,5 @@
         </div>
     </section>
 
-    <livewire:blog-overview />
+    <x-content.employee-overview/>
 </x-layouts.app>
