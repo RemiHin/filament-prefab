@@ -42,7 +42,7 @@ Use this template to scaffold a new website
 ### Biggest Todos:
 - [ ] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
-- [ ] Blocks module (WIP) `Blocks module`
+- [x] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
 - [ ] Search functionalities `Search Module`
 - [ ] Donation module
@@ -51,7 +51,7 @@ Use this template to scaffold a new website
 ### "Copypaste" Todos:
 - [ ] Employee
 - [ ] Location
-- [ ] News
+- [x] News
 - [ ] Service
 - [ ] Story
 - [ ] Vacancy
