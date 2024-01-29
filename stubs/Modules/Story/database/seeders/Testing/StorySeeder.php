@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Seeders\Testing;
 
-use App\Models\Blog;
+use App\Models\Story;
+use App\Models\StoryCategory;
 use Illuminate\Database\Seeder;
 
 class BlogSeeder extends Seeder
@@ -16,8 +17,12 @@ class BlogSeeder extends Seeder
      */
     public function run(): void
     {
-        Blog::factory()
-            ->count(30 - Blog::query()->count())
+        StoryCategory::factory()
+            ->count(5 - StoryCategory::query()->count())
+            ->create();
+
+        Story::factory()
+            ->count(30 - Story::query()->count())
             ->create();
     }
 }

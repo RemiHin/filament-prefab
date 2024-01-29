@@ -6,7 +6,7 @@ use App\Models\Page;
 use App\Models\NewsItem;
 //use App\Models\Location;
 //use App\Models\Service;
-//use App\Models\Story;
+use App\Models\Story;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
@@ -29,10 +29,9 @@ class PrefabCommand extends Command
      */
     public array $modules = [
         'base',
-//        'page',
         'blog',
         'news',
-//        'story',
+        'story',
 //        'employee',
 //        'location',
 //        'contact',

@@ -6,7 +6,7 @@ namespace App\Livewire;
 
 use App\Models\Label;
 use App\Models\Page;
-use App\Models\NewsItem;
+use App\Models\Blog;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -29,7 +29,7 @@ class BlogOverview extends Component
 
     protected function getBlogs()
     {
-        $blogs = NewsItem::query()
+        $blogs = Blog::query()
             ->visible()
             ->published()
             ->latest()

@@ -53,7 +53,7 @@ Use this template to scaffold a new website
 - [ ] Location
 - [x] News
 - [ ] Service
-- [ ] Story
+- [x] Story
 - [ ] Vacancy
 - [ ] Settings
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Label;
-use App\Models\NewsItem;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +14,7 @@ class BlogController extends Controller
         return view('resources.page.blog-overview', ['model' => $page]);
     }
 
-    public function show(NewsItem $blog)
+    public function show(Blog $blog)
     {
         return view('resources.blog.show', ['model' => $blog]);
     }

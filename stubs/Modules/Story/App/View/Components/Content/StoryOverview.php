@@ -5,30 +5,30 @@ declare(strict_types=1);
 namespace App\View\Components\Content;
 
 use App\Models\Label;
-use App\Models\Blog;
+use App\Models\Story;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class BlogOverview extends Component
+class StoryOverview extends Component
 {
     public const AMOUNT_PER_PAGE = 6;
 
-    public ?LengthAwarePaginator $blogs;
+    public ?LengthAwarePaginator $stories;
 
     public function __construct()
     {
-        $this->blogs = Blog::visible()
+        $this->stories = Story::visible()
             ->published()
             ->latest()
             ->paginate(self::AMOUNT_PER_PAGE);
-        $blogPage = Label::getModel('blog-overview');
+        $storyPage = Label::getModel('story-overview');
 
-        $this->blogs->setPath(route('blog.index', ['model' => $blogPage]));
+        $this->stories->setPath(route('story.index', ['model' => $storyPage]));
     }
 
     public function render(): View
     {
-        return view('components.content.blog-overview');
+        return view('components.content.story-overview');
     }
 }

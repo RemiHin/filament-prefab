@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Blog;
+use App\Models\Story;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BlogFactory extends Factory
+class StoryFactory extends Factory
 {
-    protected $model = Blog::class;
+    protected $model = Story::class;
 
     public function definition(): array
     {
         return [
             'name' => $name = $this->faker->unique()->gpt('Write a title for a healthcare related blog', $this->faker->sentence(4), trimQuotes: true),
-            'slug' => 'blog/' . Str::slug($name),
+            'slug' => 'verhalen/' . Str::slug($name),
             'visible' => $this->faker->boolean,
             'intro' => $this->faker->gpt('Write the introduction paragraph for a healthcare related blog post', $this->faker->text),
 //  TODO:          'image' => FactoryImage::make()->label($name)->cropperField(1200, 800),
