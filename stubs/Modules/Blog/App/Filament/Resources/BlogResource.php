@@ -4,8 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
 use App\Filament\Resources\BlogResource\Pages;
-use App\Filament\Resources\BlogResource\RelationManagers;
-use App\Models\NewsItem;
+use App\Models\Blog;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,7 +17,7 @@ use Illuminate\Support\Str;
 
 class BlogResource extends Resource
 {
-    protected static ?string $model = NewsItem::class;
+    protected static ?string $model = Blog::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
@@ -136,10 +135,10 @@ class BlogResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewsItems::route('/'),
-            'create' => Pages\CreateNewsItem::route('/create'),
-            'view' => Pages\ViewNewsItem::route('/{record}'),
-            'edit' => Pages\EditNewsItem::route('/{record}/edit'),
+            'index' => Pages\ListBlogs::route('/'),
+            'create' => Pages\CreateBlog::route('/create'),
+            'view' => Pages\ViewBlog::route('/{record}'),
+            'edit' => Pages\EditBlog::route('/{record}/edit'),
         ];
     }
 }
