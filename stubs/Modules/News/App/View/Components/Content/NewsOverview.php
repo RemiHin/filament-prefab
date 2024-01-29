@@ -10,25 +10,25 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class BlogOverview extends Component
+class NewsOverview extends Component
 {
     public const AMOUNT_PER_PAGE = 6;
 
-    public ?LengthAwarePaginator $blogs;
+    public ?LengthAwarePaginator $newsItems;
 
     public function __construct()
     {
-        $this->blogs = NewsItem::visible()
+        $this->newsItems = NewsItem::visible()
             ->published()
             ->latest()
             ->paginate(self::AMOUNT_PER_PAGE);
-        $blogPage = Label::getModel('blog-overview');
+        $newsPage = Label::getModel('news-overview');
 
-        $this->blogs->setPath(route('blog.index', ['model' => $blogPage]));
+        $this->newsItems->setPath(route('news.index', ['model' => $newsPage]));
     }
 
     public function render(): View
     {
-        return view('components.content.blog-overview');
+        return view('components.content.news-overview');
     }
 }

@@ -10,12 +10,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class NewsItem extends Model
 {
     use HasFactory;
     use Labelable;
     use Seoable;
     use Ogable;
+
     protected $guarded = [];
 
     protected $casts = [
@@ -42,6 +43,6 @@ class Blog extends Model
 
     public function getUrlAttribute(): string
     {
-        return route('blog.show', ['blog' => $this]);
+        return route('news.show', ['newsItem' => $this]);
     }
 }

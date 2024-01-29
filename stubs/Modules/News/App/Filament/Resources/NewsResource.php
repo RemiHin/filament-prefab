@@ -3,8 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
-use App\Filament\Resources\BlogResource\Pages;
-use App\Filament\Resources\BlogResource\RelationManagers;
+use App\Filament\Resources\NewsResource\Pages;
 use App\Models\NewsItem;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
@@ -16,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
-class BlogResource extends Resource
+class NewsResource extends Resource
 {
     protected static ?string $model = NewsItem::class;
 

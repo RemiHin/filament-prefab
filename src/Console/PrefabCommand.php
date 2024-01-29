@@ -3,9 +3,8 @@
 namespace RemiHin\FilamentPrefab\Console;
 
 use App\Models\Page;
-use App\Models\Blog;
+use App\Models\NewsItem;
 //use App\Models\Location;
-//use App\Models\News;
 //use App\Models\Service;
 //use App\Models\Story;
 use Illuminate\Console\Command;
@@ -32,7 +31,7 @@ class PrefabCommand extends Command
         'base',
 //        'page',
         'blog',
-//        'news',
+        'news',
 //        'story',
 //        'employee',
 //        'location',

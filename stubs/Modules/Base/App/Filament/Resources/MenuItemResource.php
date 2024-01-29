@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MenuItemResource\Pages;
-use App\Models\Blog;
+use App\Models\NewsItem;
 use App\Models\MenuItem;
 use App\Models\Page;
 use Filament\Forms;
@@ -38,7 +38,7 @@ class MenuItemResource extends Resource
                     ->label('Type')
                     ->required()
                     ->live()
-                    ->options([Page::class => 'Pagina', Blog::class => 'Blog', 'Empty' => 'Hoofditem zonder link']),
+                    ->options([Page::class => 'Pagina', NewsItem::class => 'Blog', 'Empty' => 'Hoofditem zonder link']),
 
                 Forms\Components\Select::make('menuable_id')
                     ->label('Link')
@@ -51,8 +51,8 @@ class MenuItemResource extends Resource
                         return $state;
                     })
                     ->live()
-                    ->disabled(fn(Get $get) => $get('menuable_type') != Page::class && $get('menuable_type') != Blog::class&& $get('menuable_type') != 'Empty')
-                    ->options(fn(Get $get) => $get('menuable_type') == Page::class ? Page::pluck('name', 'id') : ($get('menuable_type') == Blog::class ? Blog::pluck('name', 'id') : []))
+                    ->disabled(fn(Get $get) => $get('menuable_type') != Page::class && $get('menuable_type') != NewsItem::class&& $get('menuable_type') != 'Empty')
+                    ->options(fn(Get $get) => $get('menuable_type') == Page::class ? Page::pluck('name', 'id') : ($get('menuable_type') == NewsItem::class ? NewsItem::pluck('name', 'id') : []))
 
             ]);
     }

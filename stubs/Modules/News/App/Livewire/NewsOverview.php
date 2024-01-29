@@ -13,35 +13,35 @@ use Illuminate\Support\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class BlogOverview extends Component
+class NewsOverview extends Component
 {
     use WithPagination;
 
     public const AMOUNT_PER_PAGE = 6;
 
-    public Page|Model $blogOverviewPage;
+    public Page|Model $newsOverviewPage;
 
     public function mount()
     {
-        $this->blogOverviewPage = Label::getModel('blog-overview');
-        $this->blogs = $this->getBlogs();
+        $this->newsOverviewPage = Label::getModel('news-overview');
+        $this->newsItems = $this->getNewsItems();
     }
 
-    protected function getBlogs()
+    protected function getNewsItems()
     {
-        $blogs = NewsItem::query()
+        $newsItems = NewsItem::query()
             ->visible()
             ->published()
             ->latest()
             ->paginate(self::AMOUNT_PER_PAGE)
-            ->setPath(route('blog.index'));
+            ->setPath(route('news.index'));
 
-        return $blogs;
+        return $newsItems;
     }
 
     protected function setPath(): void
     {
-        request()->server->set('REQUEST_URI', $this->blogOverviewPage->slug);
+        request()->server->set('REQUEST_URI', $this->newsOverviewPage->slug);
         request()->initialize(
             request()->query->all(),
             request()->request->all(),
@@ -57,8 +57,8 @@ class BlogOverview extends Component
     {
         $this->setPath();
 
-        return view('livewire.blog-overview', [
-            'blogs' => $this->getBlogs()
+        return view('livewire.news-overview', [
+            'newsItems' => $this->getNewsItems()
         ]);
     }
 }

@@ -6,7 +6,7 @@
 <x-cards.card
     title="{{ $blog->name }}"
     heading="{{ $heading }}"
-    href="{{ url('blog/'.$blog->slug) }}"
+    href="{{ route('blog.show', ['blog' => $blog]) }}"
     text="{{ $blog->intro }}"
     img="{{ $blog->image }}"
     alt="{{ $blog->image_alt }}"

@@ -8,7 +8,7 @@
     @push('structured-data')
         <script type="application/ld+json">
         { "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "NewsPosting",
         "author": {
             "@type": "Organization",
             "name": "{{ config('app.name') }}"
@@ -31,10 +31,10 @@
 
     @section('breadcrumbs')
         @php
-            $blogOverviewPage = \App\Models\Label::getModel('blog-overview');
+            $newsOverviewPage = \App\Models\Label::getModel('news-overview');
         @endphp
-        <x-content.breadcrumbs :backLink="url($blogOverviewPage->slug)" :backTitle="__('Back to overview')">
-            <x-content.breadcrumb :href="url($blogOverviewPage->slug)" :title="$blogOverviewPage->name"/>
+        <x-content.breadcrumbs :backLink="url($newsOverviewPage->slug)" :backTitle="__('Back to overview')">
+            <x-content.breadcrumb :href="url($newsOverviewPage->slug)" :title="$newsOverviewPage->name"/>
             <x-content.breadcrumb :title="$model->name"/>
         </x-content.breadcrumbs>
     @endsection
