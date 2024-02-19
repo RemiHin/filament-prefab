@@ -33,7 +33,6 @@ class StoryOverview extends Component
     public function mount()
     {
         $this->storyOverviewPage = Label::getModel('story-overview');
-        $this->stories = $this->getStories();
 
         $this->storyCategoryFilters = StoryCategory::query()
             ->whereHas('stories', fn ($builder) => $builder->visible()->published())

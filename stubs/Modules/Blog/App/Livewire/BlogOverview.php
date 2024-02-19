@@ -24,7 +24,6 @@ class BlogOverview extends Component
     public function mount()
     {
         $this->blogOverviewPage = Label::getModel('blog-overview');
-        $this->blogs = $this->getBlogs();
     }
 
     protected function getBlogs()

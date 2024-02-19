@@ -8,7 +8,7 @@ use App\Models\Story;
 use App\Models\StoryCategory;
 use Illuminate\Database\Seeder;
 
-class BlogSeeder extends Seeder
+class StorySeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -63,7 +63,7 @@ Use this template to scaffold a new website
 - [x] Employee
 - [ ] Location
 - [x] News
-- [ ] Service
+- [x] Service
 - [x] Story
 - [ ] Vacancy
 - [ ] Settings

@@ -6,7 +6,7 @@ use App\Models\Label;
 use App\Models\Story;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class StoryController extends Controller
 {
     public function index()
     {
