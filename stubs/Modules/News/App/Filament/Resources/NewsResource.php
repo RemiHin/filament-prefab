@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
+use App\Filament\Blocks\SeoFields;
+use App\Filament\Blocks\OGFields;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Models\NewsItem;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -71,9 +73,9 @@ class NewsResource extends Resource
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
                             ->schema([
-                                static::$model::seoableFields(),
+                                SeoFields::make(),
 
-                                static::$model::ogableFields(),
+                                OGFields::make()
                             ]),
                     ])
             ])

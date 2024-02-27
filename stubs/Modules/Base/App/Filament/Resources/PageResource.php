@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
+use App\Filament\Blocks\SeoFields;
+use App\Filament\Blocks\OGFields;
 use App\Models\Page;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
@@ -55,9 +57,9 @@ class PageResource extends Resource
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
                             ->schema([
-                                static::$model::seoableFields(),
+                                SeoFields::make(),
 
-                                static::$model::ogableFields(),
+                                OGFields::make()
                             ]),
                     ])
                 ])

@@ -40,7 +40,7 @@ Use this template to scaffold a new website
 
 ### How to use Seoable en Ogable
 1. add the `use Seoable` and `use Ogable` trait to the model
-2. add `static::$model::seoableFields(),` and `static::$model::ogableFields(),` to the form fields in the resource
+2. add `SeoFields::make(),` and `OGFields::make(),` to the form fields in the resource
 
 ### How to use Labels
 1. add the `use Labelable` trait to the model
