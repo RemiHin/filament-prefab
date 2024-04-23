@@ -51,6 +51,9 @@ Use this template to scaffold a new website
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
 ### Biggest Todos:
+- [ ] Update naar Laravel 11
+- [ ] slugs
+- [ ] redo SEO as field instead of trait (?)
 - [ ] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
@@ -67,6 +70,7 @@ Use this template to scaffold a new website
 - [x] Story
 - [ ] Vacancy
 - [ ] Settings
+- [ ] Toptasks
 
 
 ## dependencies:
