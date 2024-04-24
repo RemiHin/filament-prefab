@@ -68,7 +68,8 @@ class ServiceResource extends Resource
                                     ->default(true)
                                     ->required(),
 
-                                CuratorPicker::make('image_id'),
+                                CuratorPicker::make('image_id')
+                                    ->label(__('Image')),
 
                                 BlockModule::make('content'),
 

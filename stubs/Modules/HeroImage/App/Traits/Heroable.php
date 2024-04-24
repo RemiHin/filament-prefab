@@ -53,6 +53,7 @@ trait Heroable
                         ->hidden(fn(Forms\Get $get) => !$get('has_hero_image')),
 
                     CuratorPicker::make('image_id')
+                        ->label(__('Image'))
                         ->hidden(fn(Forms\Get $get) => !$get('has_hero_image')),
                 ])
                 ->columns(1);
