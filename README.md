@@ -5,6 +5,8 @@ Use this template to scaffold a new website
 ## Installation
 
 1. Create a new project `laravel new project-name`
+   1. Install filament
+   2. Install laravel sanctum 
 2. clone this repository
 3. update the `composer.json` of your new project and add: 
 ```
@@ -19,7 +21,9 @@ Use this template to scaffold a new website
 4. Change minimum stability to dev: `"minimum-stability": "dev",`
 5. `composer require remihin/filament-prefab`
 6. Install all modules:
-- `php artisan prefab:filament --module=base --force` (be patient with the shell script, force is required to overwrite the user model)
+- `php artisan prefab:filament --module=base --force`
+  - be patient with the shell script, force is required to overwrite the user model
+  - This installs curator, make sure the published migration will be executed before other migrations (a simple rename will suffice)
 - `php artisan prefab:filament --module=blog`
 - `php artisan prefab:filament --module=hero-image`
 - `php artisan prefab:filament --module=news`
@@ -51,7 +55,7 @@ Use this template to scaffold a new website
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
 ### Biggest Todos:
-- [ ] Update naar Laravel 11
+- [x] Update naar Laravel 11
 - [ ] slugs
 - [ ] redo SEO as field instead of trait (?)
 - [ ] Cookie consent `Base module`
@@ -61,6 +65,8 @@ Use this template to scaffold a new website
 - [ ] Search functionalities `Search Module`
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
+- [ ] Add route for home
+- [ ] Employee module moet goed gepublished worden
 
 ### "Copypaste" Todos:
 - [x] Employee

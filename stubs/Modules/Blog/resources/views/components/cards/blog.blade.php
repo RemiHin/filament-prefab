@@ -8,7 +8,7 @@
     heading="{{ $heading }}"
     href="{{ route('blog.show', ['blog' => $blog]) }}"
     text="{{ $blog->intro }}"
-    img="{{ $blog->image }}"
+    img="{{ $blog->image->getSignedUrl() }}"
     alt="{{ $blog->image_alt }}"
     label="{{ $blog->label }}"
     date="{{ $blog->publish_from->format('d-m-Y') }}"

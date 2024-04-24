@@ -57,7 +57,8 @@ class BlogResource extends Resource
                                     ->string()
                                     ->columnSpanFull(),
 
-                                CuratorPicker::make('image'),
+                                CuratorPicker::make('image_id')
+                                    ->required(),
 
                                 BlockModule::make('content'),
 

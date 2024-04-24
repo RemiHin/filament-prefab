@@ -5,10 +5,12 @@ namespace App\Models;
 use App\Traits\Labelable;
 use App\Traits\Ogable;
 use App\Traits\Seoable;
+use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Blog extends Model
 {
@@ -43,5 +45,10 @@ class Blog extends Model
     public function getUrlAttribute(): string
     {
         return route('blog.show', ['blog' => $this]);
+    }
+
+    public function image(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'image_id');
     }
 }
