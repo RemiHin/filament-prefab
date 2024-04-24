@@ -66,7 +66,6 @@ Use this template to scaffold a new website
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
-- [ ] Employee module moet goed gepublished worden
 
 ### "Copypaste" Todos:
 - [x] Employee

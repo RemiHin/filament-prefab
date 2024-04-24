@@ -47,8 +47,9 @@ class StoryResource extends Resource
                                     ->rules(['alpha_dash'])
                                     ->unique(ignoreRecord: true),
 
-                                Forms\Components\BelongsTo::make('storyCategory')
-            ->required(),
+                                Forms\Components\Select::make('story_category_id')
+                                    ->relationship('storyCategory', 'name')
+                                    ->required(),
 
                                 Forms\Components\Toggle::make('visible')
                                     ->default(true)
@@ -64,7 +65,7 @@ class StoryResource extends Resource
                                     ->string()
                                     ->columnSpanFull(),
 
-                                CuratorPicker::make('image'),
+                                CuratorPicker::make('image_id'),
 
                                 BlockModule::make('content'),
 
