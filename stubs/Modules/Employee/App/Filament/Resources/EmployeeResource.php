@@ -29,9 +29,10 @@ class EmployeeResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('function')
                     ->maxLength(255),
-                CuratorPicker::make('image')
+                CuratorPicker::make('image_id')
                     ->label(__('Image')),
                 Forms\Components\Toggle::make('visible')
+                    ->default(true)
                     ->required(),
                 Forms\Components\Textarea::make('intro')
                     ->maxLength(65535)
@@ -47,7 +48,6 @@ class EmployeeResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('function')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\IconColumn::make('visible')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

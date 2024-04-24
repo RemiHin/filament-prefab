@@ -13,7 +13,7 @@
     <div class="w-full mb-4">
         <figure class="relative w-full h-0 pb-[100%] rounded overflow-hidden">
             <img
-                src="{{ $employee->image ?? asset('assets/images/fallback-employee.svg') }}"
+                src="{{ $employee->image?->getSignedUrl() ?? asset('assets/images/fallback-employee.svg') }}"
                 alt="{{ $employee->name }}"
                 class="absolute h-full w-full object-cover"
                 loading="lazy"

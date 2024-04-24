@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Awcodes\Curator\Models\Media;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -19,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('function')->nullable();
-            $table->string('image')->nullable();
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media');
             $table->boolean('visible')->default(false);
             $table->text('intro')->nullable();
 
