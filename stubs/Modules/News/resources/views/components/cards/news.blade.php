@@ -8,7 +8,7 @@
     heading="{{ $heading }}"
     href="{{ route('news.show', ['newsItem' => $newsItem]) }}"
     text="{{ $newsItem->intro }}"
-    img="{{ $newsItem->image }}"
+    img="{{ $newsItem->image?->getSignedUrl() }}"
     alt="{{ $newsItem->image_alt }}"
     label="{{ $newsItem->label }}"
     date="{{ $newsItem->publish_from->format('d-m-Y') }}"

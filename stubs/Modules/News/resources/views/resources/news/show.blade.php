@@ -14,7 +14,7 @@
             "name": "{{ config('app.name') }}"
         },
         "headline": "{{ $model->name }}",
-        "image": "{{ $model->image }}",
+        "image": "{{ $model->image?->getSignedUrl() }}",
         "description": "{{ $model->intro }}",
         "datePublished": "{{ $model->publish_from->translatedFormat('Y-m-d') }}",
         "dateCreated": "{{ $model->created_at->translatedFormat('Y-m-d') }}",

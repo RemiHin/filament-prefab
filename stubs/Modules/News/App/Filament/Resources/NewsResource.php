@@ -57,7 +57,7 @@ class NewsResource extends Resource
                                     ->string()
                                     ->columnSpanFull(),
 
-                                CuratorPicker::make('image'),
+                                CuratorPicker::make('image_id'),
 
                                 BlockModule::make('content'),
 
