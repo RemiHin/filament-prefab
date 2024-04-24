@@ -21,8 +21,8 @@
         $description = $seo->description;
     }
 
-    if (!$image && $og && $og->image) {
-        $image = asset($og->image);
+    if (!$image && $og && $og->image?->getSignedUrl()) {
+        $image = asset($og->image?->getSignedUrl());
     } else if (!$image && config('seo.og_image')) {
         $image = asset(config('seo.og_image'));
     }

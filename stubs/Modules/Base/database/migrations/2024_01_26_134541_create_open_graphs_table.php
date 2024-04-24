@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->morphs('ogable');
 
             $table->string('title')->nullable();
-            $table->string('image')->nullable();
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media');
 
             $table->timestamps();
             $table->softDeletes();

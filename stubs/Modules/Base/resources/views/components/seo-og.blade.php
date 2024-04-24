@@ -17,7 +17,7 @@
         <x-og
             :title="$title"
             :description="$description"
-            :og="$model->openGraph"
+            :og="$model->og"
             :seo="$model->seo"
         />
     @endsection
