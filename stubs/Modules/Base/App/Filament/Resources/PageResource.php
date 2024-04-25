@@ -8,6 +8,7 @@ use App\Filament\Blocks\OGFields;
 use App\Models\Page;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -31,21 +32,7 @@ class PageResource extends Resource
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('General')
                             ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->string()
-                                    ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
-                                        $set('slug', Str::slug($state));
-                                    })
-                                    ->maxLength(255),
-
-                                Forms\Components\TextInput::make('slug')
-                                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->rules(['alpha_dash'])
-                                    ->unique(ignoreRecord: true),
+                                TitleWithSlugInput::make(fieldTitle: 'name', fieldSlug: 'slug'),
 
                                 Forms\Components\Toggle::make('visible')
                                     ->required(),
