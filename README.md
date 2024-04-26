@@ -60,7 +60,7 @@ Use this template to scaffold a new website
 
 ### Biggest Todos:
 - [x] Update naar Laravel 11
-- [ ] slugs
+- [ ] slugs (wip)
 - [ ] redo SEO as field instead of trait (?)
 - [ ] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
@@ -68,8 +68,8 @@ Use this template to scaffold a new website
 - [ ] Email sending (?) `Job Alert`
 - [ ] Search functionalities `Search Module`
 - [ ] Donation module
-- [ ] Redirects en dead-link tracker
-- [ ] Add route for home
+- [x] Redirects en dead-link tracker
+- [x] Add route for home
 
 ### "Copypaste" Todos:
 - [x] Employee

@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Http\Request;
 
-use function App\Http\Controllers\view;
-
 class PageController extends Controller
 {
     public function home(): View

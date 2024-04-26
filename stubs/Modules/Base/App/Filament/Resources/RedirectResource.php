@@ -20,6 +20,21 @@ class RedirectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('Redirects');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('Redirect');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Redirects');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -54,9 +69,11 @@ class RedirectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('request_path')
+                    ->searchable()
                     ->label(__('Request path')),
 
                 Tables\Columns\TextColumn::make('target_path')
+                    ->searchable()
                     ->label(__('Target path')),
 
                 Tables\Columns\TextColumn::make('redirect_type')

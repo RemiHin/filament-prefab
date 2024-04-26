@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Log404;
+use Exception as ThrownException;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\RedirectsMiddleware;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -17,5 +19,5 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render(fn (ThrownException $exception) => (new Log404())->handle($exception));
     })->create();
