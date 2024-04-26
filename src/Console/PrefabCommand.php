@@ -318,9 +318,6 @@ class PrefabCommand extends Command
         // Lang...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang", base_path('lang'));
 
-        // Routes...
-        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/routes", base_path('routes'));
-
         // Public...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/public", base_path('public'));
 

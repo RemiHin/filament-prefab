@@ -20,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('function')->nullable();
-            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media');
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media')->nullOnDelete();
             $table->boolean('visible')->default(false);
             $table->text('intro')->nullable();
 

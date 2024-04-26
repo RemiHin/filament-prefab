@@ -5,8 +5,6 @@ Use this template to scaffold a new website
 ## Installation
 
 1. Create a new project `laravel new project-name`
-   1. Install filament
-   2. Install laravel sanctum 
 2. clone this repository
 3. update the `composer.json` of your new project and add: 
 ```
@@ -23,7 +21,6 @@ Use this template to scaffold a new website
 6. Install all modules:
 - `php artisan prefab:filament --module=base --force`
   - be patient with the shell script, force is required to overwrite the user model
-  - This installs curator, make sure the published migration will be executed before other migrations (a simple rename will suffice)
 - `php artisan prefab:filament --module=blog`
 - `php artisan prefab:filament --module=hero-image`
 - `php artisan prefab:filament --module=news`
@@ -43,8 +40,8 @@ Use this template to scaffold a new website
 2. add `static::$model::employeeableFields(),` to the form fields in the resource
 
 ### How to use Seoable en Ogable
-1. add the `use Seoable` and `use Ogable` trait to the model
-2. add `SeoFields::make(),` and `OGFields::make(),` to the form fields in the resource
+1. add the `use Seoable`trait to the model
+2. add `static::$model::seoFields(),` to the form fields in the resource
 
 ### How to use Labels
 1. add the `use Labelable` trait to the model
@@ -57,7 +54,7 @@ Use this template to scaffold a new website
 ### Biggest Todos:
 - [x] Update naar Laravel 11
 - [ ] slugs
-- [ ] redo SEO as field instead of trait (?)
+- [x] redo SEO as field instead of trait (?)
 - [ ] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`

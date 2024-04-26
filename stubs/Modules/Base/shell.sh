@@ -1,4 +1,5 @@
 composer require filament/filament:"^3.2" -W
+composer require laravel/sanctum
 npm install -D tailwindcss postcss autoprefixer
 npm install -D @tailwindcss/forms
 npm install -D @tailwindcss/typography

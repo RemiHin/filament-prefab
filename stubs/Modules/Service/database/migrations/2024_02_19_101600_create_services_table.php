@@ -24,7 +24,7 @@ class CreateServicesTable extends Migration
             $table->string('subtitle')->nullable();
             $table->text('intro')->nullable();
             $table->text('description')->nullable();
-            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media');
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media')->nullOnDelete();
             $table->boolean('visible')->default(false);
             $table->json('content')->nullable();
 

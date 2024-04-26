@@ -15,8 +15,8 @@
 
 @php
     if ($seo) {
-        if ($seo->title) {
-            $title = $seo->title;
+        if ($seo->seo_title) {
+            $title = $seo->seo_title;
         }
 
         if ($seo->description) {
