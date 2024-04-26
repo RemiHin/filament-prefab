@@ -18,7 +18,7 @@
         </div>
 
         <div class="container max-w-container mt-10">
-{{--        todo:    @cookieConsentForm()--}}
+            @cookieConsentForm()
         </div>
     </section>
 

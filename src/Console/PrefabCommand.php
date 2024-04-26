@@ -309,6 +309,9 @@ class PrefabCommand extends Command
         // Config...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/config", config_path());
 
+        // Bootstrap
+        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/bootstrap", base_path('bootstrap'));
+
         // Tests...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/tests", base_path('tests'));
 
@@ -350,33 +353,6 @@ class PrefabCommand extends Command
         $this->executeModuleCustomCommands($module);
 
         // Todo: extract merge composer.json
-
-        $after = <<< 'AFTER'
-        "files": [
-        "app/Helpers/helpers.php"
-    ],
-AFTER;
-
-        $this->addToExistingFile(
-            base_path('composer.json'),
-            $after,
-            '"autoload": {'
-        );
-
-        $after = <<< 'AFTER'
-        App\Providers\EventServiceProvider::class,
-AFTER;
-
-        $add = <<< 'ADD'
-        App\Providers\Filament\AdminPanelProvider::class,
-ADD;
-
-        $this->addToExistingFile(
-            config_path('app.php'),
-            $add,
-            $after
-        );
-
 
         if (isset($this->moduleSettings[$module])) {
             $this->processModuleSettings($this->moduleSettings[$module], $module);
