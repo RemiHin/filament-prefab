@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use function App\Enums\__;
-
 enum RedirectType: int
 {
     case FORWARD = 0;

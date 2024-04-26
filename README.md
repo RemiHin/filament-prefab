@@ -20,7 +20,7 @@ Use this template to scaffold a new website
         "type": "vcs",
         "url": "https://github.com/log1x/filament-title-with-slug"
     }
-},
+}
 ```
 4. Change minimum stability to dev: `"minimum-stability": "dev",`
 5. `composer require remihin/filament-prefab`
