@@ -114,18 +114,19 @@ class PrefabCommand extends Command
                 ],
             ],
         ],
-//        'news' => [
+        'news' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                News::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
+            'searchable' => [
+                NewsItem::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
         'service' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,

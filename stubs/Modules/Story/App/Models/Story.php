@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Labelable;
 use App\Traits\Ogable;
+use App\Traits\Searchable;
 use App\Traits\Seoable;
 use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
@@ -18,6 +19,8 @@ class Story extends Model
     use Labelable;
     use Seoable;
     use Ogable;
+    use Searchable;
+
     protected $guarded = [];
 
     protected $casts = [
