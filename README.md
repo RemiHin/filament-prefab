@@ -59,7 +59,7 @@ Use this template to scaffold a new website
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
-- [ ] Search functionalities `Search Module`
+- [x] Search functionalities `Search Module`
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
