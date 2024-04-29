@@ -8,8 +8,6 @@ use Elastic\Adapter\Indices\Index;
 use Elastic\Adapter\Indices\IndexManager;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-//use ElasticAdapter\Indices\IndexManager;
-//use ElasticAdapter\Indices\IndexBlueprint;
 
 class SyncSearchableModels extends Command
 {
