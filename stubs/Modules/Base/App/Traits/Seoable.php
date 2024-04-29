@@ -80,9 +80,4 @@ trait Seoable
                 ]),
         ]);
     }
-
-    public function openGraphFields(): Fieldset
-    {
-
-    }
 }
