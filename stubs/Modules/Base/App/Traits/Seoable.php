@@ -12,8 +12,6 @@ use Filament\Forms\Components\Group;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms;
 
-use function App\Traits\__;
-
 trait Seoable
 {
     public static function bootSeoable(): void
