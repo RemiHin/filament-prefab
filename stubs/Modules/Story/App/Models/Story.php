@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Labelable;
-use App\Traits\Ogable;
 use App\Traits\Seoable;
 use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
@@ -17,7 +16,7 @@ class Story extends Model
     use HasFactory;
     use Labelable;
     use Seoable;
-    use Ogable;
+
     protected $guarded = [];
 
     protected $casts = [

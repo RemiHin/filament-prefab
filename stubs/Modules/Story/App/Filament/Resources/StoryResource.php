@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
-use App\Filament\Blocks\SeoFields;
-use App\Filament\Blocks\OGFields;
 use App\Filament\Resources\StoryResource\Pages;
 use App\Models\Story;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -82,9 +80,7 @@ class StoryResource extends Resource
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
                             ->schema([
-                                SeoFields::make(),
-
-                                OGFields::make()
+                                static::$model::seoFields(),
                             ]),
                     ])
             ])
