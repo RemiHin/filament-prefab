@@ -30,7 +30,7 @@ class Page extends Model implements Menuable
         return self::query()->pluck('name', 'id')->toArray();
     }
 
-    public static function getName(): string
+    public static function getResourceName(): string
     {
         return __('Page');
     }

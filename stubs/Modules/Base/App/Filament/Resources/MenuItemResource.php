@@ -70,7 +70,7 @@ class MenuItemResource extends Resource
 
                             $options = $models
                                 ->filter(fn ($class) => (new $class) instanceof Menuable)
-                                ->mapWithKeys(fn (string $class) => [ltrim($class, '\\') => $class::getName()]);
+                                ->mapWithKeys(fn (string $class) => [ltrim($class, '\\') => $class::getResourceName()]);
 
                             $options['Empty'] = __('Main item without link');
 

@@ -6,7 +6,7 @@ interface Menuable
 {
     public static function getMenuOptions(): array;
 
-    public static function getName(): string;
+    public static function getResourceName(): string;
 
     public function getRoute(): string;
 }
