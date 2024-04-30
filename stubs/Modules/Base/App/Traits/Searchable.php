@@ -7,44 +7,22 @@ namespace App\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Laravel\Scout\Searchable as ScoutSearchable;
+use App\Contacts\IsSearchable;
 
 /**
  * @used-by Model
+ * @used-by IsSearchable;
  */
 trait Searchable
 {
     use ScoutSearchable;
 
-    public function getSearchableType(): string
-    {
-        $classNames = explode('\\', static::class);
-
-        return strtolower(array_pop($classNames));
-    }
-
-    public function getSearchableName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSearchableUrl(): string
-    {
-        $type = $this->getSearchableType();
-
-        return route(sprintf('%s.show', $type), [$type => $this->slug]);
-    }
-
-    public function getSearchableTypeName(): string
-    {
-        return __(ucfirst($this->getSearchableType()));
-    }
-
     public function toSearchable(): array
     {
         return [
-            'title' => $this->getSearchableName(),
-            'slug' => $this->getSearchableUrl(),
-            'type' => $this->getSearchableTypeName(),
+            'title' => $this->getName(),
+            'slug' => $this->getRoute(),
+            'type' => self::getResourceName(),
         ];
     }
 

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Contacts\IsSearchable;
 use App\Traits\Seoable;
 use App\Traits\Labelable;
 use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Page extends Model
+class Page extends Model implements IsSearchable
 {
     use HasFactory;
     use Labelable;
@@ -24,5 +25,20 @@ class Page extends Model
     public function getUrlAttribute(): string
     {
         return route('page.show', ['page' => $this]);
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getRoute(): string
+    {
+        return route('page.show', ['page' => $this]);
+    }
+
+    public static function getResourceName()
+    {
+        return __('Page');
     }
 }

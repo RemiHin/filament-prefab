@@ -31,6 +31,30 @@ Use this template to scaffold a new website
 9. `php artisan db:seed`
 10. `npm install && npm run dev`
 
+### How to use search
+1. Add the `IsSearchable` contract to the model
+2. Implement the required methods
+3. Add the `use Searchable` trait to the model
+4. Add the config to `searchable config` by adding it to the `models` array where the key is the model and the value is an array with the searchable columns
+5. Modules can also be specified in the `modules` config in `searchable`. Here the key is the relation name and the value an array of searchable fields. To search a module on a model add the name of the resource to the model array like you would add a column
+6. In the example below the page searches in the columns `name` and `content`, as well as the module `heroImage`, for which the columns `title` and `content` are searchable
+```php
+'models' => [
+    Page::class => [
+        'name',
+        'content',
+        'heroImage',
+    ],
+],
+
+'modules' => [
+    'heroImage' => [
+        'title',
+        'content',
+    ],
+],
+```
+
 ### How to use Hero Images
 1. add the `use Heroable` trait to the model
 2. add `static::$model::heroableFields(),` to the form fields in the resource
