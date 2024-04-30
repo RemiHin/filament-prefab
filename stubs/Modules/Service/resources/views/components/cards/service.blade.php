@@ -8,7 +8,7 @@
     heading="{{ $heading }}"
     href="{{ route('service.show', ['service' => $service]) }}"
     text="{{ $service->intro }}"
-    img="{{ $service->image }}"
+    img="{{ $service->image?->getSignedUrl() }}"
     alt="{{ $service->image_alt }}"
     label="{{ $service->label }}"
     landscape="true"

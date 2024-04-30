@@ -2,27 +2,22 @@
     'title' => '',
     'description' => '',
     'image' => null,
-    'og' => null,
     'seo' => null,
     'url' =>  url()->current(),
     'type' => 'website',
 ])
 
 @php
-    if (!$title && $og && $og->title) {
-        $title = $og->title;
-    } else if(!$title && $seo && $seo->title) {
-        $title = $seo->title;
+    if(!$title && $seo) {
+        $title = $seo->og_title ?? $seo->seo_title;
     }
 
-    if (!$description && $og && $og->description) {
-        $description = $og->description;
-    } else if(!$description && $seo && $seo->description) {
+    if(!$description && $seo && $seo->description) {
         $description = $seo->description;
     }
 
-    if (!$image && $og && $og->image) {
-        $image = asset($og->image);
+    if (!$image && $seo && $seo->image?->getSignedUrl()) {
+        $image = asset($seo->image?->getSignedUrl());
     } else if (!$image && config('seo.og_image')) {
         $image = asset(config('seo.og_image'));
     }

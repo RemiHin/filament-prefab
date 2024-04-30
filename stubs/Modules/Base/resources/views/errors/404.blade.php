@@ -15,7 +15,7 @@
             <img
                 src="{{ asset('/assets/svg/illustrations/404-error.svg') }}"
                 alt="{{ __('Page not found') }}"
-                class="w-full -mt-10"
+                class="w-full -mt-10 max-h-[calc(100vh/2.5)]"
             />
         </div>
     </section>

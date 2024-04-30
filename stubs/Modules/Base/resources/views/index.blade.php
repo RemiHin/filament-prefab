@@ -11,7 +11,7 @@
         <x-hero.hero
                 :title="$model->heroImage->title"
                 :text="$model->heroImage->content"
-                :img="$model->heroImage->image"
+                :img="$model->heroImage->image?->getSignedUrl()"
                 :alt="$model->heroImage->image_alt"
                 :primaryBtnText="$model->heroImage->cta_text"
                 :primaryBtnLink="$model->heroImage->cta_link"

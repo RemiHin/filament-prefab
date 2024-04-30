@@ -19,7 +19,8 @@ Use this template to scaffold a new website
 4. Change minimum stability to dev: `"minimum-stability": "dev",`
 5. `composer require remihin/filament-prefab`
 6. Install all modules:
-- `php artisan prefab:filament --module=base --force` (be patient with the shell script, force is required to overwrite the user model)
+- `php artisan prefab:filament --module=base --force`
+  - be patient with the shell script, force is required to overwrite the user model
 - `php artisan prefab:filament --module=blog`
 - `php artisan prefab:filament --module=hero-image`
 - `php artisan prefab:filament --module=news`
@@ -39,8 +40,8 @@ Use this template to scaffold a new website
 2. add `static::$model::employeeableFields(),` to the form fields in the resource
 
 ### How to use Seoable en Ogable
-1. add the `use Seoable` and `use Ogable` trait to the model
-2. add `SeoFields::make(),` and `OGFields::make(),` to the form fields in the resource
+1. add the `use Seoable`trait to the model
+2. add `static::$model::seoFields(),` to the form fields in the resource
 
 ### How to use Labels
 1. add the `use Labelable` trait to the model
@@ -51,9 +52,9 @@ Use this template to scaffold a new website
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
 ### Biggest Todos:
-- [ ] Update naar Laravel 11
+- [x] Update naar Laravel 11
 - [ ] slugs
-- [ ] redo SEO as field instead of trait (?)
+- [x] redo SEO as field instead of trait (?)
 - [ ] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
@@ -61,6 +62,7 @@ Use this template to scaffold a new website
 - [ ] Search functionalities `Search Module`
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
+- [ ] Add route for home
 
 ### "Copypaste" Todos:
 - [x] Employee

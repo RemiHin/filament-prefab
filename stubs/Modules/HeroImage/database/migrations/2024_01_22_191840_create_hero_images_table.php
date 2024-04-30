@@ -1,5 +1,6 @@
 <?php
 
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->string('primary_cta_link')->nullable();
             $table->string('secondary_cta_text')->nullable();
             $table->string('secondary_cta_link')->nullable();
-            $table->string('image')->nullable();
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media')->nullOnDelete();
             $table->string('image_alt')->nullable();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Awcodes\Curator\Models\Media;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateServicesTable extends Migration
             $table->string('subtitle')->nullable();
             $table->text('intro')->nullable();
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->foreignIdFor(Media::class, 'image_id')->nullable()->constrained('media')->nullOnDelete();
             $table->boolean('visible')->default(false);
             $table->json('content')->nullable();
 

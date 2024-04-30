@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
-use App\Filament\Blocks\SeoFields;
-use App\Filament\Blocks\OGFields;
 use App\Filament\Resources\ServiceResource\Pages;
 use App\Models\Service;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -68,16 +66,15 @@ class ServiceResource extends Resource
                                     ->default(true)
                                     ->required(),
 
-                                CuratorPicker::make('image'),
+                                CuratorPicker::make('image_id')
+                                    ->label(__('Image')),
 
                                 BlockModule::make('content'),
 
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
                             ->schema([
-                                SeoFields::make(),
-
-                                OGFields::make()
+                                static::$model::seoFields(),
                             ]),
                     ])
             ])

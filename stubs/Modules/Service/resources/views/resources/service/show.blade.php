@@ -18,9 +18,8 @@
    <x-hero.hero
         :title="$model->name"
         :text="$model->intro"
-        :img="$model->image"
+        :img="$model->image?->getSignedUrl()"
         :alt="$model->image_alt"
-        :date="$model->publish_from->translatedFormat('j F Y')"
         class="mt-5"
     />
 

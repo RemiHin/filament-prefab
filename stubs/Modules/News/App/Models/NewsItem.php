@@ -3,19 +3,19 @@
 namespace App\Models;
 
 use App\Traits\Labelable;
-use App\Traits\Ogable;
 use App\Traits\Seoable;
+use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class NewsItem extends Model
 {
     use HasFactory;
     use Labelable;
     use Seoable;
-    use Ogable;
 
     protected $guarded = [];
 
@@ -44,5 +44,10 @@ class NewsItem extends Model
     public function getUrlAttribute(): string
     {
         return route('news.show', ['newsItem' => $this]);
+    }
+
+    public function image(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'image_id');
     }
 }

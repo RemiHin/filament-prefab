@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Blocks\BlockModule;
-use App\Filament\Blocks\SeoFields;
-use App\Filament\Blocks\OGFields;
 use App\Filament\Resources\BlogResource\Pages;
 use App\Models\Blog;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -57,7 +55,9 @@ class BlogResource extends Resource
                                     ->string()
                                     ->columnSpanFull(),
 
-                                CuratorPicker::make('image'),
+                                CuratorPicker::make('image_id')
+                                    ->label(__('Image'))
+                                    ->required(),
 
                                 BlockModule::make('content'),
 
@@ -73,9 +73,7 @@ class BlogResource extends Resource
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
                             ->schema([
-                                SeoFields::make(),
-
-                                OGFields::make()
+                                static::$model::seoFields(),
                             ]),
                     ])
             ])
