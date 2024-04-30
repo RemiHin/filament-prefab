@@ -50,7 +50,17 @@
     ":count of :total": ":count van :total",
     "Social media": "Sociale media",
     "A valid url looks like: :url": "Een correcte url ziet er uit als volgt: :url",
+    "Title" : "Titel",
+    "Url type": "Url soort",
+    "Intern": "Intern",
+    "External url": "Externe link",
+    "Page": "Pagina",
+    "Pages": "Pagina's",
+    "News": "Nieuws",
+    "Main item without link": "Hoofd item zonder link",
+    "Url": "URL",
 
 
-    "EOF": "End of file"
+
+  "EOF": "End of file"
 }
