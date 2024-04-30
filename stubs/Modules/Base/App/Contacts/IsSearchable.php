@@ -8,5 +8,5 @@ interface IsSearchable
 
     public function getRoute(): string;
 
-    public static function getResourceName();
+    public static function getResourceName(): string;
 }

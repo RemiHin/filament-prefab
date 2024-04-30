@@ -6,13 +6,14 @@ use Carbon\Carbon;
 use App\Traits\Seoable;
 use App\Traits\Labelable;
 use App\Traits\Searchable;
+use App\Contacts\IsSearchable;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Story extends Model
+class Story extends Model implements IsSearchable
 {
     use HasFactory;
     use Labelable;
@@ -56,5 +57,20 @@ class Story extends Model
     public function image(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'image_id');
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getRoute(): string
+    {
+        return route('story.show', ['story' => $this]);
+    }
+
+    public static function getResourceName(): string
+    {
+        return __('Story');
     }
 }
