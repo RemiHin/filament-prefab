@@ -63,6 +63,9 @@
     "Request path": "Van",
     "Target path": "Naar",
     "Redirect type": "Verwijstype",
+    "Page": "Pagina",
+    "View page": "Bekijk pagina",
+    "Name": "Naam",
 
     "EOF": "End of file"
 }

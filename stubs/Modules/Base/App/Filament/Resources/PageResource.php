@@ -30,7 +30,14 @@ class PageResource extends Resource
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('General')
                             ->schema([
-                                TitleWithSlugInput::make(fieldTitle: 'name', fieldSlug: 'slug'),
+                                TitleWithSlugInput::make(
+                                    fieldTitle: 'name',
+                                    fieldSlug: 'slug',
+                                    urlVisitLinkLabel: __('View page'),
+                                    titleLabel: __('Name'),
+                                    titlePlaceholder: '',
+                                    slugLabel: __('Link:'),
+                                ),
 
                                 Forms\Components\Toggle::make('visible')
                                     ->required(),
