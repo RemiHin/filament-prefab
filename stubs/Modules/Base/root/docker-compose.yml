@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  node01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2
+    container_name: prefab-rollout
+    user: "1000:1000"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - node.name=node01
+      - discovery.type=single-node
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - bootstrap.memory_lock=true
+      - action.destructive_requires_name=false
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9298:9200"
+      - "9398:9300"
+    networks:
+      - es-network
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.6.2
+    environment:
+      ELASTICSEARCH_HOSTS: http://node01:9200
+    ports:
+      - 5601:5601
+    networks:
+      - es-network
+    depends_on:
+      - node01
+
+volumes:
+  elasticsearch-data:
+
+networks:
+  es-network:
+    driver: bridge

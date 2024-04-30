@@ -29,7 +29,9 @@ Use this template to scaffold a new website
 7. `php artisan migrate`
 8. Create a user `php artisan make:filament-user` and follow the prompts
 9. `php artisan db:seed`
-10. `npm install && npm run dev`
+10. open `docker-compose.yml` and replace the container_name with a name of this project
+11. `docker compose up -d`
+12. `npm install && npm run dev`
 
 ### How to use search
 1. Add the `IsSearchable` contract to the model
@@ -54,6 +56,9 @@ Use this template to scaffold a new website
     ],
 ],
 ```
+
+To sync models to elastic run `php artisan search:sync`
+
 
 ### How to use Hero Images
 1. add the `use Heroable` trait to the model
