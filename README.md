@@ -31,7 +31,42 @@ Use this template to scaffold a new website
 8. `php artisan migrate`
 9. Create a user `php artisan make:filament-user` and follow the prompts
 10. `php artisan db:seed`
-11. `npm install && npm run dev`
+11. open `docker-compose.yml` and replace the container_name with a name of this project
+12. `docker compose up -d`
+13. `npm install && npm run dev`
+
+### How to use search
+1. Add the `IsSearchable` interface to the model
+2. Implement the required methods. Your IDE will inform you when adding the interface.
+3. Add the `use Searchable` trait to the model
+4. Add the config to `searchable.php` config by adding it to the `models` array where the key is the model and the value is an array with the searchable columns
+5. Modules can also be specified in the `modules` section in `searchable.php`. Here the key is the relation name and the value an array of searchable fields. To search a module on a model add the name of the resource to the model array like you would add a column
+6. In the example below the page searches in the columns `name` and `content`, as well as the module `heroImage`, for which the columns `title` and `content` are searchable
+```php
+'models' => [
+    Page::class => [
+        'name',
+        'content',
+        'heroImage',
+    ],
+],
+
+'modules' => [
+    'heroImage' => [
+        'title',
+        'content',
+    ],
+],
+```
+
+### Elasticsearch
+
+The search module makes use of elasticsearch, please make sure `SCOUT_DRIVER` is set to `elastic` in your `.env`
+
+To sync models to elastic run `php artisan search:sync`.
+
+This project also contains a docker file which can be executed using laravel sail. The default port for elastic in this docker file is 9298. To allow your local project to communicate with this docker file add `ELASTIC_HOST=localhost:9298` to your `.env`
+
 
 ### How to use Hero Images
 1. add the `use Heroable` trait to the model
@@ -49,6 +84,11 @@ Use this template to scaffold a new website
 1. add the `use Labelable` trait to the model
 2. add `static::$model::labelableFields(),` to the form fields in the resource
 
+### How to use menus
+1. Implement `App/Contracts/Menuable` on models that should be able to be linked in menus.
+2. Implement required methods
+3. Available resources will be auto detected by the menu item resource
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
@@ -57,11 +97,11 @@ Use this template to scaffold a new website
 - [x] Update naar Laravel 11
 - [ ] slugs
 - [x] redo SEO as field instead of trait (?)
-- [ ] Cookie consent `Base module`
+- [x] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
-- [ ] Search functionalities `Search Module`
+- [x] Search functionalities `Search Module`
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home

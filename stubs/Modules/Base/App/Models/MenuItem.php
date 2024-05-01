@@ -13,7 +13,7 @@ class MenuItem extends Model
     use HasFactory;
     use ModelTree;
 
-    protected $fillable = ['menuable_type', 'menuable_id', 'menu_id'];
+    protected $guarded = [];
 
     public function menu(): BelongsTo
     {
@@ -23,5 +23,14 @@ class MenuItem extends Model
     public function menuable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function getUrl(): ?string
+    {
+        if ($this->url_type === 'internal') {
+            return $this->menuable?->getRoute();
+        }
+
+        return $this->url;
     }
 }

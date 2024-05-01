@@ -120,6 +120,12 @@
     "Primary CTA link": "Link primaire knop",
     "Secondary CTA text": "Tekst secundaire knop",
     "Secondary CTA link": "Link secundaire knop",
+    "Search": "Zoeken",
+    "No results": "Geen resultaten",
+    ":count result has been found on your search request :searchterm": "Er is :count resultaat gevonden op jouw zoekterm :searchterm",
+    ":count results were found on your search request :searchterm": "Er zijn :count resultaten gevonden op jouw zoekterm :searchterm",
+    "No results were found on your search request :searchterm": "Er zijn geen resultaten gevonden op jouw zoekterm :searchterm",
 
-    "EOF": "End of file"
+
+  "EOF": "End of file"
 }
