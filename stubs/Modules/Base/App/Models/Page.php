@@ -3,16 +3,19 @@
 namespace App\Models;
 
 use App\Contracts\Menuable;
-use App\Traits\Labelable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Seoable;
+use App\Traits\Labelable;
+use App\Traits\Searchable;
+use App\Contacts\IsSearchable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Page extends Model implements Menuable
+class Page extends Model implements Menuable, IsSearchable
 {
     use HasFactory;
     use Labelable;
     use Seoable;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -33,6 +36,11 @@ class Page extends Model implements Menuable
     public static function getResourceName(): string
     {
         return __('Page');
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getRoute(): string

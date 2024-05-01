@@ -2,10 +2,12 @@
 
 namespace RemiHin\FilamentPrefab\Console;
 
+use App\Models\Blog;
 use App\Models\Page;
 use App\Models\NewsItem;
 //use App\Models\Location;
 //use App\Models\Service;
+use App\Models\Service;
 use App\Models\Story;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -90,7 +92,7 @@ class PrefabCommand extends Command
     /**
      * List of settings for the modules
      */
-//    public array $moduleSettings = [
+    public array $moduleSettings = [
 //        'page' => [
 //            'searchable' => [
 //                Page::class => [
@@ -99,54 +101,58 @@ class PrefabCommand extends Command
 //                ],
 //            ],
 //        ],
-//        'blog' => [
+        'blog' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Blog::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'news' => [
+            'searchable' => [
+                Blog::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'news' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                News::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'service' => [
+            'searchable' => [
+                NewsItem::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'service' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Service::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'story' => [
+            'searchable' => [
+                Service::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'story' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Story::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
+            'searchable' => [
+                Story::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
 //        'location' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
@@ -189,7 +195,7 @@ class PrefabCommand extends Command
 //                ],
 //            ],
 //        ],
-//    ];
+    ];
 
 //    public array $plugins = [
 //        'blocks',
@@ -309,6 +315,9 @@ class PrefabCommand extends Command
         // Config...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/config", config_path());
 
+        // Bootstrap...
+        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/bootstrap", base_path('bootstrap'));
+
         // Tests...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/tests", base_path('tests'));
 
@@ -349,34 +358,7 @@ class PrefabCommand extends Command
         // execute custom commands of the module
         $this->executeModuleCustomCommands($module);
 
-        // Todo: extract merge composer.json
-
-        $after = <<< 'AFTER'
-        "files": [
-        "app/Helpers/helpers.php"
-    ],
-AFTER;
-
-        $this->addToExistingFile(
-            base_path('composer.json'),
-            $after,
-            '"autoload": {'
-        );
-
-        $after = <<< 'AFTER'
-        App\Providers\EventServiceProvider::class,
-AFTER;
-
-        $add = <<< 'ADD'
-        App\Providers\Filament\AdminPanelProvider::class,
-ADD;
-
-        $this->addToExistingFile(
-            config_path('app.php'),
-            $add,
-            $after
-        );
-
+        $this->updateComposer();
 
         if (isset($this->moduleSettings[$module])) {
             $this->processModuleSettings($this->moduleSettings[$module], $module);
@@ -599,6 +581,41 @@ ADD;
         if (!empty($moduleSettings['enable'])) {
             $this->enableModule($module);
         }
+
+        if (! empty($moduleSettings['searchable'])) {
+            $this->addSearchable($moduleSettings['searchable']);
+        }
+    }
+
+    protected function addSearchable(array $config): void
+    {
+        $spacing = '        '; //8 spaces
+
+        $output = '';
+
+        foreach ($config as $model => $modelConfig) {
+            $output .= $spacing . $model . '::class => ';
+
+            $text = var_export($modelConfig, true);
+
+            // Replace brackets
+            $text = Str::replace('array (', '[', $text);
+            $text = Str::replace(')', ']', $text);
+
+            // Add spacing after each newline
+            $text = Str::replace(PHP_EOL, PHP_EOL . $spacing, $text);
+
+            // Remove integer keys
+            $text = Str::replaceMatches('/[0-9]+ =>/', '', $text);
+
+            $output .= $text . ','. PHP_EOL;
+        }
+
+        $this->addToExistingFile(
+            config_path('searchable.php'),
+            $output,
+            "    'models' => ["
+        );
     }
 
     protected function addFilamentTemplateRoute(): void
@@ -1161,9 +1178,23 @@ ADD;
             $this->addToExistingFile(
                 $targetFile,
                 "            {$seederClassName}::class,",
-                '        ]);',
-                'before'
+                '$this->call([',
             );
         }
+    }
+
+    protected function updateComposer(): void
+    {
+        $after = <<< 'AFTER'
+        "files": [
+            "app/Helpers/helpers.php"
+        ],
+AFTER;
+
+        $this->addToExistingFile(
+            base_path('composer.json'),
+            $after,
+            '"autoload": {'
+        );
     }
 }
