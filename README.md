@@ -92,7 +92,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [x] Update naar Laravel 11
 - [ ] slugs
 - [x] redo SEO as field instead of trait (?)
-- [ ] Cookie consent `Base module`
+- [x] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
