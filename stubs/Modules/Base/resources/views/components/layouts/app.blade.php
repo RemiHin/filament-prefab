@@ -1,6 +1,6 @@
 @props([
     'title' => null,
-//  todo:  'showCookieConsent' => true,
+    'showCookieConsent' => true,
 ])
 
 <!doctype html>
@@ -24,20 +24,17 @@
 
     @stack('structured-data')
 
-{{--  todo:  @cookieConsentCss()--}}
-
     @livewireStyles
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-{{-- TODO:    <x-layouts.partials.css-variables></x-layouts.partials.css-variables>--}}
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/cookie-consent.css'])
     @stack('css')
 
     <x-measurement-tools />
 </head>
 
 <body class="min-h-screen flex flex-col">
-{{-- todo:   @if($showCookieConsent)--}}
-{{--        @cookieConsent()--}}
-{{--    @endif--}}
+    @if($showCookieConsent)
+        @cookieConsent()
+    @endif
 
     @stack('body-top')
 
