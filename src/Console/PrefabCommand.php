@@ -9,9 +9,11 @@ use App\Models\NewsItem;
 use App\Models\Story;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+
 
 class PrefabCommand extends Command
 {
@@ -317,9 +319,6 @@ class PrefabCommand extends Command
 
         // Database...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/database", base_path('database'));
-
-        // Lang...
-        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang", base_path('lang'));
 
         // Public...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/public", base_path('public'));
@@ -655,7 +654,6 @@ class PrefabCommand extends Command
 
     protected function mergeModuleTranslations($module): void
     {
-
         $moduleTranslationsPath = __DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang/nl.json";
 
         if (!file_exists($moduleTranslationsPath)) {
@@ -665,9 +663,14 @@ class PrefabCommand extends Command
         $projectTranslationsPath = base_path('lang/nl.json');
 
         if (!file_exists($projectTranslationsPath)) {
-            $this->error("Project translation file not found. Translations for module `{$module}` not added.");
+            $dir = base_path('lang');
+            if(!File::isDirectory($dir)) {
+                File::makeDirectory($dir, 0777, true, true);
+            }
 
-            return;
+            $file = '{' . PHP_EOL . '    "EOF": "End of file"' . PHP_EOL . '}';
+
+            file_put_contents($projectTranslationsPath, $file);
         }
 
         $projectTranslationContents = file_get_contents($projectTranslationsPath);

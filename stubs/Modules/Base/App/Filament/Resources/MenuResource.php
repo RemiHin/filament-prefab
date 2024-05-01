@@ -19,6 +19,23 @@ class MenuResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bars-3-center-left';
 
+    protected static ?int $navigationSort = 10;
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Manage');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('Menu');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Menus');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

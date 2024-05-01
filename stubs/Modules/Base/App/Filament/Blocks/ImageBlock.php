@@ -15,6 +15,8 @@ class ImageBlock
         return Forms\Components\Builder\Block::make('image')
             ->schema([
                 CuratorPicker::make('image')
+                    ->buttonLabel(__('Add image'))
+                    ->label(__('Image'))
                     ->required(),
             ])
             ->label(__('Image'));

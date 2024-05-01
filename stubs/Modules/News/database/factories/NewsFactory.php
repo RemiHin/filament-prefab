@@ -19,8 +19,6 @@ class NewsFactory extends Factory
             'slug' => 'nieuws/' . Str::slug($name),
             'visible' => $this->faker->boolean,
             'intro' => $this->faker->gpt('Write the introduction paragraph for a healthcare related news item', $this->faker->text),
-//  TODO:          'image' => FactoryImage::make()->label($name)->cropperField(1200, 800),
-            'image_alt' => $this->faker->name(),
             'publish_from' => now(),
         ];
     }

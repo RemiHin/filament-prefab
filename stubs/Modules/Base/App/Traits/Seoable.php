@@ -25,6 +25,7 @@ trait Seoable
     {
         return Group::make([
             Fieldset::make('seo')
+                ->label(__('SEO'))
                 ->relationship(
                     name: 'seo',
                 )
@@ -61,6 +62,7 @@ trait Seoable
                 ]),
 
             Forms\Components\Fieldset::make('og')
+                ->label(__('Social media'))
                 ->relationship(
                     name: 'seo',
                 )
@@ -74,6 +76,7 @@ trait Seoable
                         ->helperText(__('This title will be used when sharing on social media platforms')),
 
                     CuratorPicker::make('image_id')
+                        ->buttonLabel(__('Add image'))
                         ->label(__('Image'))
                         ->nullable()
                         ->helperText(__('This image will be used when sharing on social media platforms. An image with the dimensions of :width by :height is recommended for the best results.', ['width' => 1200, 'height' => 630])),

@@ -16,7 +16,24 @@ class StoryCategoryResource extends Resource
 {
     protected static ?string $model = StoryCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
+
+    protected static ?int $navigationSort = 51;
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Stories');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('Category');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Categories');
+    }
 
     public static function form(Form $form): Form
     {
