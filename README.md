@@ -36,11 +36,11 @@ Use this template to scaffold a new website
 13. `npm install && npm run dev`
 
 ### How to use search
-1. Add the `IsSearchable` contract to the model
-2. Implement the required methods
+1. Add the `IsSearchable` interface to the model
+2. Implement the required methods. Your IDE will inform you when adding the interface.
 3. Add the `use Searchable` trait to the model
-4. Add the config to `searchable config` by adding it to the `models` array where the key is the model and the value is an array with the searchable columns
-5. Modules can also be specified in the `modules` config in `searchable`. Here the key is the relation name and the value an array of searchable fields. To search a module on a model add the name of the resource to the model array like you would add a column
+4. Add the config to `searchable.php` config by adding it to the `models` array where the key is the model and the value is an array with the searchable columns
+5. Modules can also be specified in the `modules` section in `searchable.php`. Here the key is the relation name and the value an array of searchable fields. To search a module on a model add the name of the resource to the model array like you would add a column
 6. In the example below the page searches in the columns `name` and `content`, as well as the module `heroImage`, for which the columns `title` and `content` are searchable
 ```php
 'models' => [

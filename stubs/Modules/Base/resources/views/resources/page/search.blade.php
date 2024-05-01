@@ -43,7 +43,7 @@
                         for="global-page-search"
                         class="absolute opacity-0 pointer-events-none"
                     >
-                        Zoeken
+                        {{ __('Search') }}
                     </label>
                     <div class="relative flex flex-row flex-nowrap">
                         <input
