@@ -50,6 +50,14 @@
     ":count of :total": ":count van :total",
     "Social media": "Sociale media",
     "A valid url looks like: :url": "Een correcte url ziet er uit als volgt: :url",
+    "Settings": "Instellingen",
+    "Email": "E-mail",
+    "Name": "Naam",
+    "Message": "Bericht",
+    "Submit": "Verzenden",
+    "Contact form": "Contactformulier",
+    "Admin name": "Administrator naam",
+    "Admin email": "Administrator e-mail",
 
 
     "EOF": "End of file"
