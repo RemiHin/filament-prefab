@@ -59,7 +59,13 @@ Use this template to scaffold a new website
 ],
 ```
 
-To sync models to elastic run `php artisan search:sync`
+### Elasticsearch
+
+The search module makes use of elasticsearch, please make sure `SCOUT_DRIVER` is set to `elastic` in your `.env`
+
+To sync models to elastic run `php artisan search:sync`.
+
+This project also contains a docker file which can be executed using laravel sail. The default port for elastic in this docker file is 9298. To allow your local project to communicate with this docker file add `ELASTIC_HOST=localhost:9298` to your `.env`
 
 
 ### How to use Hero Images
