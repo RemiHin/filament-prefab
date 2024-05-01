@@ -358,34 +358,7 @@ class PrefabCommand extends Command
         // execute custom commands of the module
         $this->executeModuleCustomCommands($module);
 
-        // Todo: extract merge composer.json
-
-        $after = <<< 'AFTER'
-        "files": [
-        "app/Helpers/helpers.php"
-    ],
-AFTER;
-
-        $this->addToExistingFile(
-            base_path('composer.json'),
-            $after,
-            '"autoload": {'
-        );
-
-        $after = <<< 'AFTER'
-        App\Providers\EventServiceProvider::class,
-AFTER;
-
-        $add = <<< 'ADD'
-        App\Providers\Filament\AdminPanelProvider::class,
-ADD;
-
-        $this->addToExistingFile(
-            config_path('app.php'),
-            $add,
-            $after
-        );
-
+        $this->updateComposer();
 
         if (isset($this->moduleSettings[$module])) {
             $this->processModuleSettings($this->moduleSettings[$module], $module);
@@ -1205,9 +1178,23 @@ ADD;
             $this->addToExistingFile(
                 $targetFile,
                 "            {$seederClassName}::class,",
-                '        ]);',
-                'before'
+                '$this->call([',
             );
         }
+    }
+
+    protected function updateComposer(): void
+    {
+        $after = <<< 'AFTER'
+        "files": [
+            "app/Helpers/helpers.php"
+        ],
+AFTER;
+
+        $this->addToExistingFile(
+            base_path('composer.json'),
+            $after,
+            '"autoload": {'
+        );
     }
 }
