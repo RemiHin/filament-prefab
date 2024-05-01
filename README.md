@@ -65,6 +65,7 @@ Use this template to scaffold a new website
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
+- [ ] Translations
 
 ### "Copypaste" Todos:
 - [x] Employee
