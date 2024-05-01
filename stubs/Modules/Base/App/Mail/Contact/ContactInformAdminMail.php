@@ -27,7 +27,7 @@ class ContactInformAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Inform Admin Mail',
+            subject: __('New contact request'),
         );
     }
 

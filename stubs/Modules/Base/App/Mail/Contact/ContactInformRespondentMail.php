@@ -27,7 +27,7 @@ class ContactInformRespondentMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Inform Respondent',
+            subject: __('Contact request received'),
         );
     }
 
