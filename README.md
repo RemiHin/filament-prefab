@@ -84,6 +84,11 @@ This project also contains a docker file which can be executed using laravel sai
 1. add the `use Labelable` trait to the model
 2. add `static::$model::labelableFields(),` to the form fields in the resource
 
+### How to use menus
+1. Implement `App/Contracts/Menuable` on models that should be able to be linked in menus.
+2. Implement required methods
+3. Available resources will be auto detected by the menu item resource
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
