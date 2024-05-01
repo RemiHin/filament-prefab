@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\Labelable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Ogable;
 use App\Traits\Seoable;
 
 class Page extends Model
@@ -13,7 +12,7 @@ class Page extends Model
     use HasFactory;
     use Labelable;
     use Seoable;
-    use Ogable;
+
     protected $guarded = [];
 
     protected $casts = [

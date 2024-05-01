@@ -309,7 +309,7 @@ class PrefabCommand extends Command
         // Config...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/config", config_path());
 
-        // Bootstrap
+        // Bootstrap...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/bootstrap", base_path('bootstrap'));
 
         // Tests...
@@ -352,7 +352,7 @@ class PrefabCommand extends Command
         // execute custom commands of the module
         $this->executeModuleCustomCommands($module);
 
-        // Todo: extract merge composer.json
+        $this->updateComposer();
 
         if (isset($this->moduleSettings[$module])) {
             $this->processModuleSettings($this->moduleSettings[$module], $module);
@@ -1137,9 +1137,23 @@ ADD;
             $this->addToExistingFile(
                 $targetFile,
                 "            {$seederClassName}::class,",
-                '        ]);',
-                'before'
+                '$this->call([',
             );
         }
+    }
+
+    protected function updateComposer(): void
+    {
+        $after = <<< 'AFTER'
+        "files": [
+            "app/Helpers/helpers.php"
+        ],
+AFTER;
+
+        $this->addToExistingFile(
+            base_path('composer.json'),
+            $after,
+            '"autoload": {'
+        );
     }
 }

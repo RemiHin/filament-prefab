@@ -12,8 +12,6 @@ use Filament\Forms\Components\Group;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms;
 
-use function App\Traits\__;
-
 trait Seoable
 {
     public static function bootSeoable(): void
@@ -81,10 +79,5 @@ trait Seoable
                         ->helperText(__('This image will be used when sharing on social media platforms. An image with the dimensions of :width by :height is recommended for the best results.', ['width' => 1200, 'height' => 630])),
                 ]),
         ]);
-    }
-
-    public function openGraphFields(): Fieldset
-    {
-
     }
 }
