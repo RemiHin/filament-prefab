@@ -26,10 +26,12 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=news`
 - `php artisan prefab:filament --module=story`
 - `php artisan prefab:filament --module=employee`
-7. `php artisan migrate`
-8. Create a user `php artisan make:filament-user` and follow the prompts
-9. `php artisan db:seed`
-10. `npm install && npm run dev`
+- NOTE: When updating modules after their initial rollout add `--force` to override local files. Additionally `--no-shell` can be added to prevent shell commands from being executed to speed up rolling out updates.
+7. `composer dump`
+8. `php artisan migrate`
+9. Create a user `php artisan make:filament-user` and follow the prompts
+10. `php artisan db:seed`
+11. `npm install && npm run dev`
 
 ### How to use Hero Images
 1. add the `use Heroable` trait to the model
@@ -68,6 +70,7 @@ Use this template to scaffold a new website
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
+- [ ] Translations
 
 ### "Copypaste" Todos:
 - [x] Employee
