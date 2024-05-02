@@ -1,3 +1,5 @@
-<div class="editor flex flex-col w-full max-w-[768px] px-5 mx-auto mb-10 lg:mb-16">
-    {!! $block['data']['text'] !!}
-</div>
+<section class="mb-5 lg:mb-10">
+    <div class="editor container max-w-container-small">
+        {!! $block->text !!}
+    </div>
+</section>

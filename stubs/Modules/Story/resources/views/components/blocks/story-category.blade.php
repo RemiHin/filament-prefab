@@ -1,3 +1,5 @@
+
+
 <section class="{{ $type }} relative flex flex-col w-full mt-10 lg:mt-12">
     <x-svg
         class="svg-icon absolute top-0 left-0 h-[264px] md:h-[528px] w-[264px] md:w-[528px] inline-flex shrink-0 transform -translate-y-1/2"

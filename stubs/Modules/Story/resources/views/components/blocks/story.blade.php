@@ -1,5 +1,5 @@
 @php
-$story = \App\Models\Story::find($block['data']['story']);
+$story = $block->getStory();
 @endphp
 
 @if($story)
@@ -31,7 +31,7 @@ $story = \App\Models\Story::find($block['data']['story']);
 
             @if (! empty($story->image))
                 <div class="w-[calc(100%+30px)] -ml-2.5 sm:ml-0 sm:w-full">
-                    <x-curator-glider :media="$block['data']['image']" />
+                    <x-curator-glider :media="$story->image" />
                 </div>
             @endif
         </article>

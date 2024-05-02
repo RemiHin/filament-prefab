@@ -1,3 +1,5 @@
-<div class="block {{ $type }}">
-    @dump($block)
-</div>
+<section class="mb-5 lg:mb-10">
+    <div class="editor container max-w-container-small">
+        Block not implemented
+    </div>
+</section>
