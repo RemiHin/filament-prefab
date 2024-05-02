@@ -9,7 +9,7 @@
     href="{{ route('blog.show', ['blog' => $blog]) }}"
     text="{{ $blog->intro }}"
     img="{{ $blog->image?->getSignedUrl() }}"
-    alt="{{ $blog->image_alt }}"
+    alt="{{ $blog->image?->alt }}"
     label="{{ $blog->label }}"
     date="{{ $blog->publish_from->format('d-m-Y') }}"
 />

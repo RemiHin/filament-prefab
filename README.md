@@ -105,7 +105,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
-- [ ] Translations
+- [x] Translations
 
 ### "Copypaste" Todos:
 - [x] Employee
