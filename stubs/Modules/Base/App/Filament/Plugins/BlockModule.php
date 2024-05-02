@@ -17,8 +17,6 @@ abstract class BlockModule
 
     public static function make(string $column, string $group = 'active'): Forms\Components\Fieldset
     {
-        // TODO: Translations!!!!!
-
         return Forms\Components\Fieldset::make(__('Blocks'))
             ->schema([
                 Forms\Components\Builder::make($column)
