@@ -25,7 +25,7 @@
         <div class="w-1/2">
             @if(Session::has('success'))
                 <div class="text-lg text-gray-800 p-12">
-                    Uw bericht is succesvol verzonden, wij nemen zo spoedig mogelijk contact met u op.
+                    {{ __('Your message has been sent successfully, we will contact you as soon as possible.') }}
                 </div>
             @else
                 <form action="{{ route('contact') }}" method="post">
