@@ -12,7 +12,7 @@
                 :title="$model->heroImage->title"
                 :text="$model->heroImage->content"
                 :img="$model->heroImage->image?->getSignedUrl()"
-                :alt="$model->heroImage->image_alt"
+                :alt="$model->heroImage->image?->alt"
                 :primaryBtnText="$model->heroImage->cta_text"
                 :primaryBtnLink="$model->heroImage->cta_link"
                 class="mt-5"

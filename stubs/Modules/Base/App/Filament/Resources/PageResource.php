@@ -21,6 +21,23 @@ class PageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
 
+    protected static ?int $navigationSort = 20;
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Manage');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('Page');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Pages');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -28,6 +45,7 @@ class PageResource extends Resource
                 Forms\Components\Tabs::make('Tabs')
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('General')
+                            ->label(__('General'))
                             ->schema([
                                 Forms\Components\TextInput::make('name')
                                     ->required()
@@ -46,6 +64,7 @@ class PageResource extends Resource
                                     ->unique(ignoreRecord: true),
 
                                 Forms\Components\Toggle::make('visible')
+                                    ->label(__('Visible'))
                                     ->required(),
 
                                 static::$model::labelableFields(),
@@ -54,6 +73,7 @@ class PageResource extends Resource
 
                             ]),
                         Forms\Components\Tabs\Tab::make('SEO')
+                            ->label(__('SEO'))
                             ->schema([
                                 static::$model::seoFields(),
                             ]),
@@ -67,20 +87,31 @@ class PageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
+                    ->label(__('Slug'))
                     ->searchable(),
+
                 Tables\Columns\IconColumn::make('visible')
+                    ->label(__('Visible'))
                     ->boolean(),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('Created at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('Updated at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('deleted_at')
+                    ->label(__('Deleted at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

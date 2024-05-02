@@ -30,6 +30,7 @@ class TextWithImageBlock
                     ->required(),
 
                 CuratorPicker::make('image')
+                    ->buttonLabel(__('Add image'))
                     ->label(__('Image'))
                     ->required(),
 

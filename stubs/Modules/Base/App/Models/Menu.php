@@ -16,6 +16,6 @@ class Menu extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(MenuItem::class);
+        return $this->hasMany(MenuItem::class)->where('parent_id', -1);
     }
 }

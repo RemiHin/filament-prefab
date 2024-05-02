@@ -17,6 +17,10 @@ class PageSeeder extends Seeder
         'contact' => [
             'name' => 'Contact',
             'slug' => 'contact',
+        ],
+        'cookies' => [
+            'name' => 'Cookies',
+            'slug' => 'cookies',
             'visible' => true,
         ],
     ];

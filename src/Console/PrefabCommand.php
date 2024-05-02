@@ -2,16 +2,20 @@
 
 namespace RemiHin\FilamentPrefab\Console;
 
+use App\Models\Blog;
 use App\Models\Page;
 use App\Models\NewsItem;
 //use App\Models\Location;
 //use App\Models\Service;
+use App\Models\Service;
 use App\Models\Story;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+
 
 class PrefabCommand extends Command
 {
@@ -90,7 +94,7 @@ class PrefabCommand extends Command
     /**
      * List of settings for the modules
      */
-//    public array $moduleSettings = [
+    public array $moduleSettings = [
 //        'page' => [
 //            'searchable' => [
 //                Page::class => [
@@ -99,54 +103,58 @@ class PrefabCommand extends Command
 //                ],
 //            ],
 //        ],
-//        'blog' => [
+        'blog' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Blog::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'news' => [
+            'searchable' => [
+                Blog::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'news' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                News::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'service' => [
+            'searchable' => [
+                NewsItem::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'service' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Service::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
-//        'story' => [
+            'searchable' => [
+                Service::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
+        'story' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//            'searchable' => [
-//                Story::class => [
-//                    'name',
-//                    'intro',
-//                ],
-//            ],
-//        ],
+            'searchable' => [
+                Story::class => [
+                    'name',
+                    'intro',
+                    'content',
+                ],
+            ],
+        ],
 //        'location' => [
 //            'has-sitemap' => true,
 //            'has-template-routes' => true,
@@ -189,7 +197,7 @@ class PrefabCommand extends Command
 //                ],
 //            ],
 //        ],
-//    ];
+    ];
 
 //    public array $plugins = [
 //        'blocks',
@@ -317,9 +325,6 @@ class PrefabCommand extends Command
 
         // Database...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/database", base_path('database'));
-
-        // Lang...
-        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang", base_path('lang'));
 
         // Public...
         $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/public", base_path('public'));
@@ -575,6 +580,41 @@ class PrefabCommand extends Command
         if (!empty($moduleSettings['enable'])) {
             $this->enableModule($module);
         }
+
+        if (! empty($moduleSettings['searchable'])) {
+            $this->addSearchable($moduleSettings['searchable']);
+        }
+    }
+
+    protected function addSearchable(array $config): void
+    {
+        $spacing = '        '; //8 spaces
+
+        $output = '';
+
+        foreach ($config as $model => $modelConfig) {
+            $output .= $spacing . $model . '::class => ';
+
+            $text = var_export($modelConfig, true);
+
+            // Replace brackets
+            $text = Str::replace('array (', '[', $text);
+            $text = Str::replace(')', ']', $text);
+
+            // Add spacing after each newline
+            $text = Str::replace(PHP_EOL, PHP_EOL . $spacing, $text);
+
+            // Remove integer keys
+            $text = Str::replaceMatches('/[0-9]+ =>/', '', $text);
+
+            $output .= $text . ','. PHP_EOL;
+        }
+
+        $this->addToExistingFile(
+            config_path('searchable.php'),
+            $output,
+            "    'models' => ["
+        );
     }
 
     protected function addFilamentTemplateRoute(): void
@@ -655,7 +695,6 @@ class PrefabCommand extends Command
 
     protected function mergeModuleTranslations($module): void
     {
-
         $moduleTranslationsPath = __DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang/nl.json";
 
         if (!file_exists($moduleTranslationsPath)) {
@@ -665,9 +704,14 @@ class PrefabCommand extends Command
         $projectTranslationsPath = base_path('lang/nl.json');
 
         if (!file_exists($projectTranslationsPath)) {
-            $this->error("Project translation file not found. Translations for module `{$module}` not added.");
+            $dir = base_path('lang');
+            if(!File::isDirectory($dir)) {
+                File::makeDirectory($dir, 0777, true, true);
+            }
 
-            return;
+            $file = '{' . PHP_EOL . '    "EOF": "End of file"' . PHP_EOL . '}';
+
+            file_put_contents($projectTranslationsPath, $file);
         }
 
         $projectTranslationContents = file_get_contents($projectTranslationsPath);
