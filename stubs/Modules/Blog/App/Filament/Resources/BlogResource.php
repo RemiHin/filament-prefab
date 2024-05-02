@@ -17,7 +17,24 @@ class BlogResource extends Resource
 {
     protected static ?string $model = Blog::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
+
+    protected static ?int $navigationSort = 30;
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Manage');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('Blog');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Blogs');
+    }
 
     public static function form(Form $form): Form
     {
@@ -42,22 +59,26 @@ class BlogResource extends Resource
                                     ->required(),
 
                                 Forms\Components\Textarea::make('intro')
+                                    ->label(__('Intro'))
                                     ->maxLength(65535)
                                     ->nullable()
                                     ->string()
                                     ->columnSpanFull(),
 
                                 CuratorPicker::make('image_id')
+                                    ->buttonLabel(__('Add image'))
                                     ->label(__('Image'))
                                     ->required(),
 
                                 BlockModule::make('content'),
 
                                 Forms\Components\DatePicker::make('publish_from')
+                                    ->label(__('Publish from'))
                                     ->required()
                                     ->live(onBlur: true),
 
                                 Forms\Components\DatePicker::make('publish_until')
+                                    ->label(__('Publish until'))
                                     ->nullable()
                                     ->live(onBlur: true)
                                     ->after('publish_from'),
@@ -77,28 +98,41 @@ class BlogResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
+                    ->label(__('Slug'))
                     ->searchable(),
+
                 Tables\Columns\IconColumn::make('visible')
+                    ->label(__('Visible'))
                     ->boolean(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\ImageColumn::make('image_alt'),
+
                 Tables\Columns\TextColumn::make('publish_from')
+                    ->label(__('Publish from'))
                     ->date()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('publish_until')
+                    ->label(__('Publish until'))
                     ->date()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('Created at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('Updated at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('deleted_at')
+                    ->label(__('Deleted at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -27,6 +27,7 @@ class QuoteBlock
                     ->maxLength(255),
 
                 CuratorPicker::make('image')
+                    ->buttonLabel(__('Add image'))
                     ->label(__('Image'))
                     ->required(),
 

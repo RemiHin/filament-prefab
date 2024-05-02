@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Menu::class)->constrained()->cascadeOnDelete();
 
             $table->treeColumns();
+
+            $table->string('url_type');
             $table->nullableMorphs('menuable');
+            $table->string('url')->nullable();
 
             $table->timestamps();
         });
