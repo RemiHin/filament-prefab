@@ -41,13 +41,16 @@ class RedirectResource extends Resource
             ->columns(1)
             ->schema([
                 TextInput::make('request_path')
+                    ->helperText(__('This is a relative path after :url. It starts with a \'/\'.', ['url' => config('app.url')]))
                     ->label(__('Request path'))
                     ->startsWith('/')
                     ->required(),
 
                 TextInput::make('target_path')
+                    ->helperText(__('This can be a relative like \'from\' or a full path. A full path starts with http(s).'))
                     ->label(__('Target path'))
                     ->startsWith(['/', 'http', 'https'])
+                    ->different('request_path')
                     ->required(),
 
                 Select::make('redirect_type')

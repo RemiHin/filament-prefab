@@ -89,6 +89,11 @@ This project also contains a docker file which can be executed using laravel sai
 2. Implement required methods
 3. Available resources will be auto detected by the menu item resource
 
+### How to use titles and slugs
+1. For titles and slugs we use a forked and self-hosted project [filament-title-with-slug](https://github.com/MotivoZwolle/filament-title-with-slug)
+2. On forms use the `TitleWithSlugInput` form component. This will handle both the title and the slug. Both fields are required and the slug field validates if it is unique.
+3. For more documentation checkout [the motivo repository](https://github.com/MotivoZwolle/filament-title-with-slug)
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
