@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasVisibility;
 use Carbon\Carbon;
 use App\Traits\Seoable;
 use App\Traits\Labelable;
@@ -19,17 +20,14 @@ class Service extends Model implements IsSearchable
     use Labelable;
     use Seoable;
     use Searchable;
+    use HasVisibility;
 
     protected $guarded = [];
 
     protected $casts = [
         'content' => 'array',
+        'visible' => 'bool',
     ];
-
-    public function scopeVisible(Builder $query): void
-    {
-        $query->where('visible', true);
-    }
 
     public function getUrlAttribute(): string
     {
