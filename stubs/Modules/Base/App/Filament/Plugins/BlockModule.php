@@ -21,12 +21,22 @@ abstract class BlockModule
             ->schema([
                 Forms\Components\Builder::make($column)
                     ->addActionLabel(__('Add block'))
-                    ->label(__('Blocks'))
                     ->blocks(
                         self::blocks($group)
                     ),
 
             ])
             ->columns(1);
+    }
+
+    public static function reconstructBlock(string $type, array $data): BaseBlock
+    {
+        $blocks = collect(config('blocks', []))->flatten(1)
+            ->filter(fn (string $class) => is_subclass_of($class, BaseBlock::class));
+
+        $class = collect($blocks)
+            ->firstWhere(fn (string|BaseBlock $block) => $block::getType() === $type);
+
+        return new $class($data);
     }
 }

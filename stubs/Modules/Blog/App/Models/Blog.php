@@ -7,7 +7,7 @@ use App\Traits\Labelable;
 use App\Traits\Searchable;
 use App\Traits\Publishable;
 use App\Traits\HasVisibility;
-use App\Contacts\IsSearchable;
+use App\Contracts\IsSearchable;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

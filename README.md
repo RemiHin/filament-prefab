@@ -113,7 +113,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [x] slugs
 - [x] redo SEO as field instead of trait (?)
 - [x] Cookie consent `Base module`
-- [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
+- [x] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
 - [x] Blocks module (WIP) `Blocks module`
 - [ ] Email sending (?) `Job Alert`
 - [x] Search functionalities `Search Module`
