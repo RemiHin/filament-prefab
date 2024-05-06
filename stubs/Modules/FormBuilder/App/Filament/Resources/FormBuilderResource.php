@@ -3,8 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Plugins\BlockModule;
-use App\Filament\Resources\FormbuilderResource\Pages;
-use App\Filament\Resources\FormbuilderResource\RelationManagers;
+use App\Filament\Resources\FormBuilderResource\Pages;
+use App\Filament\Resources\FormBuilderResource\RelationManagers;
 use App\Filament\Resources\FormBuilderResource\RelationManagers\FormResponsesRelationManager;
 use App\Models\Form as FormModel;
 use Filament\Forms\Components\Grid;

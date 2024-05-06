@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\FormbuilderResource\Pages;
+namespace App\Filament\Resources\FormBuilderResource\Pages;
 
 use App\Filament\Resources\FormBuilderResource;
 use Filament\Actions;
