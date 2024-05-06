@@ -13,6 +13,8 @@ class Form extends Model
     protected $guarded = [];
 
     protected $casts = [
+        'inform_admin' => 'bool',
+        'inform_respondent' => 'bool',
         'content' => 'array',
     ];
 

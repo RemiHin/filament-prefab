@@ -1,0 +1,21 @@
+{
+    "Respondent": "Respondent",
+    "Respondents": "Respondenten",
+    "Respondent amount": "Aantal respondenten",
+    "Form": "Formulier",
+    "Forms": "Formulieren",
+    "Notifications": "Notificaties",
+    "Notify admin": "Notificeer beheerder",
+    "Notify respondent": "Notificeer respondent",
+    "Admin name": "Beheerder naam",
+    "Admin email": "Beheerder e-mail",
+    "Admin message": "Bericht naar beheerder",
+    "Respondent name field": "Veld respondent naam",
+    "Respondent email field": "Veld respondent e-mail",
+    "Respondent message": "Bericht naar respondent",
+    "Enable this to inform admins when form gets a new respondent": "Zet dit aan om een beheerder te informeren wanneer een formulier is ingevuld",
+    "Enable this to inform respondent the form submission has been received": "Zet dit aan om een invuller te informeren dat het formulier correct is ontvangen",
+    "The form field that contains the name of the respondent. These are fields of type 'text'": "Het formuliervled dat de naam van de invuller bevat. Dit zijn velden van het type 'Tekst'",
+    "The form field that contains the email of the respondent. These are fields of type 'email'": "Het formuliervled dat de e-mail van de invuller bevat. Dit zijn de velden van het type 'E-mail'",
+    "Filled form": "Formulier ingevuld"
+}

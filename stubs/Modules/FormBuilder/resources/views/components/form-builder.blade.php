@@ -7,7 +7,7 @@
         <form action="{{ route('form.submit', ['form' => $form]) }}" method="post">
             @csrf
 
-            <x-blocks :blocks="$form->content" group="form" />
+            <x-blocks :blocks="$form->content" />
 
             <x-button :title="__('Submit')" type="submit" />
         </form>

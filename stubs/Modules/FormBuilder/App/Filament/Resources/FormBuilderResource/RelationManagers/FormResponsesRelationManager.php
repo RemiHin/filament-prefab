@@ -8,12 +8,32 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Contracts\Support\Htmlable;
 
 class FormResponsesRelationManager extends RelationManager
 {
     protected static string $relationship = 'formResponses';
+
+    /**
+     * @return string|null
+     */
+    public static function getLabel(): ?string
+    {
+        return __('Respondent');
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getPluralLabel(): ?string
+    {
+        return __('Respondents');
+    }
+
+    protected function getTableHeading(): string|Htmlable|null
+    {
+        return __('Respondents');
+    }
 
     public function form(Form $form): Form
     {
@@ -54,6 +74,7 @@ class FormResponsesRelationManager extends RelationManager
             ->recordTitleAttribute('id')
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->label(__('Respondent'))
                     ->prefix(__('Respondent') . ' ')
                     ->searchable(),
 
@@ -68,16 +89,13 @@ class FormResponsesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                //
             ]);
     }
 }

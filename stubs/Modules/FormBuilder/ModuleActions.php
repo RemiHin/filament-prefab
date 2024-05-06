@@ -38,7 +38,7 @@ Blocks;
         $helper = <<< 'Helper'
 
 if (! function_exists('get_form_builder_options')) {
-    function get_form_builder_options(array $formData, array $fieldTypes): Collection
+    function get_form_builder_options(array $formData, array $fieldTypes): \Illuminate\Support\Collection
     {
         return collect($formData)
             ->filter(fn (mixed $block) => is_array($block) && array_key_exists('type', $block))

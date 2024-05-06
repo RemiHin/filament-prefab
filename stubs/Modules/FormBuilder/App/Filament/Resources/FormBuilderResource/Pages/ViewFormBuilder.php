@@ -17,7 +17,8 @@ class ViewFormBuilder extends ViewRecord
     {
         return $form
             ->schema([
-                TextInput::make('name'),
+                TextInput::make('name')
+                    ->label(__('Name')),
             ]);
     }
 
