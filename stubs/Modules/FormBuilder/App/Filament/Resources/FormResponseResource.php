@@ -22,12 +22,22 @@ class FormResponseResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
+    public static function getLabel(): ?string
+    {
+        return __('Respondent');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Respondent');
+    }
+
     public static function form(Form $form): Form
     {
         $blockFields = [];
 
         if ($model = $form->getModelInstance()) {
-            foreach ($model->form->content as $id => $blockData) {
+            foreach ($model->form->content as $blockData) {
                 $block = BlockModule::reconstructBlock($blockData['type'], $blockData['data']);
 
                 $blockFields[] = Forms\Components\TextInput::make('form_data.' . $block->id . '.answer')

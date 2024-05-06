@@ -19,9 +19,9 @@ class ModuleActions
         $blocks = <<< 'Blocks'
 
     'form' => [
-        \App\Filament\Plugins\Blocks\Input\TextInputBlock::class,
-        \App\Filament\Plugins\Blocks\Input\EmailInputBlock::class,
-        \App\Filament\Plugins\Blocks\Input\TextAreaInputBlock::class,
+        App\Filament\Plugins\Blocks\Input\TextInputBlock::class,
+        App\Filament\Plugins\Blocks\Input\EmailInputBlock::class,
+        App\Filament\Plugins\Blocks\Input\TextAreaInputBlock::class,
     ],
 Blocks;
 
@@ -30,6 +30,12 @@ Blocks;
             $blocks,
             '];',
             'before',
+        );
+
+        (new PrefabCommand())->addToExistingFile(
+            config_path('blocks.php'),
+            '        App\Filament\Plugins\Blocks\FormBlock::class,',
+            "'active' => [",
         );
     }
 
