@@ -12,16 +12,16 @@ use Filament\Forms\Components\Toggle;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class MultipleChoiceInputBlock extends FormBlock
+class SelectInputBlock extends FormBlock
 {
     public static function getType(): string
     {
-        return 'input-multiple-choice';
+        return 'input-select';
     }
 
     public static function getLabel(): string
     {
-        return __('Multiple choice');
+        return __('Dropdownlist');
     }
 
     public static function getFields(): array

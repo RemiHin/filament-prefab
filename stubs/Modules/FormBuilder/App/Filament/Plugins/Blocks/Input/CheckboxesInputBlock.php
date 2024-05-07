@@ -12,16 +12,16 @@ use Filament\Forms\Components\Toggle;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class MultipleChoiceInputBlock extends FormBlock
+class CheckboxesInputBlock extends FormBlock
 {
     public static function getType(): string
     {
-        return 'input-multiple-choice';
+        return 'input-checkboxes';
     }
 
     public static function getLabel(): string
     {
-        return __('Multiple choice');
+        return __('Checkboxes');
     }
 
     public static function getFields(): array
@@ -60,8 +60,10 @@ class MultipleChoiceInputBlock extends FormBlock
     public function getRules(): array
     {
         return [
-            'value' => [
+            'options' => [
                 $this->required ? 'required' : 'nullable',
+                'array',
+                $this->required ? 'min:1' : 'min:0',
             ],
         ];
     }
@@ -69,7 +71,7 @@ class MultipleChoiceInputBlock extends FormBlock
     public function getAttributes(): array
     {
         return [
-            'value' => strtolower($this->title),
+            'options' => strtolower($this->title),
         ];
     }
 
@@ -80,27 +82,29 @@ class MultipleChoiceInputBlock extends FormBlock
 
     public function getAnswer(array $data): ?string
     {
-        $field = collect($this->options)->firstWhere('id', Arr::get($data, 'value'));
+        $options = Arr::get($data, 'options', []);
 
-        $answer = Arr::get($field, 'title');
+        $answers = [];
 
-        if (Arr::get($field, 'free_input') && Arr::get($data, 'other')) {
-            $answer .= '; ' . Arr::get($data, 'other');
+        foreach ($options as $option) {
+            $field = collect($this->options)->firstWhere('id', $option);
+            $question = Arr::get($field, 'title');
+            $freeInput = Arr::get($data, 'other.' . $option);
+
+            if ($freeInput) {
+                $question .= ', ' . $freeInput;
+            }
+
+            $answers[] = $question;
         }
 
-        return $answer;
+        return implode(PHP_EOL, $answers);
     }
 
-    public function freeInputFields(): array
+    public function getFilamentField(): Field
     {
-        return collect($this->options)
-            ->filter(fn (array $option) => $option['free_input'])
-            ->map(fn (array $option) => $option['id'])
-            ->toArray();
-    }
-
-    public function freeInputJsArray(): string
-    {
-        return '["' . implode('", "', $this->freeInputFields()) . '"]';
+        return Textarea::make('form_data.' . $this->id . '.answer')
+            ->rows(3)
+            ->label($this->getQuestion());
     }
 }

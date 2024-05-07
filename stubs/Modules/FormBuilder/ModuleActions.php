@@ -23,6 +23,8 @@ class ModuleActions
         App\Filament\Plugins\Blocks\Input\TextInputBlock::class,
         App\Filament\Plugins\Blocks\Input\EmailInputBlock::class,
         App\Filament\Plugins\Blocks\Input\TextAreaInputBlock::class,
+        App\Filament\Plugins\Blocks\Input\CheckboxesInputBlock::class,
+        App\Filament\Plugins\Blocks\Input\SelectInputBlock::class,
         App\Filament\Plugins\Blocks\Input\MultipleChoiceInputBlock::class,
         App\Filament\Plugins\Blocks\Input\FileInputBlock::class,
     ],

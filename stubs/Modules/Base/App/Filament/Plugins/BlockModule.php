@@ -21,6 +21,7 @@ abstract class BlockModule
             ->schema([
                 Forms\Components\Builder::make($column)
                     ->addActionLabel(__('Add block'))
+                    ->collapsible()
                     ->blocks(
                         self::blocks($group)
                     ),
