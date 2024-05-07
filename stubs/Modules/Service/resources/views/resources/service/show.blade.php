@@ -19,7 +19,7 @@
         :title="$model->name"
         :text="$model->intro"
         :img="$model->image?->getSignedUrl()"
-        :alt="$model->image_alt"
+        :alt="$model->image?->alt"
         class="mt-5"
     />
 

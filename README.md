@@ -84,9 +84,19 @@ This project also contains a docker file which can be executed using laravel sai
 1. add the `use Labelable` trait to the model
 2. add `static::$model::labelableFields(),` to the form fields in the resource
 
+### How to use menus
+1. Implement `App/Contracts/Menuable` on models that should be able to be linked in menus.
+2. Implement required methods
+3. Available resources will be auto detected by the menu item resource
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
+
+### Settings
+1. For settings we use the [spatie plugin](https://filamentphp.com/plugins/filament-spatie-settings).
+2. Optional: add the filament page to the correct navigation group `protected static ?string $navigationGroup = 'settings';`
+3. Add the settings to view composer in `AppServiceProvider` to access variables in blade
 
 ### Biggest Todos:
 - [x] Update naar Laravel 11
@@ -100,7 +110,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [ ] Donation module
 - [ ] Redirects en dead-link tracker
 - [ ] Add route for home
-- [ ] Translations
+- [x] Translations
 
 ### "Copypaste" Todos:
 - [x] Employee
@@ -109,7 +119,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [x] Service
 - [x] Story
 - [ ] Vacancy
-- [ ] Settings
+- [x] Settings
 - [ ] Toptasks
 
 

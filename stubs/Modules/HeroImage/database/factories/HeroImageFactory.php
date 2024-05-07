@@ -21,8 +21,6 @@ class HeroImageFactory extends Factory
             'primary_cta_link' => $this->faker->url,
             'secondary_cta_text' => $this->faker->gpt('Give me a healthcare related call to action in 3 words', $this->faker->words(3, true)),
             'secondary_cta_link' => $this->faker->url,
-//      todo:      'image' => FactoryImage::make()->label($title)->cropperField(1200, 800),
-            'image_alt' => $title,
         ];
     }
 

@@ -21,6 +21,23 @@ class NewsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
+    protected static ?int $navigationSort = 40;
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Manage');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('News');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('News');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -46,25 +63,31 @@ class NewsResource extends Resource
                                     ->unique(ignoreRecord: true),
 
                                 Forms\Components\Toggle::make('visible')
+                                    ->label(__('Visible'))
                                     ->default(true)
                                     ->required(),
 
                                 Forms\Components\Textarea::make('intro')
+                                    ->label(__('Intro'))
                                     ->maxLength(65535)
                                     ->nullable()
                                     ->string()
                                     ->columnSpanFull(),
 
                                 CuratorPicker::make('image_id')
+                                    ->buttonLabel(__('Add image'))
                                     ->label(__('Image')),
 
                                 BlockModule::make('content'),
 
                                 Forms\Components\DatePicker::make('publish_from')
+                                    ->label(__('Publish from'))
+                                    ->default(today())
                                     ->required()
                                     ->live(onBlur: true),
 
                                 Forms\Components\DatePicker::make('publish_until')
+                                    ->label(__('Publish until'))
                                     ->nullable()
                                     ->live(onBlur: true)
                                     ->after('publish_from'),
@@ -84,28 +107,40 @@ class NewsResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
+                    ->label(__('Slug'))
                     ->searchable(),
+
                 Tables\Columns\IconColumn::make('visible')
+                    ->label(__('Visible'))
                     ->boolean(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\ImageColumn::make('image_alt'),
+
                 Tables\Columns\TextColumn::make('publish_from')
+                    ->label(__('Publish from'))
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('publish_until')
+                    ->label(__('Publish until'))
                     ->date()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('Created at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('Updated at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('deleted_at')
+                    ->label(__('Deleted at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

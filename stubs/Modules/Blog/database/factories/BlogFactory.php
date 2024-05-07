@@ -19,8 +19,6 @@ class BlogFactory extends Factory
             'slug' => 'blog/' . Str::slug($name),
             'visible' => $this->faker->boolean,
             'intro' => $this->faker->gpt('Write the introduction paragraph for a healthcare related blog post', $this->faker->text),
-//  TODO:          'image' => FactoryImage::make()->label($name)->cropperField(1200, 800),
-            'image_alt' => $this->faker->name(),
             'publish_from' => now(),
         ];
     }
