@@ -2,6 +2,7 @@
 
 namespace RemiHin\FilamentPrefab\Console;
 
+use App\Filament\Plugins\Blocks\StoryBlock;
 use App\Models\Blog;
 use App\Models\Page;
 use App\Models\NewsItem;
@@ -128,6 +129,9 @@ class PrefabCommand extends Command
                     'content',
                 ],
             ],
+            'blocks' => [
+                \App\Filament\Plugins\Blocks\NewsBlock::class,
+            ],
         ],
         'service' => [
 //            'has-sitemap' => true,
@@ -141,6 +145,9 @@ class PrefabCommand extends Command
                     'content',
                 ],
             ],
+            'blocks' => [
+                \App\Filament\Plugins\Blocks\ServiceBlock::class,
+            ],
         ],
         'story' => [
 //            'has-sitemap' => true,
@@ -153,6 +160,10 @@ class PrefabCommand extends Command
                     'intro',
                     'content',
                 ],
+            ],
+            'blocks' => [
+                \App\Filament\Plugins\Blocks\StoryBlock::class,
+                \App\Filament\Plugins\Blocks\StoryCategoryBlock::class,
             ],
         ],
 //        'location' => [
@@ -172,11 +183,14 @@ class PrefabCommand extends Command
 //                ],
 //            ],
 //        ],
-//        'employee' => [
+        'employee' => [
 //            'has-template-routes' => true,
 //            'seed-overview-page' => true,
 //            'enable' => true,
-//        ],
+            'blocks' => [
+                \App\Filament\Plugins\Blocks\EmployeeBlock::class,
+            ],
+        ],
 //        'vacancy' => [
 //            'seed-overview-page' => true,
 //            'has-template-routes' => true,
@@ -583,6 +597,10 @@ class PrefabCommand extends Command
 
         if (! empty($moduleSettings['searchable'])) {
             $this->addSearchable($moduleSettings['searchable']);
+        }
+
+        if (! empty($moduleSettings['blocks'])) {
+            $this->registerBlocks($moduleSettings['blocks']);
         }
     }
 
@@ -1199,5 +1217,16 @@ AFTER;
             $after,
             '"autoload": {'
         );
+    }
+
+    protected function registerBlocks(array $blocks): void
+    {
+        foreach ($blocks as $block) {
+            $this->addToExistingFile(
+                config_path('blocks.php'),
+                '        ' . $block . '::class,',
+                "    'active' => ["
+            );
+        }
     }
 }

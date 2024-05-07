@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Contracts\Menuable;
+use App\Traits\HasVisibility;
 use App\Traits\Seoable;
 use App\Traits\Labelable;
 use App\Traits\Searchable;
@@ -16,11 +17,13 @@ class Page extends Model implements Menuable, IsSearchable
     use Labelable;
     use Seoable;
     use Searchable;
+    use HasVisibility;
 
     protected $guarded = [];
 
     protected $casts = [
         'content' => 'array',
+        'visible' => 'bool',
     ];
 
     public function getUrlAttribute(): string

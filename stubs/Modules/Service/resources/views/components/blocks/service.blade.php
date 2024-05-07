@@ -1,5 +1,5 @@
 @php
-$service = \App\Models\Service::find($block['data']['service']);
+$service = $block->getService();
 @endphp
 
 @if($service)
@@ -31,7 +31,7 @@ $service = \App\Models\Service::find($block['data']['service']);
 
             @if (! empty($service->image))
                 <div class="w-[calc(100%+30px)] -ml-2.5 sm:ml-0 sm:w-full">
-                    <x-curator-glider :media="$block['data']['image']" />
+                    <x-curator-glider :media="$service->image" />
                 </div>
             @endif
         </article>

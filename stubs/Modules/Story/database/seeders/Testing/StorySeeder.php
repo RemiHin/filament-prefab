@@ -22,6 +22,7 @@ class StorySeeder extends Seeder
             ->create();
 
         Story::factory()
+            ->withBlocks(5)
             ->count(30 - Story::query()->count())
             ->create();
     }
