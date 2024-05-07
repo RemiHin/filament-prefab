@@ -17,6 +17,7 @@ class NewsSeeder extends Seeder
     public function run(): void
     {
         NewsItem::factory()
+            ->withBlocks(5)
             ->count(30 - NewsItem::query()->count())
             ->create();
     }

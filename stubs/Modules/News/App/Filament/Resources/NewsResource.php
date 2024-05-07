@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Blocks\BlockModule;
+use App\Filament\Plugins\BlockModule;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Models\NewsItem;
 use Awcodes\Curator\Components\Forms\CuratorPicker;

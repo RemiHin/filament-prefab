@@ -94,6 +94,16 @@ This project also contains a docker file which can be executed using laravel sai
 2. On forms use the `TitleWithSlugInput` form component. This will handle both the title and the slug. Both fields are required and the slug field validates if it is unique.
 3. For more documentation checkout [the motivo repository](https://github.com/MotivoZwolle/filament-title-with-slug)
 
+### How to use blocks module
+1. Simple add `BlockModule::make('content')` to any resource, where the param is the name of the column which stores the data.
+2. Add `'content' => 'array'` to the casts of the model
+3. New blocks can be created by making a new class in the `App/Filament/Plugins/Blocks` directory and extending the `BaseBlock` model
+4. New blocks can be registered in the `active` array in the `blocks.php` config file
+5. There is also a toggle content field, which can have nested fields. These are registed in the `toggle_content` array in the `blocks.php` config
+6. You can also create your own set of blocks.
+   1. First create a new array in the `blocks.php` config file. The key of this array is not restricted.
+   2. When adding the block module to the resource you can specify a second parameter, which is the key of the array from the previous step, for example `BlockModule::make('content', 'form-builder')`
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog

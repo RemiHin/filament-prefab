@@ -29,6 +29,8 @@ class PageController extends Controller
 
     protected function getView(Page $page): View
     {
+        abort_if(! $page->isVisible(), 404);
+
         if ($page->label?->label && file_exists(resource_path('views/resources/page/') . $page->label->label . '.blade.php')) {
             return view('resources/page/' . $page->label->label, ['model' => $page]);
         }

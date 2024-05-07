@@ -5,21 +5,51 @@ declare(strict_types=1);
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\Contracts\View\View;
+use App\Filament\Plugins\BaseBlock;
 
 class Block extends Component
 {
+    /**
+     * The block to render.
+     *
+     * @var object
+     */
     public $block;
 
-    public string $type = '';
+    /**
+     * The block type.
+     *
+     * @var string
+     */
+    public $type;
 
+    /**
+     * Create the component instance.
+     *
+     * @param  object  $block
+     * @return void
+     */
     public function __construct($block)
     {
-        $this->block = $block;
-        $this->type = $block['type'];
+        $this->type = str_replace('_', '-', $block['type']);
+
+        $this->block = $this->getBlock($this->type, $block['data']);
     }
 
-    public function render(): View
+    protected function getBlock(string $type, array $data): BaseBlock
+    {
+        $class = collect(config('blocks.active', []))
+            ->firstWhere(fn (string|BaseBlock $block) => $block::getType() === $type);
+
+        return new $class($data);
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\View\View|\Closure|string
+     */
+    public function render(): \Illuminate\View\View|\Closure|string
     {
         if (view()->exists("components.blocks.{$this->type}")) {
             return view("components.blocks.{$this->type}");

@@ -10,7 +10,7 @@
                     :aria-expanded="open ? 'true' : 'false'"
                     class="font-family font-bold text-lg lg:text-xl flex flex-row justify-between text-left"
             >
-                {{ $block['data']['title'] }}
+                {{ $block->title }}
 
                 <div
                         class="transition-transform duration-150 ease-in-out"
@@ -28,7 +28,7 @@
                 x-show="open"
                 class="editor mt-5"
         >
-            <x-blocks :blocks="$block['data']['toggle_content']" />
+            <x-blocks :blocks="$block->content" />
         </div>
     </div>
 </div>

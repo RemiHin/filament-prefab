@@ -5,20 +5,25 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Blog;
+use Database\Factories\Helpers\FactoryImage;
+use Database\Factories\Helpers\WithBlocks;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogFactory extends Factory
 {
+    use WithBlocks;
+
     protected $model = Blog::class;
 
     public function definition(): array
     {
         return [
-            'name' => $name = $this->faker->unique()->gpt('Write a title for a healthcare related blog', $this->faker->sentence(4), trimQuotes: true),
-            'slug' => 'blog/' . Str::slug($name),
-            'visible' => $this->faker->boolean,
-            'intro' => $this->faker->gpt('Write the introduction paragraph for a healthcare related blog post', $this->faker->text),
+            'name' => $name = fake()->words(4, true),
+            'slug' => Str::slug($name),
+            'visible' => fake()->boolean,
+            'intro' => fake()->text,
+            'image_id' => FactoryImage::make()->label($name)->cropperField(800, 800),
             'publish_from' => now(),
         ];
     }

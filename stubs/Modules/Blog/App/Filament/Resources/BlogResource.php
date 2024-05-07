@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Blocks\BlockModule;
+use App\Filament\Plugins\BlockModule;
 use App\Filament\Resources\BlogResource\Pages;
 use App\Models\Blog;
 use Awcodes\Curator\Components\Forms\CuratorPicker;

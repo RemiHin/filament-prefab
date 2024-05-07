@@ -139,6 +139,7 @@
     ":count result has been found on your search request :searchterm": "Er is :count resultaat gevonden op jouw zoekterm :searchterm",
     ":count results were found on your search request :searchterm": "Er zijn :count resultaten gevonden op jouw zoekterm :searchterm",
     "No results were found on your search request :searchterm": "Er zijn geen resultaten gevonden op jouw zoekterm :searchterm",
+    "Add block": "Blok toevoegen",
     "This is a relative path after :url. It starts with a '/'.": "Dit is een relatief pad na :url. Het begint met een '/'",
     "This can be a relative like 'from' or a full path. A full path starts with http(s).": "Dit kan een relatief pad zijn zoals 'van' of een volledig pad. Een volledig pad begint met http(s).",
 

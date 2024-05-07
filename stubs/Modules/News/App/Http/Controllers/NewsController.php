@@ -16,6 +16,8 @@ class NewsController extends Controller
 
     public function show(NewsItem $newsItem)
     {
+        abort_if(! $newsItem->isVisible() || ! $newsItem->isPublished(), 404);
+
         return view('resources.news.show', ['model' => $newsItem]);
     }
 }
