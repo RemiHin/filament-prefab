@@ -26,6 +26,7 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=news`
 - `php artisan prefab:filament --module=story`
 - `php artisan prefab:filament --module=employee`
+- `php artisan prefab:filament --module=form-builder`
 - NOTE: When updating modules after their initial rollout add `--force` to override local files. Additionally `--no-shell` can be added to prevent shell commands from being executed to speed up rolling out updates.
 7. `composer dump`
 8. `php artisan migrate`
@@ -103,6 +104,11 @@ This project also contains a docker file which can be executed using laravel sai
 6. You can also create your own set of blocks.
    1. First create a new array in the `blocks.php` config file. The key of this array is not restricted.
    2. When adding the block module to the resource you can specify a second parameter, which is the key of the array from the previous step, for example `BlockModule::make('content', 'form-builder')`
+
+### How to use form module
+1. The form module is build on top of the blocks module
+2. Adding a new form can be done by creating a new form block, extending the `FormBlock` class
+3. Blocks can be registered in the `form` array in the `blocks.php` config file.
 
 ### Front-end
 1. visit `/blog` for a blog overview
