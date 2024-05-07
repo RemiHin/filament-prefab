@@ -27,5 +27,7 @@
     "Define the allowed file types, comma seperated (e.g. pdf,doc,docx)": "Geef de toegestane bestandstypes op, kommagescheiden (bijv. pdf,doc,docx)",
     "Required": "Verplicht",
     "File": "Bestand",
-    "Files": "Bestanden"
+    "Files": "Bestanden",
+    "Form submitted successfully": "Formulier is verzonden",
+    "Free input": "Vrije invoer"
 }

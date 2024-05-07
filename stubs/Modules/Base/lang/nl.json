@@ -147,7 +147,6 @@
     "This field only accepts files with a max file size of :size kb.": "Dit veld accepteert alleen bestanden met een maximale bestandsgrootte van :size kb.",
     "This field only accepts :types files.": "Dit veld accepteert alleen :types bestanden.",
     "Options": "Opties",
-    "Free input": "Vrije invoer",
 
 
     "EOF": "End of file"
