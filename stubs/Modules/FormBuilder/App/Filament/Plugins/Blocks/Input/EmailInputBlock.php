@@ -26,6 +26,7 @@ class EmailInputBlock extends FormBlock
                 ->required(),
 
             Toggle::make('required')
+                ->label(__('Required'))
                 ->default(true),
 
             TextInput::make('placeholder')

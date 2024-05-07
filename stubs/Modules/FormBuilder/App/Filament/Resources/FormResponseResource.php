@@ -39,9 +39,7 @@ class FormResponseResource extends Resource
         if ($model = $form->getModelInstance()) {
             foreach ($model->form->content as $blockData) {
                 $block = BlockModule::reconstructBlock($blockData['type'], $blockData['data']);
-
-                $blockFields[] = Forms\Components\TextInput::make('form_data.' . $block->id . '.answer')
-                    ->label($block->getQuestion());
+                $blockFields[] = $block->getFilamentField();
             }
         }
 

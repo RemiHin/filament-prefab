@@ -31,7 +31,12 @@ class FormBuilderController extends Controller
 
         foreach ($form->content as $blockContent) {
             $block = BlockModule::reconstructBlock($blockContent['type'], $blockContent['data']);
-            $blockData = $request->get($block->id);
+            $blockData = $request->get($block->id, []);
+            $files = $request->file($block->id);
+
+            if ($files) {
+                $blockData = array_merge($blockData, $files);
+            }
 
             $formData[$block->id] = [
                 'question' => $block->getQuestion(),

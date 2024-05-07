@@ -3,6 +3,8 @@
 namespace App\Filament\Plugins\Blocks\Input;
 
 use App\Filament\Plugins\FormBlock;
+use Filament\Forms\Components\Field;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
@@ -26,6 +28,7 @@ class TextAreaInputBlock extends FormBlock
                 ->required(),
 
             Toggle::make('required')
+                ->label(__('Required'))
                 ->default(true),
 
             TextInput::make('placeholder')
@@ -62,5 +65,12 @@ class TextAreaInputBlock extends FormBlock
     public function getAnswer(array $data): ?string
     {
         return $data['text'];
+    }
+
+    public function getFilamentField(): Field
+    {
+        return Textarea::make('form_data.' . $this->id . '.answer')
+            ->rows(3)
+            ->label($this->getQuestion());
     }
 }
