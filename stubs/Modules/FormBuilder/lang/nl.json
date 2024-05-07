@@ -29,5 +29,8 @@
     "File": "Bestand",
     "Files": "Bestanden",
     "Form submitted successfully": "Formulier is verzonden",
-    "Free input": "Vrije invoer"
+    "Free input": "Vrije invoer",
+    "Dropdownlist": "Dropdownlijst",
+    "Checkboxes": "Keuzevakjes",
+    "Multiple choice": "Meerkeuze"
 }
