@@ -1,0 +1,50 @@
+@import "nouislider/dist/nouislider.min.css";
+
+.noUi-horizontal {
+    @apply h-1.5 mt-6 mb-16;
+}
+
+.noUi-horizontal .noUi-tooltip {
+    @apply rounded py-0.5 px-1.5;
+
+    bottom: unset;
+    top: 130%;
+}
+
+.noUi-horizontal .noUi-handle {
+    @apply h-8 w-8;
+
+    top: -13px;
+}
+
+.noUi-tooltip {
+    @apply border-white;
+}
+
+.noUi-handle {
+    @apply rounded-full;
+    @apply transition duration-150 ease-in-out;
+    @apply border-4 border-solid border-secondary;
+}
+
+.noUi-handle:hover {
+    @apply border-4 border-solid border-secondary-dark;
+    @apply drop-shadow-sm;
+}
+
+.noUi-handle:after, .noUi-handle:before {
+    @apply hidden;
+}
+
+.noUi-touch-area {
+    @apply cursor-move;
+}
+
+.noUi-connect {
+    @apply bg-secondary;
+}
+
+.noUi-target {
+    @apply w-[calc(100%-32px)] border-0 ml-4;
+    @apply bg-black/5 border-none shadow-none;
+}
