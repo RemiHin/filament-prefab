@@ -39,7 +39,7 @@ class FormResponsesRelationManager extends RelationManager
     {
         $blockFields = [];
 
-        foreach ($this->ownerRecord->content as $id => $blockData) {
+        foreach ($this->ownerRecord->content as $blockData) {
             $block = BlockModule::reconstructBlock($blockData['type'], $blockData['data']);
             $blockFields[] = $block->getFilamentField();
         }
@@ -47,7 +47,7 @@ class FormResponsesRelationManager extends RelationManager
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\TextInput::make('id')
+                Forms\Components\TextInput::make('response_number')
                     ->prefix(__('Respondent') . ' ')
                     ->required()
                     ->maxLength(255),
@@ -60,7 +60,7 @@ class FormResponsesRelationManager extends RelationManager
     {
         $blockColumns = [];
 
-        foreach ($this->ownerRecord->content as $id => $blockData) {
+        foreach ($this->ownerRecord->content as $blockData) {
             $block = BlockModule::reconstructBlock($blockData['type'], $blockData['data']);
 
             $blockColumns[] = Tables\Columns\TextColumn::make('form_data.' . $block->id . '.answer')
@@ -69,9 +69,9 @@ class FormResponsesRelationManager extends RelationManager
         }
 
         return $table
-            ->recordTitleAttribute('id')
+            ->recordTitleAttribute('response_number')
             ->columns([
-                Tables\Columns\TextColumn::make('id')
+                Tables\Columns\TextColumn::make('response_number')
                     ->label(__('Respondent'))
                     ->prefix(__('Respondent') . ' ')
                     ->searchable(),

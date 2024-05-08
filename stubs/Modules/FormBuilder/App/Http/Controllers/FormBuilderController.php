@@ -44,9 +44,18 @@ class FormBuilderController extends Controller
             ];
         }
 
+        $responseNumber = 1;
+
+        if ($latest = $form->formResponses()->orderByDesc('response_number')->first()) {
+            $responseNumber = $latest->response_number + 1;
+        }
+
         return $form
             ->formResponses()
-            ->create(['form_data' => $formData]);
+            ->create([
+                'response_number' => $responseNumber,
+                'form_data' => $formData,
+            ]);
     }
 
     protected function handleAdminNotification(Form $form, FormResponse $formResponse): void

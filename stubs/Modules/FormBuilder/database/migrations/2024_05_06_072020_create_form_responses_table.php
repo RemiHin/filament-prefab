@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('form_responses', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('response_number');
+
             $table->foreignIdFor(Form::class)->constrained()->cascadeOnDelete();
             $table->json('form_data');
 

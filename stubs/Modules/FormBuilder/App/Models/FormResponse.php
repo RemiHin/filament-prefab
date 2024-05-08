@@ -13,7 +13,8 @@ class FormResponse extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'form_data' => 'array'
+        'response_number' => 'int',
+        'form_data' => 'array',
     ];
 
     public function form(): BelongsTo

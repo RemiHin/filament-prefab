@@ -46,7 +46,7 @@ class FormResponseResource extends Resource
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\TextInput::make('id')
+                Forms\Components\TextInput::make('response_number')
                     ->label(__('Respondent'))
                     ->prefix(__('Respondent') . ' ')
                     ->required()
@@ -63,7 +63,7 @@ class FormResponseResource extends Resource
                 Tables\Columns\TextColumn::make('form.name')
                     ->label(__('Form')),
 
-                Tables\Columns\TextColumn::make('id')
+                Tables\Columns\TextColumn::make('response_number')
                     ->label(__('Respondent'))
                     ->prefix(__('Respondent') . ' '),
             ])
