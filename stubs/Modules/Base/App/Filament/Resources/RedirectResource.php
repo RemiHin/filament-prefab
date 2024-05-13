@@ -6,13 +6,16 @@ use App\Enums\RedirectType;
 use App\Filament\Resources\RedirectResource\Pages;
 use App\Filament\Resources\RedirectResource\RelationManagers;
 use App\Models\Redirect;
+use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Validation\Validator;
 
 class RedirectResource extends Resource
 {
@@ -51,6 +54,21 @@ class RedirectResource extends Resource
                     ->label(__('Target path'))
                     ->startsWith(['/', 'http', 'https'])
                     ->different('request_path')
+                    ->rules([
+                        fn (Get $get) => function (string $attribute, string $value, Closure $fail) use ($get) {
+                            $from = $get('request_path');
+
+                            if (! empty($value) || ! empty($from)) {
+                                $query = Redirect::query()
+                                    ->where('request_path', $value)
+                                    ->where('target_path', $from);
+
+                                if ($query->exists()) {
+                                    $fail(__('Redirect with mirrored from and to exists. This would create a redirect loop, please delete the mirrored redirect before creating this record.'));
+                                }
+                            }
+                        }
+                    ])
                     ->required(),
 
                 Select::make('redirect_type')
@@ -88,6 +106,7 @@ class RedirectResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
