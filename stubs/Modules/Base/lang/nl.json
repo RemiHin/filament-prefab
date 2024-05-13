@@ -142,6 +142,11 @@
     "Add block": "Blok toevoegen",
     "This is a relative path after :url. It starts with a '/'.": "Dit is een relatief pad na :url. Het begint met een '/'",
     "This can be a relative like 'from' or a full path. A full path starts with http(s).": "Dit kan een relatief pad zijn zoals 'van' of een volledig pad. Een volledig pad begint met http(s).",
+    "Submit": "Verzenden",
+    "This field only accepts :types files with a max file size of :size kb.": "Dit veld accepteert alleen :types bestanden met een maximale bestandsgrootte van :size kb.",
+    "This field only accepts files with a max file size of :size kb.": "Dit veld accepteert alleen bestanden met een maximale bestandsgrootte van :size kb.",
+    "This field only accepts :types files.": "Dit veld accepteert alleen :types bestanden.",
+    "Options": "Opties",
 
 
     "EOF": "End of file"
