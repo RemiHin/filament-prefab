@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
+use App\Mail\Applicant\InformAdmin;
+use App\Mail\Applicant\InformApplicant;
 use App\Models\Vacancy;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -85,7 +88,10 @@ class ApplicationForm extends Component
         }
 
         $attributes['status'] = ApplicantStatus::NEW->value;
-        $this->vacancy->applicants()->create($attributes);
+        $applicant = $this->vacancy->applicants()->create($attributes);
+
+        Mail::to($applicant->email, $applicant->name)->queue(new InformApplicant($applicant));
+        Mail::to(config('mail.from.address'), config('mail.from.name'))->queue(new InformAdmin($applicant));
 
         $this->clearForm();
         $this->success = true;

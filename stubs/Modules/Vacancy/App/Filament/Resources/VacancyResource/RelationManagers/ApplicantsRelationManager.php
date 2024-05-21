@@ -1,32 +1,18 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\VacancyResource\RelationManagers;
 
 use App\Enums\ApplicantStatus;
-use App\Filament\Resources\ApplicantResource\Pages;
-use App\Filament\Resources\ApplicantResource\RelationManagers;
-use App\Models\Applicant;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\HtmlString;
+use Illuminate\Contracts\Support\Htmlable;
 
-class ApplicantResource extends Resource
+class ApplicantsRelationManager extends RelationManager
 {
-    protected static ?string $model = Applicant::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-user';
-
-    protected static ?int $navigationSort = 101;
-
-    public static function getNavigationGroup(): string
-    {
-        return __('Vacancies');
-    }
+    protected static string $relationship = 'applicants';
 
     public static function getLabel(): ?string
     {
@@ -38,15 +24,16 @@ class ApplicantResource extends Resource
         return __('Applicants');
     }
 
-    public static function form(Form $form): Form
+    protected function getTableHeading(): string|Htmlable|null
+    {
+        return __('Applicants');
+    }
+
+    public function form(Form $form): Form
     {
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\Select::make('vacancy_id')
-                    ->label(__('Vacancy'))
-                    ->relationship('vacancy', 'name'),
-
                 Forms\Components\Grid::make('name')
                     ->columns(5)
                     ->schema([
@@ -97,61 +84,30 @@ class ApplicantResource extends Resource
                     ->downloadable()
                     ->previewable()
                     ->deletable(false),
-
-                // TODO: Send mail to applicant
-
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('vacancy.name')
-                    ->label(__('Vacancy'))
-                    ->searchable()
-                    ->sortable(),
-
-                Tables\Columns\TextColumn::make('name')
-                    ->label(__('Name')),
-
-                Tables\Columns\TextColumn::make('status')
-                    ->formatStateUsing(fn(string $state) => ApplicantStatus::tryFrom($state)->translate())
-                    ->label(__('Status')),
-
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('Created at'))
-                    ->date()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('name'),
             ])
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListApplicants::route('/'),
-            'create' => Pages\CreateApplicant::route('/create'),
-            'view' => Pages\ViewApplicant::route('/{record}'),
-            'edit' => Pages\EditApplicant::route('/{record}/edit'),
-        ];
     }
 }

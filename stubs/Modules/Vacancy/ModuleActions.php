@@ -13,7 +13,6 @@ class ModuleActions
         $this->addNoUISlider();
         $this->addRelationToLocation();
         $this->registerDiskDrive();
-//        $this->addObserverToProvider();
     }
 
     protected function addNoUISlider(): void
