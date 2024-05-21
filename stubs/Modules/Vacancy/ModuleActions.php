@@ -12,8 +12,8 @@ class ModuleActions
     {
         $this->addNoUISlider();
         $this->addRelationToLocation();
+        $this->registerDiskDrive();
 //        $this->addObserverToProvider();
-//        $this->addCvDrive();
     }
 
     protected function addNoUISlider(): void
@@ -82,51 +82,38 @@ RELATION;
         );
     }
 
-//    public function addCvDrive(): void
-//    {
-//        /** @var PrefabCommand $prefabCommand */
-//        $prefabCommand = app(PrefabCommand::class);
-//
-//        $file = config_path('filesystems.php');
-//
-//        $drive = PHP_EOL
-//            . "        'cv' => [" . PHP_EOL
-//            . "            'driver' => 'local'," . PHP_EOL
-//            . "            'root' => storage_path('app/cv')," . PHP_EOL
-//            . "            'url' => env('APP_URL') . '/cv'," . PHP_EOL
-//            . "        ]," . PHP_EOL;
-//
-//        $after = "        'public' => [" . PHP_EOL
-//            . "            'driver' => 'local'," . PHP_EOL
-//            . "            'root' => storage_path('app/public')," . PHP_EOL
-//            . "            'url' => env('APP_URL') . '/storage'," . PHP_EOL
-//            . "            'visibility' => 'public'," . PHP_EOL
-//            . "        ]," . PHP_EOL;
-//
-//        $prefabCommand->addToExistingFile(
-//            $file,
-//            $drive,
-//            $after,
-//        );
-//    }
+    protected function registerDiskDrive(): void
+    {
+        $filesystem = <<< 'Filesystem'
+        'cv' => [
+            'driver' => 'local',
+            'root' => storage_path('app/cv'),
+            'visibility' => 'private',
+        ],
+        
+Filesystem;
 
-//    protected function addObserverToProvider(): void
-//    {
-//        $file = app_path('Providers/EventServiceProvider.php');
-//
-//        /** @var PrefabCommand $prefabCommand */
-//        $prefabCommand = app(PrefabCommand::class);
-//
-//        $prefabCommand->addToExistingFile(
-//            $file,
-//            '        Applicant::observe(ApplicantObserver::class);',
-//            'public function boot(): void'.PHP_EOL.'    {',
-//        );
-//
-//        $prefabCommand->addToExistingFile(
-//            $file,
-//            'use App\Models\Applicant;'.PHP_EOL.'use App\Observers\ApplicantObserver;',
-//            'namespace App\Providers;'.PHP_EOL,
-//        );
-//    }
+        $provider = <<< 'Provider'
+        \Illuminate\Support\Facades\Storage::disk('cv')->buildTemporaryUrlsUsing(function ($path, $expiration, $options) {
+            return \Illuminate\Support\Facades\URL::temporarySignedRoute(
+                'vacancy.download-cv',
+                $expiration,
+                array_merge($options, ['path' => $path])
+            );
+        });
+        
+Provider;
+
+        (new PrefabCommand())->addToExistingFile(
+            config_path('filesystems.php'),
+            $filesystem,
+            "'disks' => ["
+        );
+
+        (new PrefabCommand())->addToExistingFile(
+            base_path('app/Providers/AppServiceProvider.php'),
+            $provider,
+            "    public function boot(): void" . PHP_EOL . "    {"
+        );
+    }
 }

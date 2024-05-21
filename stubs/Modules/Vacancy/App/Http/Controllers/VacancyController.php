@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Label;
 use App\Models\Vacancy;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class VacancyController extends Controller
 {
-    public function idnex(): View
+    public function index(): View
     {
         $page = Label::getModel('vacancy-overview');
 
@@ -23,5 +25,10 @@ class VacancyController extends Controller
         abort_if(! $vacancy->isVisible(), $vacancy->isPublished(), 404);
 
         return view('resources.vacancy.show', ['model' => $vacancy]);
+    }
+
+    public function download(string $path): StreamedResponse
+    {
+        return Storage::disk('cv')->download($path);
     }
 }

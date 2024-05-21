@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Plugins\BlockModule;
 use App\Filament\Resources\PositionGroupResource\Pages;
 use App\Filament\Resources\PositionGroupResource\RelationManagers;
 use App\Models\PositionGroup;
@@ -12,14 +11,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PositionGroupResource extends Resource
 {
     protected static ?string $model = PositionGroup::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
 
     protected static ?int $navigationSort = 105;
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
@@ -55,6 +56,11 @@ class Vacancy extends Model implements IsSearchable
     public function educations(): BelongsToMany
     {
         return $this->belongsToMany(Education::class);
+    }
+
+    public function applicants(): HasMany
+    {
+        return $this->hasMany(Applicant::class);
     }
 
     public function getSalaryAttribute(): ?string

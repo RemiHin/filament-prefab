@@ -110,19 +110,21 @@
         </div>
     </section>
 
-    <section>
-        <div class="container max-w-container">
-            <ul class="mt-4 pl-4">
-                @foreach($model->meta as $meta)
-                    @if(! empty($meta ))
-                        <li>
-                            {{ $meta }}
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
-        </div>
-    </section>
+    @if(! empty($model->meta))
+        <section>
+            <div class="container max-w-container">
+                <ul class="mt-4 pl-4">
+                    @foreach($model->meta as $meta)
+                        @if(! empty($meta ))
+                            <li>
+                                {{ $meta }}
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+    @endif
 
     @if($model->intro)
         <section class="mt-10 lg:mt-16">
@@ -153,12 +155,12 @@
                         </span>
                     </div>
 
-{{--                    <x-button--}}
-{{--                        href="{{ route('application.form', ['vacancy' => $model]) }}"--}}
-{{--                        class="btn-primary shrink-0 bg-secondary border-secondary hover:bg-secondary-dark hover:border-secondary-dark"--}}
-{{--                        :title="__('Apply')"--}}
-{{--                        icon="arrow-right"--}}
-{{--                    />--}}
+                    <x-button
+                        href="{{ route('application.form', ['vacancy' => $model]) }}"
+                        class="btn-primary text-gray-900 shrink-0 bg-secondary border-secondary hover:bg-secondary-dark hover:border-secondary-dark"
+                        :title="__('Apply')"
+                        icon="arrow-right"
+                    />
                 </div>
             </div>
         </div>
