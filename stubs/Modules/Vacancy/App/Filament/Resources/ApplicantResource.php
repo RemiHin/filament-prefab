@@ -11,9 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\HtmlString;
 
 class ApplicantResource extends Resource
 {
@@ -78,10 +75,12 @@ class ApplicantResource extends Resource
                     ]),
 
                 Forms\Components\Textarea::make('motivation')
+                    ->label(__('Motivation'))
                     ->rows(4)
                     ->required(),
 
                 Forms\Components\Select::make('status')
+                    ->label(__('Status'))
                     ->required()
                     ->options([
                         ApplicantStatus::NEW->value => ApplicantStatus::NEW->translate(),
@@ -97,9 +96,6 @@ class ApplicantResource extends Resource
                     ->downloadable()
                     ->previewable()
                     ->deletable(false),
-
-                // TODO: Send mail to applicant
-
             ]);
     }
 
