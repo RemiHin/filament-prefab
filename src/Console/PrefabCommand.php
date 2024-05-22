@@ -46,7 +46,7 @@ class PrefabCommand extends Command
         'hero-image',
 //        'search',
 //        'donation',
-//        'job-alert',
+        'job-alert',
         'form-builder'
     ];
 
@@ -359,6 +359,7 @@ class PrefabCommand extends Command
         $this->mergeModuleRoutes($module);
         $this->mergeModuleRoutes($module, 'api');
         $this->mergeModuleRoutes($module, 'filament');
+        $this->mergeModuleRoutes($module, 'console');
 
         // Env
         $this->mergeModuleEnvironment($module);
