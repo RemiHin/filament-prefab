@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RemiHin\FilamentPrefabStubs\Modules\JobAlert\database\factories;
+namespace Database\Factories;
 
 use Carbon\Carbon;
 use App\Models\Vacancy;
@@ -20,11 +20,11 @@ class JobAlertFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->email(),
-            'email_verified_at' => $this->faker->dateTime(Carbon::yesterday()),
-            'hours_min' => $min = $this->faker->numberBetween(8, 32),
-            'hours_max' => $this->faker->numberBetween($min, 40),
+            'name' => fake()->name(),
+            'email' => fake()->email(),
+            'email_verified_at' => fake()->dateTime(Carbon::yesterday()),
+            'hours_min' => $min = fake()->numberBetween(8, 32),
+            'hours_max' => fake()->numberBetween($min, 40),
         ];
     }
 
