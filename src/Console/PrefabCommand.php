@@ -358,6 +358,7 @@ class PrefabCommand extends Command
         $this->mergeModuleRoutes($module);
         $this->mergeModuleRoutes($module, 'api');
         $this->mergeModuleRoutes($module, 'filament');
+        $this->mergeModuleRoutes($module, 'console');
 
         // Env
         $this->mergeModuleEnvironment($module);

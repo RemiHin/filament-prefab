@@ -126,6 +126,17 @@
     ":count results were found on your search request :searchterm": "Er zijn :count resultaten gevonden op jouw zoekterm :searchterm",
     "No results were found on your search request :searchterm": "Er zijn geen resultaten gevonden op jouw zoekterm :searchterm",
     "Add block": "Blok toevoegen",
+    "Mail log": "Maillog",
+    "Mail logs": "Maillogs",
+    "Sent email": "Verzonden e-mail",
+    "Sent emails": "Verzonden e-mails",
+    "Sent": "Verzonden",
+    "Subject": "Onderwerp",
+    "From (email)": "Vanaf (e-mail)",
+    "From (name)": "Vanaf (naam)",
+    "To (email)": "Naar (e-mail)",
+    "To (name)": "Naar (naam)",
+    "Message": "Bericht",
 
 
   "EOF": "End of file"
