@@ -1,0 +1,19 @@
+{
+    "Job Alerts": "Vacture-alarmen",
+    "Job Alert": "Vacature-alarm",
+    "Hello :name": "Hallo :name",
+    "Hello :name,": "Hallo :name,",
+    "New vacancies have been found matching your preferences.": "Er zijn nieuwe vacatures die voldoen aan jouw voorkeuren.",
+    "View all vacancies": "Bekijk alle vacatures",
+    ":count job alerts have been sent": ":count job-alerts verzonden",
+    "Minimum hours": "Minimale uren",
+    "Maximum hours": "Maximale uren",
+    "New vacancies found": "Nieuwe vacatures gevonden",
+    "Manage preferences": "Beheer voorkeuren",
+    "Unsubscribe": "Afmelden",
+    "Preferences have been updated.": "Uw voorkeuren zijn bijgewerkt.",
+    "Thank you for filling the job alert form. You will receive an e-mail to confirm your e-mail address.": "Bedankt voor het invullen van het job alert formulier. U ontvangt een e-mail om uw e-mailadres te bevestigen.",
+    "Job-alert preferences": "Job-alert voorkeuren",
+    "And another :count vacancies": "En :count andere vacatures",
+    "Send": "Versturen"
+}

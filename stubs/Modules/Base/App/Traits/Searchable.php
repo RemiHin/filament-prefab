@@ -7,7 +7,7 @@ namespace App\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Laravel\Scout\Searchable as ScoutSearchable;
-use App\Contacts\IsSearchable;
+use App\Contracts\IsSearchable;
 
 /**
  * @used-by Model

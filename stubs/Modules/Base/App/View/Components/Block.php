@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\View\Components;
 
+use App\Filament\Plugins\BlockModule;
 use Illuminate\View\Component;
 use App\Filament\Plugins\BaseBlock;
 
@@ -33,15 +34,7 @@ class Block extends Component
     {
         $this->type = str_replace('_', '-', $block['type']);
 
-        $this->block = $this->getBlock($this->type, $block['data']);
-    }
-
-    protected function getBlock(string $type, array $data): BaseBlock
-    {
-        $class = collect(config('blocks.active', []))
-            ->firstWhere(fn (string|BaseBlock $block) => $block::getType() === $type);
-
-        return new $class($data);
+        $this->block = BlockModule::reconstructBlock($this->type, $block['data']);
     }
 
     /**
