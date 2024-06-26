@@ -26,7 +26,7 @@ class LocationResource extends Resource
 
     public static function getNavigationGroup(): string
     {
-        return __('Manage');
+        return __('Modules');
     }
 
     public static function getLabel(): ?string
