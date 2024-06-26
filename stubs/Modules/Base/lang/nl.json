@@ -142,6 +142,17 @@
     "Add block": "Blok toevoegen",
     "This is a relative path after :url. It starts with a '/'.": "Dit is een relatief pad na :url. Het begint met een '/'",
     "This can be a relative like 'from' or a full path. A full path starts with http(s).": "Dit kan een relatief pad zijn zoals 'van' of een volledig pad. Een volledig pad begint met http(s).",
+    "Mail log": "Maillog",
+    "Mail logs": "Maillogs",
+    "Sent email": "Verzonden e-mail",
+    "Sent emails": "Verzonden e-mails",
+    "Sent": "Verzonden",
+    "Subject": "Onderwerp",
+    "From (email)": "Vanaf (e-mail)",
+    "From (name)": "Vanaf (naam)",
+    "To (email)": "Naar (e-mail)",
+    "To (name)": "Naar (naam)",
+    "Message": "Bericht",
 
 
     "EOF": "End of file"
