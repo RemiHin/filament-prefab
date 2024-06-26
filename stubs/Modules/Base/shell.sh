@@ -10,6 +10,8 @@ composer require solution-forest/filament-tree
 composer require motivo/filament-title-with-slug
 composer require laravel/scout
 composer require babenkoivan/elastic-scout-driver
+composer require propaganistas/laravel-phone
+composer require axlon/laravel-postal-code-validation
 php artisan filament:assets
 php artisan vendor:publish --tag="filament-tree-config"
 php artisan curator:install --no-interaction

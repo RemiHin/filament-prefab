@@ -38,7 +38,7 @@ class PrefabCommand extends Command
         'news',
         'story',
         'employee',
-//        'location',
+        'location',
 //        'contact',
         'service',
 //        'vacancy',
