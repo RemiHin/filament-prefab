@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Observers\UserObserver;
 use Database\Factories\Helpers\BlockFactoryHandler;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Event;
@@ -22,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        User::observe(UserObserver::class);
+
         Event::listen(function (CommandFinished $command) {
             if ($command->command === 'db:seed') {
                 app(BlockFactoryHandler::class)->execute();
