@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace RemiHin\FilamentPrefabStubs\Modules\Story\App\Filament\Resources;
 
 use App\Filament\Plugins\BlockModule;
 use App\Filament\Resources\StoryResource\Pages;
 use App\Models\Story;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
 class StoryResource extends Resource
 {
@@ -46,21 +44,15 @@ class StoryResource extends Resource
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('General')
                             ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->string()
-                                    ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, $state) {
-                                        $set('slug', Str::slug($state));
-                                    })
-                                    ->maxLength(255),
-
-                                Forms\Components\TextInput::make('slug')
-                                    ->hint('Pas dit alleen aan als je specifiek bezig bent met SEO')
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->rules(['alpha_dash'])
-                                    ->unique(ignoreRecord: true),
+                                TitleWithSlugInput::make(
+                                    fieldTitle: 'name',
+                                    fieldSlug: 'slug',
+                                    urlPath: '/verhalen/',
+                                    urlVisitLinkLabel: __('View page'),
+                                    titleLabel: __('Name'),
+                                    titlePlaceholder: '',
+                                    slugLabel: __('Link:'),
+                                ),
 
                                 Forms\Components\Select::make('story_category_id')
                                     ->label(__('Category'))

@@ -89,6 +89,11 @@ This project also contains a docker file which can be executed using laravel sai
 2. Implement required methods
 3. Available resources will be auto detected by the menu item resource
 
+### How to use titles and slugs
+1. For titles and slugs we use a forked and self-hosted project [filament-title-with-slug](https://github.com/MotivoZwolle/filament-title-with-slug)
+2. On forms use the `TitleWithSlugInput` form component. This will handle both the title and the slug. Both fields are required and the slug field validates if it is unique.
+3. For more documentation checkout [the motivo repository](https://github.com/MotivoZwolle/filament-title-with-slug)
+
 ### How to use blocks module
 1. Simple add `BlockModule::make('content')` to any resource, where the param is the name of the column which stores the data.
 2. Add `'content' => 'array'` to the casts of the model
@@ -105,7 +110,7 @@ This project also contains a docker file which can be executed using laravel sai
 
 ### Biggest Todos:
 - [x] Update naar Laravel 11
-- [ ] slugs
+- [x] slugs
 - [x] redo SEO as field instead of trait (?)
 - [x] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
@@ -113,8 +118,8 @@ This project also contains a docker file which can be executed using laravel sai
 - [ ] Email sending (?) `Job Alert`
 - [x] Search functionalities `Search Module`
 - [ ] Donation module
-- [ ] Redirects en dead-link tracker
-- [ ] Add route for home
+- [x] Redirects en dead-link tracker
+- [x] Add route for home
 - [x] Translations
 
 ### "Copypaste" Todos:
