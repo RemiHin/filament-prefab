@@ -153,6 +153,14 @@
     "To (email)": "Naar (e-mail)",
     "To (name)": "Naar (naam)",
     "Message": "Bericht",
+    "User": "Gebruiker",
+    "Users": "Gebruikers",
+    "Account created": "Account aangemaakt",
+    "You are receiving this email because an account has been created for :website.": "U ontvant deze e-mail omdat een account voor u is aangemaakt voor :website.",
+    "With the link below you can set your password and log-in.": "Met de link hieronder kunt u uw wachtwoord instellen en inloggen.",
+    "Set Password": "Wachtwoord instellen",
+    "This password link will expire in :count minutes.": "Dit wachtwoord link verloopt in :count minuten.",
+    "If the link has expired you can get a new link using the 'Forget Password' button on the login page.": "Als de link verlopen is kunt u een nieuwe link opvragen met de 'Wachtwoord Vergeten' knop op de login pagina.",
 
 
     "EOF": "End of file"
