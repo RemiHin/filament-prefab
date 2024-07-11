@@ -15,11 +15,11 @@ class HeroImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $title = $this->faker->gpt('Give me a healthcare related hero image title', $this->faker->words(4, true), trimQuotes: true),
-            'content' => $this->faker->gpt('Give me a paragraph about a hero in healthcare', $this->faker->paragraph()),
-            'primary_cta_text' => $this->faker->gpt('Give me a healthcare related call to action in 3 words', $this->faker->words(3, true)),
+            'title' => $title = $this->faker->words(4, true),
+            'content' => $this->faker->paragraph(),
+            'primary_cta_text' => $this->faker->words(3, true),
             'primary_cta_link' => $this->faker->url,
-            'secondary_cta_text' => $this->faker->gpt('Give me a healthcare related call to action in 3 words', $this->faker->words(3, true)),
+            'secondary_cta_text' => $this->faker->words(3, true),
             'secondary_cta_link' => $this->faker->url,
         ];
     }
