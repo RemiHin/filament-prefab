@@ -5,6 +5,7 @@ use App\Http\Controllers\CookieConsentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactController;
 
+Route::get('/', [PageController::class, 'home'])->name('home');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact');
 Route::post('/cookies', CookieConsentController::class)->name('cookie_consent');
 Route::get('/zoeken', [SearchController::class, 'search'])->name('search');

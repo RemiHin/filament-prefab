@@ -6,19 +6,9 @@ Use this template to scaffold a new website
 
 1. Create a new project `laravel new project-name`
 2. clone this repository
-3. update the `composer.json` of your new project and add: 
-```
-"repositories": {
-    "filament-prefab": {
-        "type": "path",
-        "url": "../<path-to>/filament-prefab",
-        "symlink": true
-    }
-} 
-```
-4. Change minimum stability to dev: `"minimum-stability": "dev",`
-5. `composer require remihin/filament-prefab`
-6. Install all modules:
+3. update the `composer.json` of your new project and change minimum stability to dev: `"minimum-stability": "dev",`
+4. `composer require remihin/filament-prefab`
+5. Install all modules:
 - `php artisan prefab:filament --module=base --force`
   - be patient with the shell script, force is required to overwrite the user model
 - `php artisan prefab:filament --module=blog`
@@ -27,13 +17,13 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=story`
 - `php artisan prefab:filament --module=employee`
 - NOTE: When updating modules after their initial rollout add `--force` to override local files. Additionally `--no-shell` can be added to prevent shell commands from being executed to speed up rolling out updates.
-7. `composer dump`
-8. `php artisan migrate`
-9. Create a user `php artisan make:filament-user` and follow the prompts
-10. `php artisan db:seed`
-11. open `docker-compose.yml` and replace the container_name with a name of this project
-12. `docker compose up -d`
-13. `npm install && npm run dev`
+6. `composer dump`
+7. `php artisan migrate`
+8. Create a user `php artisan make:filament-user` and follow the prompts
+9. `php artisan db:seed`
+10. open `docker-compose.yml` and replace the container_name with a name of this project
+11. `docker compose up -d`
+12. `npm install && npm run dev`
 
 ### How to use search
 1. Add the `IsSearchable` interface to the model
@@ -89,6 +79,21 @@ This project also contains a docker file which can be executed using laravel sai
 2. Implement required methods
 3. Available resources will be auto detected by the menu item resource
 
+### How to use titles and slugs
+1. For titles and slugs we use a forked and self-hosted project [filament-title-with-slug](https://github.com/MotivoZwolle/filament-title-with-slug)
+2. On forms use the `TitleWithSlugInput` form component. This will handle both the title and the slug. Both fields are required and the slug field validates if it is unique.
+3. For more documentation checkout [the motivo repository](https://github.com/MotivoZwolle/filament-title-with-slug)
+
+### How to use blocks module
+1. Simple add `BlockModule::make('content')` to any resource, where the param is the name of the column which stores the data.
+2. Add `'content' => 'array'` to the casts of the model
+3. New blocks can be created by making a new class in the `App/Filament/Plugins/Blocks` directory and extending the `BaseBlock` model
+4. New blocks can be registered in the `active` array in the `blocks.php` config file
+5. There is also a toggle content field, which can have nested fields. These are registed in the `toggle_content` array in the `blocks.php` config
+6. You can also create your own set of blocks.
+   1. First create a new array in the `blocks.php` config file. The key of this array is not restricted.
+   2. When adding the block module to the resource you can specify a second parameter, which is the key of the array from the previous step, for example `BlockModule::make('content', 'form-builder')`
+
 ### Front-end
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
@@ -100,7 +105,7 @@ This project also contains a docker file which can be executed using laravel sai
 
 ### Biggest Todos:
 - [x] Update naar Laravel 11
-- [ ] slugs
+- [x] slugs
 - [x] redo SEO as field instead of trait (?)
 - [x] Cookie consent `Base module`
 - [ ] Something formbuilder-like (alternative methods?) (https://filamentphp.com/plugins/lara-zeus-bolt)? `Contact module`
@@ -108,8 +113,8 @@ This project also contains a docker file which can be executed using laravel sai
 - [ ] Email sending (?) `Job Alert`
 - [x] Search functionalities `Search Module`
 - [ ] Donation module
-- [ ] Redirects en dead-link tracker
-- [ ] Add route for home
+- [x] Redirects en dead-link tracker
+- [x] Add route for home
 - [x] Translations
 
 ### "Copypaste" Todos:

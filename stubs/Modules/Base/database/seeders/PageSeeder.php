@@ -36,6 +36,7 @@ class PageSeeder extends Seeder
 
                 $page->label()->create(['label' => $label]);
             }
+
         }
     }
 }

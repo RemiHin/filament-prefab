@@ -5,20 +5,24 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Employee;
+use Database\Factories\Helpers\FactoryImage;
+use Database\Factories\Helpers\WithBlocks;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
 {
+    use WithBlocks;
+
     protected $model = Employee::class;
 
     public function definition(): array
     {
         return [
-            'name' => $name = $this->faker->name,
-            'function' => $this->faker->unique()->gpt('Give me a healthcare related job title name', $this->faker->words(2, true), trimQuotes: true),
-//        todo: fix it    'image' => FactoryImage::make()->label($name)->cropperField(800, 800),
-            'visible' => $this->faker->boolean,
-            'intro' => $this->faker->text,
+            'name' => $name = fake()->name,
+            'function' => fake()->jobTitle,
+            'image_id' => FactoryImage::make()->label($name)->cropperField(800, 800),
+            'visible' => fake()->boolean,
+            'intro' => fake()->text,
         ];
     }
 }

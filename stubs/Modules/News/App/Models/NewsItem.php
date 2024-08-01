@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasVisibility;
+use App\Traits\Publishable;
 use Carbon\Carbon;
 use App\Traits\Seoable;
 use App\Traits\Labelable;
 use App\Traits\Searchable;
-use App\Contacts\IsSearchable;
+use App\Contracts\IsSearchable;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -19,30 +21,17 @@ class NewsItem extends Model implements IsSearchable
     use Labelable;
     use Seoable;
     use Searchable;
+    use Publishable;
+    use HasVisibility;
 
     protected $guarded = [];
 
     protected $casts = [
         'publish_from' => 'date',
         'publish_until' => 'date',
+        'visible' => 'bool',
         'content' => 'array',
     ];
-
-    public function scopePublished(Builder $query): void
-    {
-        $query->where(function (Builder $query) {
-            $query->where('publish_from', '<=', Carbon::now())
-                ->orWhereNull('publish_from');
-        })->where(function (Builder $query) {
-            $query->where('publish_until', '>=', Carbon::now())
-                ->orWhereNull('publish_until');
-        });
-    }
-
-    public function scopeVisible(Builder $query): void
-    {
-        $query->where('visible', true);
-    }
 
     public function getUrlAttribute(): string
     {
