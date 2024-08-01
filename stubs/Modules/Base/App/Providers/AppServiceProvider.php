@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Settings\ContactSettings;
+use Illuminate\Support\Facades\View;
 use App\Models\User;
 use App\Observers\UserObserver;
 use Database\Factories\Helpers\BlockFactoryHandler;
@@ -24,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        View::composer('*', function (\Illuminate\Contracts\View\View $view) {
+            $view->with([
+                'contactSettings' => app(ContactSettings::class),
+            ]);
+        });
+      
         User::observe(UserObserver::class);
 
         Event::listen(function (CommandFinished $command) {

@@ -98,6 +98,11 @@ This project also contains a docker file which can be executed using laravel sai
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
+### Settings
+1. For settings we use the [spatie plugin](https://filamentphp.com/plugins/filament-spatie-settings).
+2. Optional: add the filament page to the correct navigation group `protected static ?string $navigationGroup = 'settings';`
+3. Add the settings to view composer in `AppServiceProvider` to access variables in blade
+
 ### Biggest Todos:
 - [x] Update naar Laravel 11
 - [x] slugs
@@ -119,7 +124,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [x] Service
 - [x] Story
 - [ ] Vacancy
-- [ ] Settings
+- [x] Settings
 - [ ] Toptasks
 
 
