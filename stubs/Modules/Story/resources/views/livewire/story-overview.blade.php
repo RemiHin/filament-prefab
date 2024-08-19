@@ -19,7 +19,7 @@
                                     type="checkbox"
                                     name="{{ $storyCategory->name }}"
                                     class="hidden"
-                                    wire:model="categorieen.{{ $storyCategory->id }}"
+                                    wire:model="categories.{{ $storyCategory->id }}"
                             />
 
                             <div class="checkbox-button cursor-pointer flex flex-row items-center gap-2 py-2 px-4 font-semibold rounded-full border transition-colors duration-150 ease-in-out @if($this->hasStoryCategory($storyCategory->id)) bg-secondary border-transparent text-white @else bg-secondary/10 text-primary border-primary font-medium hover:bg-secondary/20 @endif">

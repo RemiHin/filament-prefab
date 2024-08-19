@@ -27,7 +27,7 @@
 
     <div class="flex flex-row items-center justify-between py-2 px-5">
         <a href="/" aria-label="{{ __('Home') }} {{ config('app.name') }}">
-            <img src="{{ asset(config('general.logo') ? 'storage/' . config('general.logo') : 'assets/logo.svg') }}" class="h-12" alt="">
+            <img src="{{ asset('assets/logo.svg') }}" class="h-12" alt="">
         </a>
 
         @if(! $stripped)

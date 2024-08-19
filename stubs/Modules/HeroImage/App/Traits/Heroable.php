@@ -27,14 +27,14 @@ trait Heroable
                 ->label(__('Hero image'))
                 ->relationship(
                     name: 'heroImage',
-                    condition: fn (?array $state): bool => $state['has_hero_image']
+                    condition: fn(?array $state): bool => $state['has_hero_image']
                 )
                 ->schema([
                     Forms\Components\Toggle::make('has_hero_image')
                         ->label(__('Has hero image'))
                         ->live()
                         ->dehydrated(false)
-                        ->default(false),
+                        ->afterStateHydrated(fn(Forms\Components\Toggle $component) => $component->state($component->getModelInstance()->exists)),
 
                     Forms\Components\TextInput::make('title')
                         ->label(__('Title'))

@@ -5,7 +5,7 @@
                 href="{{ config('social.facebook') }}"
                 target="_blank"
                 rel="noopener"
-                aria-label="Externe link naar Facebook"
+                aria-label="{{ __('External link to :to', ['to' => 'Facebook']) }}"
                 class="flex"
             >
                 <x-svg
@@ -22,7 +22,7 @@
                 href="{{ config('social.linked-in') }}"
                 target="_blank"
                 rel="noopener"
-                aria-label="Externe link naar LinkedIn"
+                aria-label="{{ __('External link to :to', ['to' => 'LinkedIn']) }}"
                 class="flex"
             >
                 <x-svg
@@ -39,7 +39,7 @@
                 href="{{ config('social.instagram') }}"
                 target="_blank"
                 rel="noopener"
-                aria-label="Externe link naar Instagram"
+                aria-label="{{ __('External link to :to', ['to' => 'Instagram']) }}"
                 class="flex"
             >
                 <x-svg
@@ -56,7 +56,7 @@
                 href="{{ config('social.twitter') }}"
                 target="_blank"
                 rel="noopener"
-                aria-label="Externe link naar Twitter"
+                aria-label="{{ __('External link to :to', ['to' => 'Twitter']) }}"
                 class="flex"
             >
                 <x-svg
@@ -73,7 +73,7 @@
                 href="{{ config('social.youtube') }}"
                 target="_blank"
                 rel="noopener"
-                aria-label="Externe link naar Youtube"
+                aria-label="{{ __('External link to :to', ['to' => 'Youtube']) }}"
                 class="flex"
             >
                 <x-svg

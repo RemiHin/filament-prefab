@@ -8,7 +8,7 @@
             <div class="w-full flex flex-col md:flex-row items-start gap-5 md:gap-8 lg:gap-12">
                 <div class="flex flex-col gap-5 flex-shrink-0 self-center md:self-start">
                     <img
-                        src="{{ asset(config('general.logo') ? 'storage/' . config('general.logo') : 'assets/logo.svg') }}"
+                        src="{{ asset('assets/logo.svg') }}"
                         alt="Logo {{ config('app.name') }}"
                         class="w-full max-w-[180px]"
                     >
@@ -63,7 +63,7 @@
     @else
         <div class="container flex flex-col items-center text-center pt-10 pb-5">
             <img
-                src="{{ asset(config('general.logo') ? 'storage/' . config('general.logo') : 'assets/logo.svg') }}"
+                src="{{ asset('assets/logo.svg') }}"
                 alt="Logo {{ config('app.name') }}"
                 class="w-full max-w-[180px]"
             >
