@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Story\App\Filament\Resources;
+namespace App\Filament\Resources;
 
 use App\Filament\Plugins\BlockModule;
 use App\Filament\Resources\StoryResource\Pages;
