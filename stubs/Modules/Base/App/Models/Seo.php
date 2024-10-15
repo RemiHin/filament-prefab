@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Seo extends Model
 {
-    use HasFactory;
     protected $guarded = [];
 
     protected $table = 'seo';

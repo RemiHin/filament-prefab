@@ -52,6 +52,7 @@ class LocationResource extends Resource
                                     fieldTitle: 'name',
                                     fieldSlug: 'slug',
                                     urlVisitLinkLabel: __('View page'),
+                                    urlPath: '/locaties/',
                                     titleLabel: __('Name'),
                                     titlePlaceholder: '',
                                     slugLabel: __('Link:'),
@@ -71,7 +72,6 @@ class LocationResource extends Resource
                                 CuratorPicker::make('image_id')
                                     ->label(__('Image'))
                                     ->buttonLabel(__('Add image'))
-                                    ->label(__('Image'))
                                     ->required(),
 
                                 Forms\Components\TextInput::make('phone')

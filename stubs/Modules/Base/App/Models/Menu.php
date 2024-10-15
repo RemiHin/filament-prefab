@@ -9,13 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Menu extends Model
 {
-    use HasFactory;
     use Labelable;
 
     protected $guarded = [];
 
     public function children(): HasMany
     {
-        return $this->hasMany(MenuItem::class)->where('parent_id', -1);
+        return $this->hasMany(MenuItem::class)->where('parent_id', -1)->order('order');
     }
 }

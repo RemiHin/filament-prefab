@@ -23,6 +23,10 @@
         class="mt-5"
     />
 
+    <section class="container mt-10 lg:mt-16">
+        {!! $model->description !!}
+    </section>
+
     <section class="mt-10 lg:mt-16">
         <x-blocks :blocks="$model->content"></x-blocks>
     </section>

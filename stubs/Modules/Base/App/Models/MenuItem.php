@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use SolutionForest\FilamentTree\Concern\ModelTree;
 
 class MenuItem extends Model
 {
-    use HasFactory;
     use ModelTree;
 
     protected $guarded = [];
@@ -23,6 +23,11 @@ class MenuItem extends Model
     public function menuable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(self::class,'parent_id')->orderBy('order');
     }
 
     public function getUrl(): ?string

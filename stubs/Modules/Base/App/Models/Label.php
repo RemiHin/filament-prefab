@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Label extends Model
 {
-    use HasFactory;
     protected $guarded = [];
 
     public static function getModel(string $label, ?string $model = null): ?Model
