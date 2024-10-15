@@ -41,12 +41,13 @@ class PrefabCommand extends Command
         'location',
 //        'contact',
         'service',
-//        'vacancy',
+        'vacancy',
 //        'blocks',
         'hero-image',
 //        'search',
 //        'donation',
-//        'job-alert',
+        'job-alert',
+        'form-builder'
     ];
 
     /**
