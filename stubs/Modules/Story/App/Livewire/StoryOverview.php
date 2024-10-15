@@ -24,25 +24,29 @@ class StoryOverview extends Component
 
     public Page|Model $storyOverviewPage;
 
-    public array $categorieen = [];
+    public array $categories = [];
 
     public Collection $storyCategoryFilters;
 
-    protected $queryString = ['categorieen'];
+    protected $queryString = [
+        'categories' => [
+            'as' => 'categorieen',
+        ]
+    ];
 
     public function mount()
     {
         $this->storyOverviewPage = Label::getModel('story-overview');
 
         $this->storyCategoryFilters = StoryCategory::query()
-            ->whereHas('stories', fn ($builder) => $builder->visible()->published())
+            ->whereHas('stories', fn($builder) => $builder->visible()->published())
             ->get();
     }
 
-    public function updatedCategorieen(): void
+    public function updatedCategories(): void
     {
-        $this->categorieen = collect($this->categorieen)
-            ->filter(fn (bool $category) => $category === true)
+        $this->categories = collect($this->categories)
+            ->filter(fn(bool $category) => $category === true)
             ->toArray();
 
         $this->resetPage();
@@ -50,12 +54,12 @@ class StoryOverview extends Component
 
     protected function getStories()
     {
-        $storyCategories = array_keys($this->categorieen);
+        $storyCategories = array_keys($this->categories);
 
         $stories = Story::query()
             ->visible()
             ->published()
-            ->when(count($storyCategories), fn (Builder $builder) => $builder->whereIn('story_category_id', $storyCategories))
+            ->when(count($storyCategories), fn(Builder $builder) => $builder->whereIn('story_category_id', $storyCategories))
             ->latest()
             ->paginate(self::AMOUNT_PER_PAGE)
             ->setPath(route('story.index', ['model' => $this->storyOverviewPage]));
@@ -88,6 +92,6 @@ class StoryOverview extends Component
 
     public function hasStoryCategory(int $storyCategoryId): bool
     {
-        return array_key_exists($storyCategoryId, $this->categorieen);
+        return array_key_exists($storyCategoryId, $this->categories);
     }
 }

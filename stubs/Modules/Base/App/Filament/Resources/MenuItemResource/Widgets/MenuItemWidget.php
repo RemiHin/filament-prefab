@@ -27,49 +27,4 @@ class MenuItemWidget extends BaseWidget
             //
         ];
     }
-
-    // INFOLIST, CAN DELETE
-    public function getViewFormSchema(): array {
-        return [
-            //
-        ];
-    }
-
-    // CUSTOMIZE ICON OF EACH RECORD, CAN DELETE
-    // public function getTreeRecordIcon(?\Illuminate\Database\Eloquent\Model $record = null): ?string
-    // {
-    //     return null;
-    // }
-
-    // CUSTOMIZE ACTION OF EACH RECORD, CAN DELETE
-    // protected function getTreeActions(): array
-    // {
-    //     return [
-    //         Action::make('helloWorld')
-    //             ->action(function () {
-    //                 Notification::make()->success()->title('Hello World')->send();
-    //             }),
-    //         // ViewAction::make(),
-    //         // EditAction::make(),
-    //         ActionGroup::make([
-    //
-    //             ViewAction::make(),
-    //             EditAction::make(),
-    //         ]),
-    //         DeleteAction::make(),
-    //     ];
-    // }
-    // OR OVERRIDE FOLLOWING METHODS
-    //protected function hasDeleteAction(): bool
-    //{
-    //    return true;
-    //}
-    //protected function hasEditAction(): bool
-    //{
-    //    return true;
-    //}
-    //protected function hasViewAction(): bool
-    //{
-    //    return true;
-    //}
 }

@@ -6,19 +6,9 @@ Use this template to scaffold a new website
 
 1. Create a new project `laravel new project-name`
 2. clone this repository
-3. update the `composer.json` of your new project and add: 
-```
-"repositories": {
-    "filament-prefab": {
-        "type": "path",
-        "url": "../<path-to>/filament-prefab",
-        "symlink": true
-    }
-} 
-```
-4. Change minimum stability to dev: `"minimum-stability": "dev",`
-5. `composer require remihin/filament-prefab`
-6. Install all modules:
+3. update the `composer.json` of your new project and change minimum stability to dev: `"minimum-stability": "dev",`
+4. `composer require remihin/filament-prefab`
+5. Install all modules:
 - `php artisan prefab:filament --module=base --force`
   - be patient with the shell script, force is required to overwrite the user model
 - `php artisan prefab:filament --module=blog`
@@ -28,13 +18,13 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=employee`
 - `php artisan prefab:filament --module=form-builder`
 - NOTE: When updating modules after their initial rollout add `--force` to override local files. Additionally `--no-shell` can be added to prevent shell commands from being executed to speed up rolling out updates.
-7. `composer dump`
-8. `php artisan migrate`
-9. Create a user `php artisan make:filament-user` and follow the prompts
-10. `php artisan db:seed`
-11. open `docker-compose.yml` and replace the container_name with a name of this project
-12. `docker compose up -d`
-13. `npm install && npm run dev`
+6. `composer dump`
+7. `php artisan migrate`
+8. Create a user `php artisan make:filament-user` and follow the prompts
+9. `php artisan db:seed`
+10. open `docker-compose.yml` and replace the container_name with a name of this project
+11. `docker compose up -d`
+12. `npm install && npm run dev`
 
 ### How to use search
 1. Add the `IsSearchable` interface to the model
@@ -114,6 +104,11 @@ This project also contains a docker file which can be executed using laravel sai
 1. visit `/blog` for a blog overview
 2. visit `/blog/{blog:slug}` for the show page of a blog
 
+### Settings
+1. For settings we use the [spatie plugin](https://filamentphp.com/plugins/filament-spatie-settings).
+2. Optional: add the filament page to the correct navigation group `protected static ?string $navigationGroup = 'settings';`
+3. Add the settings to view composer in `AppServiceProvider` to access variables in blade
+
 ### Biggest Todos:
 - [x] Update naar Laravel 11
 - [x] slugs
@@ -135,7 +130,7 @@ This project also contains a docker file which can be executed using laravel sai
 - [x] Service
 - [x] Story
 - [ ] Vacancy
-- [ ] Settings
+- [x] Settings
 - [ ] Toptasks
 
 

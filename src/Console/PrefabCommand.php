@@ -715,6 +715,10 @@ class PrefabCommand extends Command
 
     protected function mergeModuleTranslations($module): void
     {
+        // Root...
+        $this->copyDirectory(__DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang/nl", base_path('/lang/nl'));
+
+
         $moduleTranslationsPath = __DIR__ . "/../../stubs/Modules/" . Str::studly($module) . "/lang/nl.json";
 
         if (!file_exists($moduleTranslationsPath)) {

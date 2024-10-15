@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Contacts\IsSearchable;
+use App\Contracts\IsSearchable;
 use App\Traits\HasVisibility;
 use App\Traits\Seoable;
 use Awcodes\Curator\Models\Media;

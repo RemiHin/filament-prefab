@@ -16,7 +16,6 @@
     "illuminate/validation": "^11.0"
   },
   "require-dev": {
-    "dejury/gptfaker": "^1.0",
     "deployer/deployer": "v7.0.0-rc.8",
     "friendsofphp/php-cs-fixer": "^3.8"
   },

@@ -12,7 +12,7 @@
     label="{{ $location->label }}"
 >
     <x-slot name="text">
-        <span>{{ $location->street }} {{ $location->street_number }}</span>
+        <span>{{ $location->street }} {{ $location->house_number }}</span>
         <span>{{ $location->postcode }} {{ $location->city }}</span>
     </x-slot>
 </x-cards.card>
