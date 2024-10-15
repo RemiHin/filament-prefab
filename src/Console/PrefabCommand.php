@@ -43,7 +43,6 @@ class PrefabCommand extends Command
         'service',
         'vacancy',
 //        'blocks',
-        'hero-image',
 //        'search',
 //        'donation',
         'job-alert',

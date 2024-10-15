@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MenuResource extends Resource
@@ -96,5 +97,10 @@ class MenuResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->isSuperAdmin();
     }
 }

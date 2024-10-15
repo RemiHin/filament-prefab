@@ -12,7 +12,6 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=base --force`
   - be patient with the shell script, force is required to overwrite the user model
 - `php artisan prefab:filament --module=blog`
-- `php artisan prefab:filament --module=hero-image`
 - `php artisan prefab:filament --module=news`
 - `php artisan prefab:filament --module=story`
 - `php artisan prefab:filament --module=employee`
