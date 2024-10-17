@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Log404;
+use App\Http\Middleware\RestrictAccessMiddleware;
 use Exception as ThrownException;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\RedirectsMiddleware;
@@ -15,7 +16,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append([
+            RestrictAccessMiddleware::class,
             RedirectsMiddleware::class,
+        ]);
+
+        $middleware->priority([
+            RestrictAccessMiddleware::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -91,4 +91,5 @@ return [
      * need to be searched each time the application boots up.
      */
     'discovered_settings_cache_path' => base_path('bootstrap/cache'),
+    'authorized_only' => env('AUTHORIZED_ONLY'),
 ];
