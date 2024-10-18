@@ -12,6 +12,8 @@ class SetPasswordNotification extends Notification
 {
     use Queueable;
 
+    public bool $isPasswordReset;
+
     /**
      * The password reset token.
      *
@@ -39,9 +41,10 @@ class SetPasswordNotification extends Notification
      * @param  string  $token
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $isPasswordReset = false)
     {
         $this->token = $token;
+        $this->isPasswordReset = $isPasswordReset;
     }
 
     /**
@@ -78,13 +81,24 @@ class SetPasswordNotification extends Notification
      */
     protected function buildMailMessage($url)
     {
-        return (new MailMessage)
-            ->subject(Lang::get('Account created'))
-            ->line(Lang::get('You are receiving this email because an account has been created for :website.', ['website' => config('app.name')]))
-            ->line(Lang::get('With the link below you can set your password and log-in.'))
-            ->action(Lang::get('Set Password'), $url)
-            ->line(Lang::get('This password link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::get("If the link has expired you can get a new link using the 'Forget Password' button on the login page."));
+        $message = new MailMessage();
+
+        if ($this->isPasswordReset) {
+            $message->subject(Lang::get('Reset Password'))
+                ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
+                ->action(Lang::get('Reset Password'), $url)
+                ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+                ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+        } else {
+            $message->subject(Lang::get('Account created'))
+                ->line(Lang::get('You are receiving this email because an account has been created for :website.', ['website' => config('app.name')]))
+                ->line(Lang::get('With the link below you can set your password and log-in.'))
+                ->action(Lang::get('Set Password'), $url)
+                ->line(Lang::get('This password link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+                ->line(Lang::get("If the link has expired you can get a new link using the 'Forget Password' button on the login page."));
+        }
+
+        return $message;
     }
 
     /**

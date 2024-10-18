@@ -7,6 +7,8 @@ use App\Models\User;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Facades\FilamentIcon;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
@@ -82,6 +84,13 @@ class UserResource extends Resource
                     ViewAction::make(),
                     EditAction::make(),
                     DeleteAction::make(),
+                    Action::make('reset password')
+                        ->label(__('Reset password link'))
+                        ->icon('heroicon-c-lock-closed')
+                        ->action(function (User $user) {
+                            $user->sendPasswordResetNotification(Password::createToken($user));
+                        })
+                        ->requiresConfirmation(),
                 ]),
             ]);
 
