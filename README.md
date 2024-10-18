@@ -83,6 +83,16 @@ This project also contains a docker file which can be executed using laravel sai
 2. Implement required methods
 3. Available resources will be auto detected by the menu item resource
 
+### How to use icon picker
+1. create a folder in  `/resources/images/svg`
+2. Place all the SVGs voor de icons you want in this folder
+3. add the IconPicker to a resource (with preload):
+```php
+IconPicker::make('icon')
+    ->preload()
+```
+4. in the blade use `<x-icon :name="$model->icon" />` to get the icon
+
 ### How to use titles and slugs
 1. For titles and slugs we use a forked and self-hosted project [filament-title-with-slug](https://github.com/MotivoZwolle/filament-title-with-slug)
 2. On forms use the `TitleWithSlugInput` form component. This will handle both the title and the slug. Both fields are required and the slug field validates if it is unique.
@@ -128,11 +138,11 @@ This project also contains a docker file which can be executed using laravel sai
 
 ### "Copypaste" Todos:
 - [x] Employee
-- [ ] Location
+- [x] Location
 - [x] News
 - [x] Service
 - [x] Story
-- [ ] Vacancy
+- [x] Vacancy
 - [x] Settings
 - [ ] Toptasks
 
