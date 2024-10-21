@@ -10,7 +10,6 @@ use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
-use Kirschbaum\PowerJoins\PowerJoins;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class MailLog extends Model
 {
-    use PowerJoins;
 
     /**
      * The attributes that aren't mass assignable.
