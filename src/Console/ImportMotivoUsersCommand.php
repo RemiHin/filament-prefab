@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace RemiHin\FilamentPrefab\Console;
 
 use App\Models\User;
 use Carbon\Carbon;
