@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Facades\FilamentIcon;
@@ -15,6 +16,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
@@ -52,6 +54,12 @@ class UserResource extends Resource
                     ->required()
                     ->unique(ignorable: fn ($record) => $record)
                     ->label(__('Email address')),
+                Toggle::make('is_admin')
+                    ->label(__('Is admin'))
+                    ->disabled(fn ($record) => $record && $record->id === Auth::id())
+                    ->helperText(fn ($record) => $record && $record->id === Auth::id()
+                        ? __('You cannot remove your own admin privileges.')
+                        : null),
             ]);
     }
 
