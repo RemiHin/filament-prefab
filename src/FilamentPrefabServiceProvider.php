@@ -30,6 +30,7 @@ class FilamentPrefabServiceProvider extends ServiceProvider implements Deferrabl
 
         $this->commands([
             Console\PrefabCommand::class,
+            Console\ImportMotivoUsersCommand::class,
         ]);
     }
 
@@ -40,6 +41,9 @@ class FilamentPrefabServiceProvider extends ServiceProvider implements Deferrabl
      */
     public function provides(): array
     {
-        return [Console\PrefabCommand::class];
+        return [
+            Console\PrefabCommand::class,
+            Console\ImportMotivoUsersCommand::class,
+        ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Contracts\IsSearchable;
 use App\Traits\HasVisibility;
+use App\Traits\Searchable;
 use App\Traits\Seoable;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,7 @@ class Location extends Model implements IsSearchable
     use HasFactory;
     use HasVisibility;
     use Seoable;
+    use Searchable;
 
     protected $guarded = [];
 

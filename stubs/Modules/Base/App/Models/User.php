@@ -59,6 +59,12 @@ class User extends Authenticatable implements FilamentUser
         $this->notify(new SetPasswordNotification($token));
     }
 
+    /** User to set password after creating user */
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new SetPasswordNotification($token, true));
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->isSuperAdmin();
