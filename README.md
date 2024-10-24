@@ -85,7 +85,7 @@ This project also contains a docker file which can be executed using laravel sai
 
 ### How to use icon picker
 1. create a folder in  `/resources/images/svg`
-2. Place all the SVGs voor de icons you want in this folder
+2. Place all the SVGs voor de icons you want in this folder (make sure the name of the file is prefixed with `icon-`)
 3. add the IconPicker to a resource (with preload):
 ```php
 IconPicker::make('icon')
