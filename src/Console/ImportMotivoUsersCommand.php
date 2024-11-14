@@ -91,15 +91,14 @@ class ImportMotivoUsersCommand extends Command
         $query = [];
 
         if (!empty($this->token)) {
-            $query['apikey'] = $this->token;
-        } else {
             $this->info('No API key set');
         }
 
         $response = Http::withHeaders([
             'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->token,
         ])
-            ->get('https://mijn.motivo.nl/api/users/motivo_administrators', $query);
+            ->get('https://team-management.motivo-1.enrisezwolle.nl/api/users');
 
         if ($response->status() !== 200) {
             throw new Exception(sprintf('Error while fetching users %s', $response->body()));
@@ -154,10 +153,11 @@ class ImportMotivoUsersCommand extends Command
                         tap(User::updateOrCreate([
                             'email' => $user['email'],
                         ], [
-                            'name'              => $user['fullname'],
+                            'name'              => $user['name'],
                             'password'          => $user['password'],
                             'email_verified_at' => Carbon::now(),
                             'deleted_at'        => null,
+                            'is_admin'          => true,
                         ]), function ($user) {
                             /** @var User $user */
 
