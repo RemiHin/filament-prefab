@@ -1,4 +1,7 @@
 <?php
+
+use Guava\FilamentIconPicker\Layout;
+
 return [
 
     /*
@@ -48,7 +51,7 @@ return [
     | grid view.
     |
     */
-    'layout' => \Guava\FilamentIconPicker\Layout::FLOATING,
+    'layout' => Layout::FLOATING,
 
     /*
     |--------------------------------------------------------------------------
