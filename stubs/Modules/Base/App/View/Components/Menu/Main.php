@@ -7,15 +7,23 @@ namespace App\View\Components\Menu;
 use App\Enums\MenuEnum;
 use App\Models\Label;
 use App\Models\Menu;
+use App\Models\MenuItem;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class Main extends Component
 {
-    public ?Menu $menu;
+    public Collection $menuItems;
 
     public function __construct()
     {
-        $this->menu = Label::getModel(MenuEnum::MAIN);
+        $this->menuItems = MenuItem::query()
+            ->whereHas('menu.label', fn(Builder $builder) => $builder->where('label', MenuEnum::MAIN))
+            ->orderBy('order')
+            ->where('parent_id', -1)
+            ->with(['children'])
+            ->get();
     }
 
     public function render()
