@@ -35,7 +35,7 @@ class ImportMotivoUsersCommand extends Command
     /**
      * @var string|null
      */
-    protected $token;
+    public $token;
 
     /**
      * A static callback that allows the user to alter the role assignment.
