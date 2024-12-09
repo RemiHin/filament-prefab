@@ -88,7 +88,7 @@ class ImportMotivoUsersCommand extends Command
 
     protected function getUsers(): array
     {
-        if (!empty($this->token)) {
+        if (empty($this->token)) {
             $this->info('No API key set');
             return [];
         }
