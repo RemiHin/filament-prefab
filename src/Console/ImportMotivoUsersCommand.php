@@ -54,7 +54,7 @@ class ImportMotivoUsersCommand extends Command
         if (!$this->token) {
             $this->error('MOTIVO_API_KEY not set');
             throw new ConsoleException('MOTIVO_API_KEY not set');
-            return 0;
+            return [];
         }
 
         $this->comment('Importing Motivo users');
@@ -90,7 +90,7 @@ class ImportMotivoUsersCommand extends Command
     {
         if (!empty($this->token)) {
             $this->info('No API key set');
-            return 0;
+            return [];
         }
 
         $response = Http::withHeaders([
