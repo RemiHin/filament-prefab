@@ -103,7 +103,7 @@ class ImportMotivoUsersCommand extends Command
             throw new Exception(sprintf('Error while fetching users %s', $response->body()));
         }
 
-        return $response->json()['data'];
+        return $response->json()['users'];
     }
 
     protected function cacheUsers($data): self
