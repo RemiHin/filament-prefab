@@ -7,19 +7,26 @@ namespace App\View\Components\Menu;
 use App\Enums\MenuEnum;
 use App\Models\Label;
 use App\Models\Menu;
+use App\Models\MenuItem;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class Legal extends Component
 {
-    public ?Menu $menu;
+    public Collection $menuItems;
 
     public function __construct()
     {
-        $this->menu = Label::getModel(MenuEnum::LEGAL_TERMS);
+        $this->menuItems = MenuItem::query()
+            ->whereHas('menu.label', fn(Builder $builder) => $builder->where('label', MenuEnum::LEGAL_TERMS))
+            ->where('parent_id', -1)
+            ->with(['children'])
+            ->orderBy('order')
+            ->get();
     }
 
     public function render()
     {
-        return view('components.menu.tree');
+        return view('components.menu.legal');
     }
 }
