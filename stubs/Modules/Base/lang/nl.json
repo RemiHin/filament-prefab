@@ -108,6 +108,7 @@
     "The recommended length is between :min and :max characters": "De aanbevolen lengte ligt tussen :min en :max tekens",
     "Open Graph default image": "Open Graph standaard afbeelding",
     "Allow index": "Indexeren toestaan",
+    "Don't allow index": "Indexeren niet toestaan",
     "Allow follow": "Volgen toestaan",
     "Allow search engines to index this resource": "Sta zoekmachines toe om deze pagina te indexeren",
     "Allow search engines to follow links on this resource": "Sta zoekmachines toe om links op deze pagina te volgen",
