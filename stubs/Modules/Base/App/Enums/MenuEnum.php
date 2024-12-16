@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-class MenuEnum extends BaseEnum
+enum MenuEnum: string
 {
-    public const MAIN = 'main-menu';
+    case MAIN = 'main-menu';
 
-    public const TOP = 'top-menu';
+    case TOP = 'top-menu';
 
-    public const FOOTER = 'footer-menu';
+    case FOOTER = 'footer-menu';
 
-    public const LEGAL_TERMS = 'legal-terms';
+    case LEGAL_TERMS = 'legal-terms';
 }
