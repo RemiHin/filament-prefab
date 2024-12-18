@@ -52,8 +52,8 @@ trait Seoable
                         ])),
 
                     Forms\Components\Toggle::make('noindex')
-                        ->label(__('Allow index'))
-                        ->default(true),
+                        ->label(__('Don\'t allow index'))
+                        ->default(false),
 
                     Forms\Components\Toggle::make('nofollow')
                         ->label(__('Allow follow'))
