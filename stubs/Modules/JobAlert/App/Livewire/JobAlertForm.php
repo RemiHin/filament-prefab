@@ -8,7 +8,6 @@ use App\Models\JobAlert;
 use App\Models\Position;
 use App\Models\Location;
 use App\Models\Education;
-use Motivo\Liberiser\Liberiser;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Mail;
 
