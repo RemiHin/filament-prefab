@@ -27,9 +27,7 @@ class GenerateSitemap extends Command
         // Create new sitemap.xml index file
         $sitemapIndex = SitemapIndex::create();
 
-        $models = collect([
-            // Add classes with pages here "Model::class,"
-        ]);
+        $models = config('sitemap.models');
 
         foreach ($models as $model) {
             $model::query()

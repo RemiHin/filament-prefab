@@ -122,6 +122,11 @@ IconPicker::make('icon')
 2. Optional: add the filament page to the correct navigation group `protected static ?string $navigationGroup = 'settings';`
 3. Add the settings to view composer in `AppServiceProvider` to access variables in blade
 
+### Generating a sitemap
+1. When wanting to generate a sitemap, you need to add de model to the sitemap config file under key "models"
+2. The model must have a getRoute() function where the route is defined
+3. When all models are added, run the "app:generate-sitemap" command in the terminal
+
 ### Biggest Todos:
 - [x] Update naar Laravel 11
 - [x] slugs
@@ -151,3 +156,4 @@ IconPicker::make('icon')
 - `filamentphp/filament`
 - `awcodes/filament-curator` (media manager)
 - `solution-forest/filament-tree` (menu builder)
+- `spatie/laravel-sitemap` (sitemap generation)
