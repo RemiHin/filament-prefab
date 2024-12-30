@@ -52,8 +52,10 @@ trait Seoable
                         ])),
 
                     Forms\Components\Toggle::make('noindex')
-                        ->label(__('Don\'t allow index'))
-                        ->default(false),
+                        ->label(__('Allow index'))
+                        ->default(false)
+                        ->dehydrateStateUsing(fn($state) => !$state->noindex)
+                        ->hydrateStateUsing(fn($state) => !$state->noindex),
 
                     Forms\Components\Toggle::make('nofollow')
                         ->label(__('Allow follow'))
