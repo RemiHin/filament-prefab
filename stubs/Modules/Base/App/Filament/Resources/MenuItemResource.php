@@ -55,6 +55,7 @@ class MenuItemResource extends Resource
 
                 Forms\Components\Select::make('url_type')
                     ->label(__('Url type'))
+                    ->required()
                     ->live()
                     ->options([
                         'internal' => __('Intern'),
