@@ -176,5 +176,8 @@
     "If the link has expired you can get a new link using the 'Forget Password' button on the login page.": "Als de link verlopen is kunt u een nieuwe link opvragen met de 'Wachtwoord Vergeten' knop op de login pagina.",
     "External link to :to": "Externe link naar :to",
 
+    "Google Tag Manager": "Google Tag Manager",
+    "Google Tag Manager ID": "Google Tag Manager ID",
+
     "EOF": "End of file"
 }
