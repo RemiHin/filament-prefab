@@ -177,6 +177,7 @@
     "This password link will expire in :count minutes.": "Dit wachtwoord link verloopt in :count minuten.",
     "If the link has expired you can get a new link using the 'Forget Password' button on the login page.": "Als de link verlopen is kunt u een nieuwe link opvragen met de 'Wachtwoord Vergeten' knop op de login pagina.",
     "External link to :to": "Externe link naar :to",
+    "You are not allowed to delete a page with a label.": "U mag geen pagina met een label verwijderen.",
 
     "EOF": "End of file"
 }

@@ -9,10 +9,12 @@ use App\Filament\Resources\PageResource\RelationManagers;
 use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
@@ -119,7 +121,16 @@ class PageResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()->before(function (Collection $records, Tables\Actions\DeleteBulkAction $action){
+                        if($records->whereNotNull('label')->isNotEmpty()){
+                            Notification::make()
+                                ->title(__('You are not allowed to delete a page with a label.'))
+                                ->status('danger')
+                                ->send();
+
+                            $action->cancel();
+                        };
+                    }),
                 ]),
             ]);
     }
