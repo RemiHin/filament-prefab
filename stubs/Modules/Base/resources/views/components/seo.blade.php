@@ -23,11 +23,11 @@
             $description = $seo->description;
         }
 
-        if ($seo->noindex || ! app()->environment('production')) {
+        if (! $seo->noindex || ! app()->environment('production')) {
             $robots[] = 'noindex';
         }
 
-        if ($seo->nofollow || ! app()->environment('production')) {
+        if (! $seo->nofollow || ! app()->environment('production')) {
             $robots[] = 'nofollow';
         }
     }
