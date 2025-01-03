@@ -52,12 +52,12 @@ trait Seoable
                         ])),
 
                     Forms\Components\Toggle::make('noindex')
-                        ->label(__('Dont allow index'))
+                        ->label(__('Don\'t allow index'))
                         ->default(false)
                         ->helperText(__('Dont allow search engines to index this resource')),
 
                     Forms\Components\Toggle::make('nofollow')
-                        ->label(__('Dont allow follow'))
+                        ->label(__('Don\'t allow follow'))
                         ->default(false)
                         ->helperText(__('Dont allow search engines to follow links on this resource')),
                 ]),
