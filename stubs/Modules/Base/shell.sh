@@ -15,6 +15,7 @@ composer require filament/spatie-laravel-settings-plugin:"^3.2" -W
 composer require propaganistas/laravel-phone
 composer require axlon/laravel-postal-code-validation
 composer require kirschbaum-development/eloquent-power-joins
+composer require spatie/laravel-sitemap:"^7.3"
 php artisan filament:assets
 php artisan vendor:publish --tag="filament-tree-config"
 php artisan curator:install --no-interaction
