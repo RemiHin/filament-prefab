@@ -2,8 +2,8 @@
 
 namespace RemiHin\FilamentPrefab;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
 
 class FilamentPrefabServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -30,7 +30,6 @@ class FilamentPrefabServiceProvider extends ServiceProvider implements Deferrabl
 
         $this->commands([
             Console\PrefabCommand::class,
-            Console\ImportMotivoUsersCommand::class,
         ]);
     }
 
@@ -43,7 +42,6 @@ class FilamentPrefabServiceProvider extends ServiceProvider implements Deferrabl
     {
         return [
             Console\PrefabCommand::class,
-            Console\ImportMotivoUsersCommand::class,
         ];
     }
 }
