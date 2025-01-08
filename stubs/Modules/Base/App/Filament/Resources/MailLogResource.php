@@ -123,4 +123,9 @@ class MailLogResource extends Resource
             'view' => Pages\ViewMailLog::route('/{record}'),
         ];
     }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 }
