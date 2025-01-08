@@ -32,7 +32,7 @@ class MenuItem extends Model
 
     public function getUrl(): ?string
     {
-        if ($this->url_type === 'internal') {
+        if ($this->url_type === 'internal' && $this->menuable_type !== 'Empty') {
             return $this->menuable?->getRoute();
         }
 
