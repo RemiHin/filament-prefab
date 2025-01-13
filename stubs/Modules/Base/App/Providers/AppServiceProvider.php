@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Settings\ContactSettings;
+use App\Settings\GoogleSettings;
 use Illuminate\Support\Facades\View;
 use App\Models\User;
 use App\Observers\UserObserver;
@@ -10,7 +11,6 @@ use Database\Factories\Helpers\BlockFactoryHandler;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use RemiHin\FilamentPrefabStubs\Modules\Base\App\Settings\GoogleSettings;
 
 class AppServiceProvider extends ServiceProvider
 {

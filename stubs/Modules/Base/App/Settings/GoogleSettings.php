@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Base\App\Settings;
+namespace App\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Base\App\Filament\Pages;
+namespace App\Filament\Pages;
 
 use App\Settings\GoogleSettings;
 use Filament\Forms;
