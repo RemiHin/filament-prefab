@@ -7,6 +7,10 @@ return [
             'prefix' => 'icon',
             'path' => 'resources/images/svg',
         ],
+        'socials' => [
+            'prefix' => 'social',
+            'path' => 'public/assets/svg/socials',
+        ],
     ],
 
     'class' => '',
