@@ -15,17 +15,17 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(MenuEnum::getValues() as $menu) {
-            $menuLabel = Label::getModel($menu);
+        foreach(MenuEnum::cases() as $menu) {
+            $menuLabel = Label::getModel($menu->value);
 
             if(!$menuLabel) {
                 $mainMenu = Menu::query()
                     ->create([
-                        'title' => $menu,
+                        'title' => $menu->value,
                     ]);
 
                 $mainMenu->label()->create([
-                    'label' => $menu
+                    'label' => $menu->value
                 ]);
             }
         }
