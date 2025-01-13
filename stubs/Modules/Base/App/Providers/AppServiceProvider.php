@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Settings\ContactSettings;
+use App\Settings\GoogleSettings;
 use Illuminate\Support\Facades\View;
 use App\Models\User;
 use App\Observers\UserObserver;
@@ -29,9 +30,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function (\Illuminate\Contracts\View\View $view) {
             $view->with([
                 'contactSettings' => app(ContactSettings::class),
+                'googleSettings' => app(GoogleSettings::class),
             ]);
         });
-      
+
         User::observe(UserObserver::class);
 
         Event::listen(function (CommandFinished $command) {
