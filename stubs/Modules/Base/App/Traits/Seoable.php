@@ -52,13 +52,14 @@ trait Seoable
                         ])),
 
                     Forms\Components\Toggle::make('noindex')
-                        ->label(__('Allow index'))
-                        ->default(true),
+                        ->label(__('Don\'t allow index'))
+                        ->default(false)
+                        ->helperText(__('Dont allow search engines to index this resource')),
 
                     Forms\Components\Toggle::make('nofollow')
-                        ->label(__('Allow follow'))
+                        ->label(__('Don\'t allow follow'))
                         ->default(false)
-                        ->helperText(__('Allow search engines to follow links on this resource')),
+                        ->helperText(__('Dont allow search engines to follow links on this resource')),
                 ]),
 
             Forms\Components\Fieldset::make('og')
