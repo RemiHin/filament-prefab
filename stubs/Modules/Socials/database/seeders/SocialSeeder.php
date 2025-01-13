@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Socials\database\seeders;
+namespace database\seeders;
 
 use App\Models\Social;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;

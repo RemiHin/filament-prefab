@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Socials\App\View\Components;
+namespace App\View\Components;
 
 use App\Models\Social;
 use Illuminate\Contracts\View\View;

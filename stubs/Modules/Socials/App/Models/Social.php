@@ -1,6 +1,6 @@
 <?php
 
-namespace RemiHin\FilamentPrefabStubs\Modules\Socials\App\Models;
+namespace App\Models;
 
 use App\Traits\HasVisibility;
 use Illuminate\Database\Eloquent\Model;
