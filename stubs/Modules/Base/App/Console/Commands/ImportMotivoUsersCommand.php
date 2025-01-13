@@ -1,11 +1,11 @@
 <?php
 
-namespace RemiHin\FilamentPrefab\Console;
+namespace App\Console\Commands;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Console\Command;
-use Psy\Readline\Hoa\ConsoleException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Exception;
+use Psy\Readline\Hoa\ConsoleException;
 
 class ImportMotivoUsersCommand extends Command
 {
