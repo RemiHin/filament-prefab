@@ -20,6 +20,7 @@ Use this template to scaffold a new website
 - `php artisan prefab:filament --module=location`
 - `php artisan prefab:filament --module=vacancy`
 - `php artisan prefab:filament --module=job-alert`
+- `php artisan prefab:filament --module=socials`
 - NOTE: When updating modules after their initial rollout add `--force` to override local files. Additionally `--no-shell` can be added to prevent shell commands from being executed to speed up rolling out updates.
 6. `composer dump`
 7. `php artisan migrate`
