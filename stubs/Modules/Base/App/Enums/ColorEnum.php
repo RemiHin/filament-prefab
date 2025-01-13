@@ -6,37 +6,37 @@ namespace App\Enums;
 
 use Illuminate\Support\Str;
 
-class ColorEnum extends BaseEnum
+enum ColorEnum: string
 {
-    public const DEFAULT_BACKGROUND = '#FFFFFF';
+    case DEFAULT_BACKGROUND = '#FFFFFF';
 
-    public const DEFAULT_COLOR = '#2D2D2D';
+    case DEFAULT_COLOR = '#2D2D2D';
 
-    public const DEFAULT_ACCENT = '#F1F5F9';
+    case DEFAULT_ACCENT = '#F1F5F9';
 
-    public const PRIMARY_LIGHT = '#E1DBF2';
+    case PRIMARY_LIGHT = '#E1DBF2';
 
-    public const PRIMARY = '#2B0988';
+    case PRIMARY = '#2B0988';
 
-    public const PRIMARY_DARK = '#1D006B';
+    case PRIMARY_DARK = '#1D006B';
 
-    public const SECONDARY_LIGHT = '#FFF2F7';
+    case SECONDARY_LIGHT = '#FFF2F7';
 
-    public const SECONDARY = '#EB4D89';
+    case SECONDARY = '#EB4D89';
 
-    public const SECONDARY_DARK = '#D11F63';
+    case SECONDARY_DARK = '#D11F63';
 
-    public const TERTIARY_LIGHT = '#FEF6DA';
+    case TERTIARY_LIGHT = '#FEF6DA';
 
-    public const TERTIARY = '#FAC50B';
+    case TERTIARY = '#FAC50B';
 
-    public const TERTIARY_DARK = '#F19F00';
+    case TERTIARY_DARK = '#F19F00';
 
-    public const DANGER = '#FF1F1F';
+    case DANGER = '#FF1F1F';
 
-    public const WARNING = '#FAC50B';
+    case WARNING = '#FACA0B';
 
-    public const SUCCESS = '#08A057';
+    case SUCCESS = '#08A057';
 
     public static function rootKey(string $key): string
     {
