@@ -10,6 +10,7 @@ use Database\Factories\Helpers\BlockFactoryHandler;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use RemiHin\FilamentPrefabStubs\Modules\Base\App\Settings\GoogleSettings;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,9 +30,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function (\Illuminate\Contracts\View\View $view) {
             $view->with([
                 'contactSettings' => app(ContactSettings::class),
+                'googleSettings' => app(GoogleSettings::class),
             ]);
         });
-      
+
         User::observe(UserObserver::class);
 
         Event::listen(function (CommandFinished $command) {
