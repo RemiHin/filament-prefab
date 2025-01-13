@@ -46,7 +46,8 @@ class PrefabCommand extends Command
 //        'search',
 //        'donation',
         'job-alert',
-        'form-builder'
+        'form-builder',
+        'socials'
     ];
 
     /**
