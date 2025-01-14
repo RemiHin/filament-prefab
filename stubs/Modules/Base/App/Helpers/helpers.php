@@ -6,6 +6,7 @@ use App\Models\Label;
 use Illuminate\Support\Str;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 
 if (! function_exists('inlineSVG')) {
     function inlineSVG(string $path): HtmlString
@@ -56,5 +57,18 @@ if (! function_exists('get_model_for_label')) {
 
             return $model;
         });
+    }
+}
+
+if (! function_exists('is_external_url')) {
+    function is_external_url(?string $url = null): bool
+    {
+        if (is_null($url)) {
+            return false;
+        }
+
+        $components = parse_url($url);
+
+        return ! empty($components['host']) && ! Str::contains(Config::get('app.url'), $components['host']);
     }
 }

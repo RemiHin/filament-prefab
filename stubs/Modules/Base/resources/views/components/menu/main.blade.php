@@ -4,7 +4,7 @@
 
 @if($menuItems->count())
 <ul {{ $attributes->merge(['class' => 'list-none']) }}>
-    @foreach($menuItems->children as $menuItem)
+    @foreach($menuItems as $menuItem)
         @if($menuItem->children->count())
             <li class="relative border-b border-slate-200 lg:border-none">
                 <span class="js-toggle-submenu flex lg:inline-flex items-center py-2 px-4 cursor-pointer underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition duration-150 ease-in-out {{ $textColor }}"
@@ -25,8 +25,17 @@
             <li class="relative border-b border-slate-200 lg:border-none">
                 <a class="flex lg:inline-flex py-2 px-4 underline underline-offset-4 decoration-2 decoration-transparent transition duration-150 ease-in-out {{ $textColor }} @if($menuItem->getUrl() === url()->current()) font-bold @else hover:decoration-current @endif"
                    href="{{ $menuItem->getUrl() }}"
-                   @if($menuItem->getUrl() === url()->current()) aria-current="page" @endif>
+                   @if($menuItem->getUrl() === url()->current()) aria-current="page" @endif
+                   @if(is_external_url($item->getUrl())) target="_blank" rel="noopener" @endif
+                >
                     {{ $menuItem->title }}
+
+                    @if(is_external_url($item->getUrl()))
+                        <x-svg
+                            class="svg-icon relative inline-flex self-center h-6 w-6 ml-2"
+                            src="assets/svg/external-link.svg"
+                        />
+                    @endif
                 </a>
             </li>
         @endif
